@@ -1,0 +1,73 @@
+/* 토스버거 (tosburger.com) — shared styles for landing + legal pages */
+:root {
+  --blue: #0DB5E1;
+  --blue-dark: #0891b8;
+  --ink: #1c2733;
+  --ink-soft: #4a5a6a;
+  --bg: #f4f9fb;
+  --card: #ffffff;
+  --line: #e2ecf2;
+  --mark: #fff3bf;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ink: #e8eef3;
+    --ink-soft: #a8b6c2;
+    --bg: #10181f;
+    --card: #1a242e;
+    --line: #2a3642;
+    --mark: #5c4d00;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: "Pretendard", -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
+    "Malgun Gothic", "Segoe UI", sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.7;
+  word-break: keep-all;
+}
+header.site {
+  background: var(--blue);
+  color: #fff;
+  padding: 1rem 1.25rem;
+}
+header.site .inner, main, footer.site .inner {
+  max-width: 760px;
+  margin: 0 auto;
+}
+header.site a { color: #fff; text-decoration: none; font-weight: 700; font-size: 1.05rem; }
+header.site nav { float: right; }
+header.site nav a { font-weight: 500; font-size: .92rem; margin-left: 1rem; opacity: .92; }
+main { padding: 2rem 1.25rem 4rem; }
+h1 { font-size: 1.6rem; margin: 1.2rem 0 .4rem; }
+h2 { font-size: 1.15rem; margin: 2rem 0 .5rem; padding-top: .5rem; border-top: 1px solid var(--line); }
+p, li { color: var(--ink-soft); font-size: .95rem; }
+strong { color: var(--ink); }
+table { border-collapse: collapse; width: 100%; font-size: .88rem; margin: .8rem 0; display: block; overflow-x: auto; }
+th, td { border: 1px solid var(--line); padding: .5rem .6rem; text-align: left; vertical-align: top; color: var(--ink-soft); }
+th { background: color-mix(in srgb, var(--blue) 8%, var(--card)); color: var(--ink); white-space: nowrap; }
+a { color: var(--blue-dark); }
+mark.todo { background: var(--mark); padding: 0 .25em; border-radius: 4px; }
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 1.25rem 1.5rem;
+  margin: 1rem 0;
+}
+.hero { text-align: center; padding: 3rem 0 1rem; }
+.hero .logo { font-size: 3.2rem; line-height: 1; }
+.hero h1 { font-size: 2rem; margin: .6rem 0 .2rem; }
+.hero p.tag { color: var(--ink-soft); font-size: 1.02rem; margin-top: .2rem; }
+.linkgrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: .8rem; margin: 1.6rem 0; }
+.linkgrid a.card { display: block; text-decoration: none; margin: 0; }
+.linkgrid a.card:hover { border-color: var(--blue); }
+.linkgrid .t { font-weight: 700; color: var(--ink); }
+.linkgrid .d { font-size: .85rem; color: var(--ink-soft); margin-top: .2rem; }
+.disclaimer { font-size: .8rem; color: var(--ink-soft); }
+footer.site { border-top: 1px solid var(--line); padding: 1.2rem; font-size: .82rem; color: var(--ink-soft); }
+footer.site a { margin-right: .9rem; }
+.updated { font-size: .82rem; color: var(--ink-soft); }
