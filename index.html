@@ -4,12 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>토스버거 — 토익스피킹, 외워서 조립하면 됩니다</title>
-<meta name="description" content="토스버거는 시험에 나오는 정형 표현 ‘조각’을 외우고 조립해 말하는 TOEIC Speaking 훈련 앱입니다. 실전 모의고사와 ETS 기준 AI 진단까지.">
+<meta name="description" content="토스버거는 시험에 나오는 정형 표현 ‘조각’을 외우고 조립해 말하는 TOEIC Speaking 훈련 앱입니다. 블록 섀도잉, 실전 모의고사, ETS 기준 AI 레이더 진단까지.">
 <meta name="color-scheme" content="light dark">
-<meta name="theme-color" content="#0db5e1" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#0a1620" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#e9e0cf" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#1b2b33" media="(prefers-color-scheme: dark)">
 <meta property="og:title" content="토스버거 — 토익스피킹 조각·조립 훈련">
-<meta property="og:description" content="즉흥 영작은 그만. 정형 표현을 외우고 조립해 말하세요. 실전 모의고사 + AI 진단.">
+<meta property="og:description" content="즉흥 영작은 그만. 정형 표현을 외우고 조립해 말하세요. 블록 섀도잉 · 실전 모의고사 · AI 레이더 진단.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://tosburger.com">
 <meta property="og:image" content="https://tosburger.com/assets/og.jpg">
@@ -22,75 +22,113 @@
 <link rel="stylesheet" href="/style.css">
 <style>
   /* ---- landing-only styles (shared base lives in style.css) ---- */
-  .hero { position: relative; padding-top: clamp(36px, 7vw, 76px); padding-bottom: clamp(30px, 6vw, 60px); }
-  .hero-grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: clamp(24px, 4vw, 48px); align-items: center; }
-  .hero h1 { font-size: clamp(2.3rem, 6.4vw, 4rem); margin: 14px 0 18px; }
-  .hero h1 .hl { color: var(--blue); }
-  .hero p.lead { font-size: clamp(1.05rem, 2.4vw, 1.28rem); color: var(--ink-soft); max-width: 34ch; }
+  section { padding-block: clamp(52px, 9vw, 104px); position: relative; }
+  .sec-head { text-align: center; max-width: 42ch; margin: 0 auto clamp(30px, 5vw, 54px); }
+  .sec-head h2 { font-size: clamp(1.85rem, 4.6vw, 2.9rem); margin: 12px 0 14px; }
+  .sec-head p { color: var(--ink-soft); font-size: 1.06rem; }
+
+  /* ---- clay phone mockup ---- */
+  .device { position: relative; margin-inline: auto; width: min(300px, 76vw); padding: 12px; border-radius: 44px;
+            background: linear-gradient(155deg, #2b333a, #171d22); box-shadow: var(--card-shadow), inset 0 0 0 1.5px rgba(255,255,255,.05); }
+  .device::before { content: ""; position: absolute; top: 20px; left: 50%; translate: -50% 0; width: 30%; height: 7px; border-radius: 999px; background: #05080a; z-index: 2; opacity: .85; }
+  .device img { width: 100%; height: auto; border-radius: 33px; display: block; }
+  .device.float { animation: float 7s ease-in-out infinite; }
+  @media (prefers-reduced-motion: reduce) { .device.float { animation: none; } }
+  @keyframes float { 0%,100% { transform: translateY(0) rotate(-1.6deg); } 50% { transform: translateY(-14px) rotate(-1.6deg); } }
+
+  /* ---- hero ---- */
+  .hero { padding-top: clamp(34px, 6vw, 76px); }
+  .hero-grid { display: grid; grid-template-columns: 1.06fr .94fr; gap: clamp(24px, 4vw, 52px); align-items: center; }
+  .hero h1 { font-size: clamp(2.35rem, 6.6vw, 4.1rem); margin: 16px 0 18px; }
+  .hero h1 .hl { color: var(--sage-ink); position: relative; white-space: nowrap; }
+  .hero h1 .hl::after { content: ""; position: absolute; left: -2%; right: -2%; bottom: .06em; height: .34em; background: color-mix(in srgb, var(--sage) 55%, transparent); border-radius: 6px; z-index: -1; }
+  .hero p.lead { font-size: clamp(1.06rem, 2.3vw, 1.3rem); color: var(--ink-soft); max-width: 35ch; }
   .hero .cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
-  .hero .note { margin-top: 16px; }
-  .blob { position: absolute; z-index: -1; filter: blur(46px); opacity: .5; border-radius: 50%; }
-  .blob.a { width: 340px; height: 340px; background: var(--blue); top: -60px; right: -40px; }
-  .blob.b { width: 260px; height: 260px; background: var(--cheese); bottom: -40px; left: -60px; opacity: .4; }
+  .hero .note { margin-top: 18px; }
+  .hero .fig { position: relative; }
+  .blob { position: absolute; z-index: -1; filter: blur(48px); border-radius: 50%; }
+  .blob.a { width: 320px; height: 320px; background: color-mix(in srgb, var(--sage) 60%, transparent); top: -40px; right: -30px; opacity: .55; }
+  .blob.b { width: 240px; height: 240px; background: color-mix(in srgb, var(--cheese) 70%, transparent); bottom: -30px; left: -50px; opacity: .5; }
+  .chip-float { position: absolute; font-weight: 800; font-size: .82rem; padding: 9px 15px; border-radius: 999px; background: var(--paper-hi); color: var(--ink); box-shadow: var(--clay-shadow); border: 1px solid var(--line-soft); display: inline-flex; align-items: center; gap: 7px; }
+  .chip-float .pz { color: var(--sage-ink); }
+  .chip-float.c1 { top: 6%; left: -6%; }
+  .chip-float.c2 { bottom: 12%; right: -7%; }
   @media (max-width: 820px) {
     .hero-grid { grid-template-columns: 1fr; text-align: center; }
     .hero p.lead { margin-inline: auto; }
     .hero .cta, .hero .note { justify-content: center; }
-    .hero .fig { margin-top: 10px; }
+    .hero .fig { margin-top: 26px; }
+    .chip-float.c1 { left: 2%; } .chip-float.c2 { right: 2%; }
   }
 
-  .phone { position: relative; margin-inline: auto; width: min(300px, 78vw); aspect-ratio: 860 / 1512; background: #0d1116; border-radius: 40px; padding: 11px; box-shadow: var(--card-shadow); }
-  .phone::before { content: ""; position: absolute; top: 15px; left: 50%; translate: -50% 0; width: 34%; height: 22px; background: #0d1116; border-radius: 0 0 14px 14px; z-index: 2; }
-  .phone img { width: 100%; height: 100%; object-fit: cover; object-position: top center; border-radius: 30px; }
-  .phone.float { animation: float 6s ease-in-out infinite; }
-  @media (prefers-reduced-motion: reduce) { .phone.float { animation: none; } }
-  @keyframes float { 0%,100% { transform: translateY(0) rotate(-2deg); } 50% { transform: translateY(-14px) rotate(-2deg); } }
-
-  section { padding-block: clamp(48px, 9vw, 96px); }
-  .sec-head { text-align: center; max-width: 40ch; margin: 0 auto clamp(28px, 5vw, 52px); }
-  .sec-head h2 { font-size: clamp(1.8rem, 4.6vw, 2.8rem); margin: 12px 0 14px; }
-  .sec-head p { color: var(--ink-soft); font-size: 1.05rem; }
-
+  /* ---- problem band ---- */
   .band { background: var(--paper); border-block: 1px solid var(--line); }
   .stat-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; text-align: center; }
-  .stat { background: var(--cream); border: 1px solid var(--line); border-radius: var(--radius); padding: 26px 18px; }
-  .stat .n { font-family: "Jua", sans-serif; font-size: clamp(2rem, 5vw, 2.8rem); color: var(--blue); font-variant-numeric: tabular-nums; }
+  .stat { background: var(--paper-hi); border: 1px solid var(--line); border-radius: var(--radius); padding: 28px 18px; box-shadow: var(--clay-shadow); }
+  .stat .n { font-family: "Jua", sans-serif; font-size: clamp(2.1rem, 5vw, 2.9rem); color: var(--sage-ink); font-variant-numeric: tabular-nums; }
   .stat .l { color: var(--ink-soft); font-size: .95rem; margin-top: 6px; }
   @media (max-width: 620px) { .stat-row { grid-template-columns: 1fr; } }
 
-  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
-  .step { background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); padding: 28px 26px; box-shadow: var(--card-shadow); }
-  .step-ico { width: 92px; height: 92px; border-radius: 22px; background: var(--cream); object-fit: cover; margin-bottom: 16px; }
+  /* ---- method steps ---- */
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; counter-reset: s; }
+  .step { position: relative; background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); padding: 30px 26px; box-shadow: var(--card-shadow); }
+  .step-ico { width: 96px; height: 96px; border-radius: 24px; background: var(--paper-hi); object-fit: cover; margin-bottom: 16px; box-shadow: var(--clay-shadow); }
   .step-n { font-weight: 800; letter-spacing: .08em; font-size: .74rem; }
   .step:nth-child(1) .step-n { color: var(--tomato); }
   .step:nth-child(2) .step-n { color: var(--cheese); }
-  .step:nth-child(3) .step-n { color: var(--lettuce); }
-  .step h3 { font-size: 1.35rem; margin: 4px 0 8px; }
-  .step p { color: var(--ink-soft); font-size: .98rem; }
-  @media (max-width: 760px) { .steps { grid-template-columns: 1fr; } }
+  .step:nth-child(3) .step-n { color: var(--sage-ink); }
+  .step h3 { font-size: 1.4rem; margin: 4px 0 8px; }
+  .step p { color: var(--ink-soft); font-size: .99rem; }
+  .step .arrow { position: absolute; top: 50%; right: -22px; translate: 0 -50%; color: var(--line); z-index: 1; }
+  @media (max-width: 760px) { .steps { grid-template-columns: 1fr; } .step .arrow { display: none; } }
 
-  .feature { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(28px, 5vw, 60px); align-items: center; }
-  .feature .tag { font-weight: 800; letter-spacing: .1em; text-transform: uppercase; font-size: .76rem; color: var(--blue-ink); }
+  /* ---- feature rows ---- */
+  .feature { display: grid; grid-template-columns: .92fr 1.08fr; gap: clamp(28px, 5vw, 64px); align-items: center; }
+  .feature.rev .fig { order: 2; }
+  .feature .tag { font-weight: 800; letter-spacing: .1em; text-transform: uppercase; font-size: .76rem; color: var(--sage-ink); }
   .feature h2 { font-size: clamp(1.7rem, 4vw, 2.5rem); margin: 12px 0 16px; }
-  .feature p { color: var(--ink-soft); font-size: 1.06rem; }
-  .feature ul { list-style: none; padding: 0; margin: 20px 0 0; display: grid; gap: 12px; }
+  .feature p.lead { color: var(--ink-soft); font-size: 1.06rem; }
+  .feature ul { list-style: none; padding: 0; margin: 22px 0 0; display: grid; gap: 12px; }
   .feature li { display: flex; gap: 11px; align-items: flex-start; font-size: 1rem; }
   .feature li svg { flex: none; margin-top: 3px; }
-  @media (max-width: 820px) { .feature { grid-template-columns: 1fr; } }
+  @media (max-width: 820px) { .feature { grid-template-columns: 1fr; } .feature.rev .fig { order: 0; } }
 
-  .showcase { border-radius: var(--radius); overflow: hidden; border: 1px solid var(--line); box-shadow: var(--card-shadow); background: #23323d; }
+  /* assembly chip diagram */
+  .assemble { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 22px 0 4px; }
+  .assemble .blk { font-weight: 800; font-size: .84rem; padding: 8px 14px; border-radius: 12px; background: color-mix(in srgb, var(--sage) 20%, var(--paper)); color: var(--sage-ink); border: 1px solid color-mix(in srgb, var(--sage) 38%, transparent); }
+  .assemble .plus { color: var(--ink-soft); font-weight: 800; }
+  .assemble .eq { color: var(--ink-soft); font-weight: 800; margin: 0 2px; }
+  .assemble .ans { font-weight: 800; font-size: .84rem; padding: 8px 14px; border-radius: 12px; background: var(--sage); color: #33402c; }
+
+  /* ---- dark: 실전 & AI 진단 ---- */
+  .stage { position: relative; color: #eaf1f2; background: linear-gradient(168deg, var(--slate-deep) 0%, var(--slate-abyss) 62%, #1c333d 100%); overflow: hidden; }
+  .stage::before { content: ""; position: absolute; inset: 0; background: radial-gradient(70% 45% at 78% 6%, color-mix(in srgb, var(--sage) 30%, transparent), transparent 60%); pointer-events: none; }
+  .stage .wrap { position: relative; }
+  .stage .eyebrow { color: color-mix(in srgb, var(--sage) 78%, #fff); }
+  .stage .sec-head h2 { color: #fff; }
+  .stage .sec-head p { color: #c3d2d6; }
+  .stage .tag { color: color-mix(in srgb, var(--sage) 78%, #fff); }
+  .stage h2, .stage h3 { color: #fff; }
+  .stage p.lead { color: #c8d5d9; }
+  .stage .feature { margin-bottom: clamp(40px, 7vw, 80px); }
+  .stage .device { background: linear-gradient(155deg, #1c242a, #0e1317); }
+  .stage .feature li { color: #dbe5e8; }
+
+  .showcase { border-radius: var(--radius); overflow: hidden; border: 1px solid rgba(255,255,255,.1); box-shadow: 0 30px 60px -26px rgba(0,0,0,.6); background: #33505f; }
   .showcase img { width: 100%; height: auto; }
-  .dims { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-top: 22px; }
-  .dims span { font-size: .86rem; font-weight: 700; padding: 6px 12px; border-radius: 999px; background: color-mix(in srgb, var(--blue) 12%, var(--paper)); color: var(--blue-ink); border: 1px solid color-mix(in srgb, var(--blue) 22%, transparent); }
+  .dims { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-top: 24px; }
+  .dims span { font-size: .86rem; font-weight: 800; padding: 7px 14px; border-radius: 999px; background: rgba(255,255,255,.08); color: #eaf1f2; border: 1px solid rgba(255,255,255,.16); }
+  .dims span.lv { background: color-mix(in srgb, var(--sage) 40%, transparent); border-color: color-mix(in srgb, var(--sage) 55%, transparent); color: #fff; }
 
-  .final { text-align: center; background: linear-gradient(160deg, var(--blue), var(--blue-ink)); color: #fff; border-radius: clamp(24px, 4vw, 40px); padding: clamp(40px, 7vw, 72px) var(--pad); box-shadow: var(--card-shadow); }
-  .final h2 { color: #fff; font-size: clamp(1.9rem, 4.6vw, 2.8rem); }
-  .final p { color: color-mix(in srgb, #fff 82%, var(--blue)); margin: 14px auto 26px; max-width: 40ch; font-size: 1.08rem; }
-  .final .btn-primary { background: #fff; color: var(--blue-ink); }
-  .final .btn-primary:hover { background: var(--cream); }
-  .final .disc { margin-top: 22px; font-size: .82rem; color: color-mix(in srgb, #fff 72%, var(--blue)); }
+  /* ---- final ---- */
+  .final { text-align: center; background: linear-gradient(158deg, #607f52 0%, #3d5732 100%); color: #fff; border-radius: clamp(26px, 4vw, 42px); padding: clamp(42px, 7vw, 76px) var(--pad); box-shadow: var(--card-shadow); }
+  .final h2 { color: #fff; font-size: clamp(1.95rem, 4.6vw, 2.9rem); }
+  .final p { color: #eaf1e4; margin: 14px auto 26px; max-width: 40ch; font-size: 1.1rem; }
+  .final .btn-primary { background: #fff; color: #43602f; }
+  .final .btn-primary:hover { background: var(--paper-hi); color: #43602f; }
+  .final .disc { margin-top: 24px; font-size: .82rem; color: #cfdcc5; }
 
-  .reveal { opacity: 0; transform: translateY(20px); transition: opacity .6s ease, transform .6s ease; }
+  .reveal { opacity: 0; transform: translateY(22px); transition: opacity .6s ease, transform .6s ease; }
   .reveal.in { opacity: 1; transform: none; }
   @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } }
 </style>
@@ -101,11 +139,11 @@
 
 <header class="nav">
   <div class="wrap nav-in">
-    <a class="brand" href="/"><img src="/assets/logo.webp" width="34" height="34" alt="토스버거 로고" fetchpriority="high">토스버거</a>
+    <a class="brand" href="/"><img src="/assets/logo.webp" width="36" height="36" alt="토스버거 로고" fetchpriority="high">토스버거</a>
     <nav class="nav-links" aria-label="주요">
       <a class="hide-sm" href="#method">학습 방법</a>
-      <a class="hide-sm" href="#shadowing">기능</a>
-      <a class="hide-sm" href="#score">AI 진단</a>
+      <a class="hide-sm" href="#blocks">블록</a>
+      <a class="hide-sm" href="#exam">실전·진단</a>
       <a class="nav-cta" href="mailto:support@tosburger.com?subject=토스버거 출시 소식 받기">출시 소식 받기</a>
     </nav>
   </div>
@@ -114,23 +152,25 @@
 <main id="main">
 
   <section class="hero">
-    <span class="blob a" aria-hidden="true"></span>
-    <span class="blob b" aria-hidden="true"></span>
     <div class="wrap hero-grid">
       <div>
         <span class="eyebrow">TOEIC Speaking · 토익스피킹</span>
         <h1>외워서 <span class="hl">조립</span>하면,<br>토스는 풀립니다</h1>
-        <p class="lead">즉흥 영작은 그만. 시험에 실제로 나오는 정형 표현 ‘조각’을 외우고, 조립해 말하는 법을 훈련하세요.</p>
+        <p class="lead">즉흥 영작은 그만. 시험에 실제로 나오는 정형 표현 ‘조각’을 외우고, 상황에 맞게 조립해 말하는 법을 훈련하세요.</p>
         <div class="cta">
           <a class="btn btn-primary" href="#method">학습 방법 보기</a>
-          <a class="btn btn-ghost" href="#score">AI 진단 살펴보기</a>
+          <a class="btn btn-ghost" href="#exam">실전·AI 진단</a>
         </div>
         <p class="note"><span class="pill"><span class="dot"></span>iOS &amp; Android 출시 준비 중</span></p>
       </div>
       <div class="fig">
-        <div class="phone float">
-          <img src="/assets/shot-puzzle.webp" width="300" height="527"
-               alt="토스버거 앱의 블록 섀도잉 화면 — 문장을 억양 곡선과 발음 가이드에 맞춰 따라 말하는 모습" fetchpriority="high">
+        <span class="blob a" aria-hidden="true"></span>
+        <span class="blob b" aria-hidden="true"></span>
+        <span class="chip-float c1" aria-hidden="true"><span class="pz">🧩</span> 조각 암기</span>
+        <span class="chip-float c2" aria-hidden="true"><span class="pz">🍔</span> 조립 발화</span>
+        <div class="device float">
+          <img src="/assets/shot-blocks.webp" width="640" height="1312" fetchpriority="high"
+               alt="토스버거 앱의 블록 화면 — 파트별 탭과 만능문장 블록 카드, 퍼즐 조각으로 표현된 표현 인벤토리">
         </div>
       </div>
     </div>
@@ -160,19 +200,21 @@
       </div>
       <div class="steps">
         <div class="step reveal">
-          <img class="step-ico" src="/assets/step-book.webp" width="92" height="92" alt="" loading="lazy">
+          <img class="step-ico" src="/assets/step-book.webp" width="96" height="96" alt="" loading="lazy">
           <p class="step-n">STEP 1</p>
           <h3>낭독</h3>
           <p>모범답변을 소리 내어 읽으며 억양과 강세, 문장의 리듬을 몸에 새깁니다.</p>
+          <svg class="arrow" width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15m0 0l-6-6m6 6l-6 6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
         <div class="step reveal">
-          <img class="step-ico" src="/assets/step-puzzle.webp" width="92" height="92" alt="" loading="lazy">
+          <img class="step-ico" src="/assets/step-puzzle.webp" width="96" height="96" alt="" loading="lazy">
           <p class="step-n">STEP 2</p>
           <h3>조각 암기</h3>
           <p>시험에 반복되는 정형 표현 블록을 퍼즐처럼 반복해 완전히 손에 익힙니다.</p>
+          <svg class="arrow" width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15m0 0l-6-6m6 6l-6 6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
         <div class="step reveal">
-          <img class="step-ico" src="/assets/step-burger.webp" width="92" height="92" alt="" loading="lazy">
+          <img class="step-ico" src="/assets/step-burger.webp" width="96" height="96" alt="" loading="lazy">
           <p class="step-n">STEP 3</p>
           <h3>조립 발화</h3>
           <p>외운 조각을 상황에 맞게 조립해 내 답변을 완성해 말합니다. 막힘이 사라집니다.</p>
@@ -181,40 +223,94 @@
     </div>
   </section>
 
-  <section id="shadowing" class="band">
+  <section id="blocks" class="band">
     <div class="wrap feature">
       <div class="fig">
-        <div class="phone">
-          <img src="/assets/shot-puzzle.webp" width="330" height="580" loading="lazy"
-               alt="블록 섀도잉 드릴 화면 — 억양 곡선, 단어별 발음 표기, 메모 힌트가 함께 표시된다">
+        <div class="device">
+          <img src="/assets/shot-question.webp" width="640" height="1312" loading="lazy"
+               alt="사진 묘사 문제 화면 — 클레이 회의실 그림과 함께, 도입·사람·사물·마무리 블록으로 조립된 모범답변">
         </div>
       </div>
       <div>
-        <span class="tag">Block Shadowing</span>
-        <h2>정형 표현을 손에 익혀요</h2>
-        <p>실제 성우 녹음을 억양 곡선과 발음 가이드에 맞춰 따라 말합니다. 한 조각씩, 시험장에서 바로 꺼낼 수 있을 때까지.</p>
+        <span class="tag">Model Answer</span>
+        <h2>모범답변은 ‘블록’을 조립해 완성돼요</h2>
+        <p class="lead">도입·본문·마무리 — 검증된 표현 블록을 순서대로 붙이면 흔들림 없는 답변이 됩니다. 정확 버전으로 익히고, Tweak으로 내 답으로 살짝 바꿔요.</p>
+        <div class="assemble" aria-hidden="true">
+          <span class="blk">도입</span><span class="plus">+</span>
+          <span class="blk">사람·행동</span><span class="plus">+</span>
+          <span class="blk">사물·전경</span><span class="plus">+</span>
+          <span class="blk">마무리</span><span class="eq">=</span>
+          <span class="ans">🍔 완성 답변</span>
+        </div>
         <ul>
-          <li><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10l4 4 8-9" fill="none" stroke="#7cb583" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>원어민 성우 녹음 &amp; 실시간 피치 곡선</span></li>
-          <li><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10l4 4 8-9" fill="none" stroke="#7cb583" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>단어별 한글 발음 표기로 정확한 소리 교정</span></li>
-          <li><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10l4 4 8-9" fill="none" stroke="#7cb583" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>파트별 만능 템플릿과 표현 패턴 제공</span></li>
+          <li><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10l4 4 8-9" fill="none" stroke="#8fb389" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>260개 넘는 만능문장 블록으로 답변을 조립</span></li>
+          <li><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10l4 4 8-9" fill="none" stroke="#8fb389" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>파트별 조립 템플릿(틀)로 순서를 잡아줘요</span></li>
+          <li><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10l4 4 8-9" fill="none" stroke="#8fb389" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>‘정확’으로 익히고 ‘Tweak’으로 나만의 답변까지</span></li>
         </ul>
       </div>
     </div>
   </section>
 
-  <section id="score">
+  <section id="shadowing">
+    <div class="wrap feature rev">
+      <div class="fig">
+        <div class="device">
+          <img src="/assets/shot-shadowing.webp" width="640" height="1312" loading="lazy"
+               alt="블록 섀도잉 드릴 화면 — 억양 곡선과 단어별 한글 발음 표기, 손글씨 메모 힌트가 함께 표시된다">
+        </div>
+      </div>
+      <div>
+        <span class="tag">Block Shadowing</span>
+        <h2>소리로 손에 익히는 5단계 드릴</h2>
+        <p class="lead">듣기 → 말하기 → 다시 듣기 → 말하기 → 내 녹음까지. 억양 곡선과 단어별 발음 표기를 따라, 시험장에서 바로 꺼낼 수 있을 때까지 반복해요.</p>
+        <ul>
+          <li><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10l4 4 8-9" fill="none" stroke="#8fb389" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>원어민 성우 녹음 &amp; 실시간 억양(피치) 곡선</span></li>
+          <li><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10l4 4 8-9" fill="none" stroke="#8fb389" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>단어별 한글 발음 표기로 정확한 소리 교정</span></li>
+          <li><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10l4 4 8-9" fill="none" stroke="#8fb389" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>손글씨 메모 힌트로 청킹(chunking) 훈련</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="exam" class="stage">
     <div class="wrap">
       <div class="sec-head">
+        <span class="eyebrow">실전 모드 · Mock Exam</span>
+        <h2>실전처럼 치고, 채점까지</h2>
+        <p>준비·답변 시간을 실제 시험과 똑같이. 모의고사를 마치면 AI가 답변을 채점해 약점을 짚어줘요.</p>
+      </div>
+
+      <div class="feature">
+        <div class="fig">
+          <div class="device">
+            <img src="/assets/shot-exam.webp" width="640" height="1275" loading="lazy"
+                 alt="실전 모의고사 화면 — 어두운 시험 모드에서 GET READY 준비 타이머와 클레이 그림 문제 카드가 보인다">
+          </div>
+        </div>
+        <div>
+          <span class="tag">Timed Test</span>
+          <h2>ETS 포맷 그대로, 11문항 모의고사</h2>
+          <p class="lead">GET READY 준비 시간과 답변 시간이 실제 시험과 동일하게 흐릅니다. 파트별로 문제를 풀고 마이크로 답하면 자동으로 다음 문제로 넘어가요.</p>
+          <ul>
+            <li><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10l4 4 8-9" fill="none" stroke="#9dc095" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>5개 파트 · 11문항, 실제 시험 순서 그대로</span></li>
+            <li><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10l4 4 8-9" fill="none" stroke="#9dc095" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>준비(PREP)·답변(REC) 타이머로 실전 감각 훈련</span></li>
+            <li><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10l4 4 8-9" fill="none" stroke="#9dc095" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>안내 방송·클레이 그림까지 시험장을 그대로 재현</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="sec-head" style="margin-top:0;">
         <span class="eyebrow">AI 진단 · ETS 기준</span>
         <h2>내 약점을 영역별로 짚어줘요</h2>
-        <p>실전 모의고사를 마치면 AI가 답변을 전사·채점하고, ETS 4대 지표에 내용까지 5개 영역을 레이더로 진단합니다.</p>
+        <p>답변을 AI가 전사·채점하고, ETS 4대 지표에 내용 구성까지 5개 영역을 레이더로 진단합니다.</p>
       </div>
       <div class="showcase reveal">
         <img src="/assets/shot-result.webp" width="1600" height="852" loading="lazy"
              alt="AI 채점 결과 화면 — 200점 만점 점수와 등급, 발음·억양·문법·어휘·내용을 나타내는 레이더(스파이더) 차트, 다음 훈련 포인트가 표시된다">
       </div>
-      <div class="dims" aria-label="진단 5개 영역">
+      <div class="dims" aria-label="진단 영역과 목표 등급">
         <span>발음</span><span>억양·강세</span><span>문법</span><span>어휘</span><span>내용 구성</span>
+        <span class="lv">AL → AM → AH</span>
       </div>
     </div>
   </section>
