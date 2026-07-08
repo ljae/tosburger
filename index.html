@@ -1,53 +1,353 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>토스버거 — 토익스피킹 템플릿 훈련</title>
-  <meta name="description" content="토스버거: TOEIC Speaking 조각·조립 훈련 앱. 정형 표현 블록을 암기하고 조립해 AL을 만듭니다.">
-  <link rel="stylesheet" href="/style.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>토스버거 — 토익스피킹, 외워서 조립하면 됩니다</title>
+<meta name="description" content="토스버거는 시험에 나오는 정형 표현 ‘조각’을 외우고 조립해 말하는 TOEIC Speaking 훈련 앱입니다. 실전 모의고사와 ETS 기준 AI 진단까지.">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#0db5e1" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0a1620" media="(prefers-color-scheme: dark)">
+<meta property="og:title" content="토스버거 — 토익스피킹 조각·조립 훈련">
+<meta property="og:description" content="즉흥 영작은 그만. 정형 표현을 외우고 조립해 말하세요. 실전 모의고사 + AI 진단.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://tosburger.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jua&family=Gothic+A1:wght@400;500;700;800&display=swap">
+<style>
+  :root {
+    --blue: #0db5e1;
+    --blue-ink: #0a7fa3;
+    --cream: #f8f3e8;
+    --paper: #fffdf8;
+    --ink: #34302a;
+    --ink-soft: #6b645b;
+    --lettuce: #7cb583;
+    --cheese: #f0b968;
+    --tomato: #e8836b;
+    --line: #ece3d2;
+    --card-shadow: 0 18px 50px -20px rgba(60, 52, 40, .35);
+    --radius: 26px;
+    --pad: clamp(20px, 5vw, 40px);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --cream: #0f1a22;
+      --paper: #16232d;
+      --ink: #eaf1f5;
+      --ink-soft: #9fb0bc;
+      --line: #24343f;
+      --card-shadow: 0 18px 50px -20px rgba(0, 0, 0, .6);
+    }
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  body {
+    margin: 0;
+    font-family: "Gothic A1", -apple-system, "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
+    color: var(--ink);
+    background: var(--cream);
+    line-height: 1.65;
+    word-break: keep-all;
+    -webkit-tap-highlight-color: transparent;
+    overflow-x: hidden;
+  }
+  h1, h2, h3 { font-family: "Jua", "Gothic A1", sans-serif; font-weight: 400; line-height: 1.2; text-wrap: balance; margin: 0; }
+  p { margin: 0; }
+  a { color: var(--blue-ink); }
+  img { max-width: 100%; display: block; }
+  :focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; border-radius: 6px; }
+
+  .skip { position: absolute; left: -999px; top: 8px; background: var(--ink); color: #fff; padding: 10px 16px; border-radius: 10px; z-index: 100; }
+  .skip:focus { left: 8px; }
+
+  .wrap { width: 100%; max-width: 1080px; margin-inline: auto; padding-inline: var(--pad); }
+
+  /* nav */
+  header.nav { position: sticky; top: 0; z-index: 50; background: color-mix(in srgb, var(--cream) 85%, transparent); backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
+  .nav-in { display: flex; align-items: center; gap: 16px; height: 62px; }
+  .brand { display: flex; align-items: center; gap: 9px; font-family: "Jua", sans-serif; font-size: 1.25rem; color: var(--ink); text-decoration: none; }
+  .brand img { width: 34px; height: 34px; }
+  .nav-links { margin-left: auto; display: flex; gap: 6px; align-items: center; }
+  .nav-links a { color: var(--ink-soft); text-decoration: none; font-weight: 500; font-size: .95rem; padding: 8px 12px; border-radius: 10px; transition: color .15s, background .15s; }
+  .nav-links a:hover { color: var(--ink); background: color-mix(in srgb, var(--blue) 12%, transparent); }
+  .nav-cta { background: var(--blue); color: #fff !important; font-weight: 700; }
+  .nav-cta:hover { background: var(--blue-ink); }
+  @media (max-width: 620px) { .nav-links a.hide-sm { display: none; } }
+
+  /* buttons */
+  .btn { display: inline-flex; align-items: center; gap: 8px; font-weight: 700; text-decoration: none; padding: 14px 22px; border-radius: 999px; touch-action: manipulation; transition: transform .12s, box-shadow .15s, background .15s; }
+  .btn-primary { background: var(--blue); color: #fff; box-shadow: 0 10px 24px -8px color-mix(in srgb, var(--blue) 70%, transparent); }
+  .btn-primary:hover { background: var(--blue-ink); transform: translateY(-2px); }
+  .btn-ghost { color: var(--ink); border: 2px solid var(--line); }
+  .btn-ghost:hover { border-color: var(--blue); color: var(--blue-ink); }
+
+  .pill { display: inline-flex; align-items: center; gap: 7px; font-weight: 700; font-size: .82rem; letter-spacing: .01em; padding: 6px 13px; border-radius: 999px; background: color-mix(in srgb, var(--lettuce) 22%, var(--paper)); color: color-mix(in srgb, var(--lettuce) 70%, var(--ink)); }
+  .pill .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--lettuce); }
+
+  /* hero */
+  .hero { position: relative; padding-top: clamp(36px, 7vw, 76px); padding-bottom: clamp(30px, 6vw, 60px); }
+  .hero-grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: clamp(24px, 4vw, 48px); align-items: center; }
+  .hero .eyebrow { font-weight: 800; letter-spacing: .14em; text-transform: uppercase; font-size: .8rem; color: var(--blue-ink); }
+  .hero h1 { font-size: clamp(2.3rem, 6.4vw, 4rem); margin: 14px 0 18px; }
+  .hero h1 .hl { color: var(--blue); }
+  .hero p.lead { font-size: clamp(1.05rem, 2.4vw, 1.28rem); color: var(--ink-soft); max-width: 34ch; }
+  .hero .cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+  .hero .note { margin-top: 16px; }
+  .blob { position: absolute; z-index: -1; filter: blur(46px); opacity: .5; border-radius: 50%; }
+  .blob.a { width: 340px; height: 340px; background: var(--blue); top: -60px; right: -40px; }
+  .blob.b { width: 260px; height: 260px; background: var(--cheese); bottom: -40px; left: -60px; opacity: .4; }
+  @media (max-width: 820px) {
+    .hero-grid { grid-template-columns: 1fr; text-align: center; }
+    .hero p.lead { margin-inline: auto; }
+    .hero .cta, .hero .note { justify-content: center; }
+    .hero .fig { margin-top: 10px; }
+  }
+
+  /* phone mockup */
+  .phone { position: relative; margin-inline: auto; width: min(300px, 78vw); aspect-ratio: 860 / 1512; background: #0d1116; border-radius: 40px; padding: 11px; box-shadow: var(--card-shadow); }
+  .phone::before { content: ""; position: absolute; top: 15px; left: 50%; translate: -50% 0; width: 34%; height: 22px; background: #0d1116; border-radius: 0 0 14px 14px; z-index: 2; }
+  .phone img { width: 100%; height: 100%; object-fit: cover; object-position: top center; border-radius: 30px; }
+  .phone.float { animation: float 6s ease-in-out infinite; }
+  @media (prefers-reduced-motion: reduce) { .phone.float { animation: none; } }
+  @keyframes float { 0%,100% { transform: translateY(0) rotate(-2deg); } 50% { transform: translateY(-14px) rotate(-2deg); } }
+
+  /* generic section */
+  section { padding-block: clamp(48px, 9vw, 96px); }
+  .sec-head { text-align: center; max-width: 40ch; margin: 0 auto clamp(28px, 5vw, 52px); }
+  .sec-head .eyebrow { font-weight: 800; letter-spacing: .12em; text-transform: uppercase; font-size: .78rem; color: var(--blue-ink); }
+  .sec-head h2 { font-size: clamp(1.8rem, 4.6vw, 2.8rem); margin: 12px 0 14px; }
+  .sec-head p { color: var(--ink-soft); font-size: 1.05rem; }
+
+  /* problem band */
+  .band { background: var(--paper); border-block: 1px solid var(--line); }
+  .stat-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; text-align: center; }
+  .stat { background: var(--cream); border: 1px solid var(--line); border-radius: var(--radius); padding: 26px 18px; }
+  .stat .n { font-family: "Jua", sans-serif; font-size: clamp(2rem, 5vw, 2.8rem); color: var(--blue); font-variant-numeric: tabular-nums; }
+  .stat .l { color: var(--ink-soft); font-size: .95rem; margin-top: 6px; }
+  @media (max-width: 620px) { .stat-row { grid-template-columns: 1fr; } }
+
+  /* 3-step method */
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .step { background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); padding: 30px 26px; box-shadow: var(--card-shadow); }
+  .step .k { display: inline-flex; align-items: center; justify-content: center; width: 46px; height: 46px; border-radius: 14px; font-family: "Jua", sans-serif; font-size: 1.4rem; color: #fff; margin-bottom: 16px; }
+  .step:nth-child(1) .k { background: var(--tomato); }
+  .step:nth-child(2) .k { background: var(--cheese); }
+  .step:nth-child(3) .k { background: var(--lettuce); }
+  .step h3 { font-size: 1.3rem; margin-bottom: 8px; }
+  .step p { color: var(--ink-soft); font-size: .98rem; }
+  @media (max-width: 760px) { .steps { grid-template-columns: 1fr; } }
+
+  /* feature split */
+  .feature { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(28px, 5vw, 60px); align-items: center; }
+  .feature .tag { font-weight: 800; letter-spacing: .1em; text-transform: uppercase; font-size: .76rem; color: var(--blue-ink); }
+  .feature h2 { font-size: clamp(1.7rem, 4vw, 2.5rem); margin: 12px 0 16px; }
+  .feature p { color: var(--ink-soft); font-size: 1.06rem; }
+  .feature ul { list-style: none; padding: 0; margin: 20px 0 0; display: grid; gap: 12px; }
+  .feature li { display: flex; gap: 11px; align-items: flex-start; font-size: 1rem; }
+  .feature li svg { flex: none; margin-top: 3px; }
+  @media (max-width: 820px) { .feature { grid-template-columns: 1fr; } }
+
+  /* result showcase image */
+  .showcase { border-radius: var(--radius); overflow: hidden; border: 1px solid var(--line); box-shadow: var(--card-shadow); background: #23323d; }
+  .showcase img { width: 100%; height: auto; }
+
+  /* dimension chips */
+  .dims { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-top: 22px; }
+  .dims span { font-size: .86rem; font-weight: 700; padding: 6px 12px; border-radius: 999px; background: color-mix(in srgb, var(--blue) 12%, var(--paper)); color: var(--blue-ink); border: 1px solid color-mix(in srgb, var(--blue) 22%, transparent); }
+
+  /* final CTA */
+  .final { text-align: center; background: linear-gradient(160deg, var(--blue), var(--blue-ink)); color: #fff; border-radius: clamp(24px, 4vw, 40px); padding: clamp(40px, 7vw, 72px) var(--pad); box-shadow: var(--card-shadow); }
+  .final h2 { color: #fff; font-size: clamp(1.9rem, 4.6vw, 2.8rem); }
+  .final p { color: color-mix(in srgb, #fff 82%, var(--blue)); margin: 14px auto 26px; max-width: 40ch; font-size: 1.08rem; }
+  .final .btn-primary { background: #fff; color: var(--blue-ink); }
+  .final .btn-primary:hover { background: var(--cream); }
+  .final .disc { margin-top: 22px; font-size: .82rem; color: color-mix(in srgb, #fff 72%, var(--blue)); }
+
+  /* footer */
+  footer.site { border-top: 1px solid var(--line); padding-block: 40px; margin-top: clamp(40px, 8vw, 90px); }
+  .foot-in { display: flex; flex-wrap: wrap; gap: 18px 28px; align-items: center; }
+  .foot-in .brand { font-size: 1.1rem; }
+  .foot-in .brand img { width: 30px; height: 30px; }
+  .foot-links { margin-left: auto; display: flex; flex-wrap: wrap; gap: 6px 18px; }
+  .foot-links a { color: var(--ink-soft); text-decoration: none; font-size: .92rem; }
+  .foot-links a:hover { color: var(--blue-ink); text-decoration: underline; }
+  .foot-legal { color: var(--ink-soft); font-size: .82rem; margin-top: 20px; }
+
+  /* reveal on scroll */
+  .reveal { opacity: 0; transform: translateY(20px); transition: opacity .6s ease, transform .6s ease; }
+  .reveal.in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } }
+</style>
+<noscript><style>.reveal { opacity: 1 !important; transform: none !important; }</style></noscript>
 </head>
 <body>
-<header class="site">
-  <div class="inner">
-    <a href="/">🍔 토스버거</a>
-    <nav>
-      <a href="/support/">고객지원</a>
-      <a href="/privacy/">개인정보처리방침</a>
-      <a href="/terms/">이용약관</a>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="/"><img src="/assets/logo.webp" width="34" height="34" alt="토스버거 로고" fetchpriority="high">토스버거</a>
+    <nav class="nav-links" aria-label="주요">
+      <a class="hide-sm" href="#method">학습 방법</a>
+      <a class="hide-sm" href="#shadowing">기능</a>
+      <a class="hide-sm" href="#score">AI 진단</a>
+      <a class="nav-cta" href="mailto:support@tosburger.com?subject=토스버거 출시 소식 받기">출시 소식 받기</a>
     </nav>
-    <div style="clear:both"></div>
   </div>
 </header>
-<main>
-  <div class="hero">
-    <div class="logo">🍔</div>
-    <h1>토스버거</h1>
-    <p class="tag">토익스피킹 템플릿 훈련 — 조각을 외우고, 조립해서 말한다.</p>
-  </div>
 
-  <div class="card">
-    <p><strong>토스버거</strong>는 TOEIC Speaking을 위한 <strong>조각·조립(역순) 훈련 앱</strong>입니다.
-    즉흥 영작 대신, 시험에서 실제로 쓰이는 <strong>정형 표현 블록</strong>을
-    낭독 → 조각 암기 → 조립 발화 3단계로 훈련하고, 실전 모의고사와
-    <strong>AI 채점</strong>(전사·점수·피드백)으로 마무리합니다.</p>
-    <p>iOS·Android 출시 준비 중입니다.</p>
-  </div>
+<main id="main">
 
-  <div class="linkgrid">
-    <a class="card" href="/support/"><div class="t">💬 고객지원</div><div class="d">문의 · FAQ · 데이터 삭제 요청</div></a>
-    <a class="card" href="/privacy/"><div class="t">🔒 개인정보처리방침</div><div class="d">수집 항목 · 음성 처리 · 국외 이전</div></a>
-    <a class="card" href="/terms/"><div class="t">📄 이용약관</div><div class="d">서비스 이용 · 결제 · 환불</div></a>
-  </div>
+  <!-- HERO -->
+  <section class="hero">
+    <span class="blob a" aria-hidden="true"></span>
+    <span class="blob b" aria-hidden="true"></span>
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow">TOEIC Speaking · 토익스피킹</span>
+        <h1>외워서 <span class="hl">조립</span>하면,<br>토스는 풀립니다</h1>
+        <p class="lead">즉흥 영작은 그만. 시험에 실제로 나오는 정형 표현 ‘조각’을 외우고, 조립해 말하는 법을 훈련하세요.</p>
+        <div class="cta">
+          <a class="btn btn-primary" href="#method">학습 방법 보기</a>
+          <a class="btn btn-ghost" href="#score">AI 진단 살펴보기</a>
+        </div>
+        <p class="note"><span class="pill"><span class="dot"></span>iOS &amp; Android 출시 준비 중</span></p>
+      </div>
+      <div class="fig">
+        <div class="phone float">
+          <img src="/assets/shot-puzzle.webp" width="300" height="527"
+               alt="토스버거 앱의 블록 섀도잉 화면 — 문장을 억양 곡선과 발음 가이드에 맞춰 따라 말하는 모습" fetchpriority="high">
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <p class="disclaimer">TOEIC은 ETS의 등록상표입니다. 본 앱과 웹사이트는 ETS와 무관하며,
-  ETS의 후원·인증을 받지 않았습니다.</p>
+  <!-- PROBLEM -->
+  <section class="band">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">왜 즉흥 영작이 안 될까</span>
+        <h2>말하기는 기억력 싸움입니다</h2>
+        <p>사람의 작동기억은 한 번에 4–7개의 덩어리만 다룹니다. 시험장에서 문장을 새로 짜려니 막히는 거예요.</p>
+      </div>
+      <div class="stat-row">
+        <div class="stat reveal"><div class="n">4–7</div><div class="l">작동기억이 한 번에<br>다루는 덩어리 수</div></div>
+        <div class="stat reveal"><div class="n">11</div><div class="l">토익스피킹 문항 수<br>(5개 파트)</div></div>
+        <div class="stat reveal"><div class="n">AL+</div><div class="l">조각·조립 훈련이<br>겨냥하는 목표 등급</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- METHOD -->
+  <section id="method">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">역순 훈련 · Reverse Training</span>
+        <h2>새로 짜지 말고, 꺼내서 붙이세요</h2>
+        <p>낭독으로 리듬을 익히고, 표현 조각을 손에 익힌 뒤, 상황에 맞게 조립해 말합니다. 3단계면 충분합니다.</p>
+      </div>
+      <div class="steps">
+        <div class="step reveal">
+          <span class="k">1</span>
+          <h3>낭독</h3>
+          <p>모범답변을 소리 내어 읽으며 억양과 강세, 문장의 리듬을 몸에 새깁니다.</p>
+        </div>
+        <div class="step reveal">
+          <span class="k">2</span>
+          <h3>조각 암기</h3>
+          <p>시험에 반복되는 정형 표현 블록을 퍼즐처럼 반복해 완전히 손에 익힙니다.</p>
+        </div>
+        <div class="step reveal">
+          <span class="k">3</span>
+          <h3>조립 발화</h3>
+          <p>외운 조각을 상황에 맞게 조립해 내 답변을 완성해 말합니다. 막힘이 사라집니다.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURE: shadowing -->
+  <section id="shadowing" class="band">
+    <div class="wrap feature">
+      <div class="fig">
+        <div class="phone">
+          <img src="/assets/shot-puzzle.webp" width="330" height="580" loading="lazy"
+               alt="블록 섀도잉 드릴 화면 — 억양 곡선, 단어별 발음 표기, 메모 힌트가 함께 표시된다">
+        </div>
+      </div>
+      <div>
+        <span class="tag">Block Shadowing</span>
+        <h2>정형 표현을 손에 익혀요</h2>
+        <p>실제 성우 녹음을 억양 곡선과 발음 가이드에 맞춰 따라 말합니다. 한 조각씩, 시험장에서 바로 꺼낼 수 있을 때까지.</p>
+        <ul>
+          <li><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10l4 4 8-9" fill="none" stroke="#7cb583" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>원어민 성우 녹음 &amp; 실시간 피치 곡선</span></li>
+          <li><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10l4 4 8-9" fill="none" stroke="#7cb583" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>단어별 한글 발음 표기로 정확한 소리 교정</span></li>
+          <li><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10l4 4 8-9" fill="none" stroke="#7cb583" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>파트별 만능 템플릿과 표현 패턴 제공</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURE: AI score -->
+  <section id="score">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">AI 진단 · ETS 기준</span>
+        <h2>내 약점을 영역별로 짚어줘요</h2>
+        <p>실전 모의고사를 마치면 AI가 답변을 전사·채점하고, ETS 4대 지표에 내용까지 5개 영역을 레이더로 진단합니다.</p>
+      </div>
+      <div class="showcase reveal">
+        <img src="/assets/shot-result.webp" width="1600" height="852" loading="lazy"
+             alt="AI 채점 결과 화면 — 200점 만점 점수와 등급, 발음·억양·문법·어휘·내용을 나타내는 레이더(스파이더) 차트, 다음 훈련 포인트가 표시된다">
+      </div>
+      <div class="dims" aria-label="진단 5개 영역">
+        <span>발음</span><span>억양·강세</span><span>문법</span><span>어휘</span><span>내용 구성</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section>
+    <div class="wrap">
+      <div class="final reveal">
+        <h2>출시 소식을 가장 먼저 받아보세요</h2>
+        <p>토스버거는 iOS와 Android 출시를 준비하고 있어요. 준비되면 바로 알려드릴게요.</p>
+        <a class="btn btn-primary" href="mailto:support@tosburger.com?subject=토스버거 출시 소식 받기">출시 소식 받기</a>
+        <p class="disc">TOEIC은 ETS의 등록상표이며, 본 앱과 웹사이트는 ETS와 무관합니다.</p>
+      </div>
+    </div>
+  </section>
+
 </main>
+
 <footer class="site">
-  <div class="inner">
-    <a href="/privacy/">개인정보처리방침</a><a href="/terms/">이용약관</a><a href="/support/">고객지원</a><br>
-    문의: <a href="mailto:support@tosburger.com">support@tosburger.com</a>
+  <div class="wrap">
+    <div class="foot-in">
+      <a class="brand" href="/"><img src="/assets/logo.webp" width="30" height="30" alt="">토스버거</a>
+      <nav class="foot-links" aria-label="바닥글">
+        <a href="/privacy/">개인정보처리방침</a>
+        <a href="/terms/">이용약관</a>
+        <a href="/support/">고객지원</a>
+        <a href="mailto:support@tosburger.com">support@tosburger.com</a>
+      </nav>
+    </div>
+    <p class="foot-legal">© 2026 토스버거. TOEIC은 ETS의 등록상표이며, 본 서비스는 ETS와 무관하고 ETS의 후원·인증을 받지 않았습니다.</p>
   </div>
 </footer>
+
+<script>
+  // Reveal-on-scroll. Skipped entirely when the user prefers reduced motion.
+  (function () {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.14 });
+    document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+  })();
+</script>
 </body>
 </html>
