@@ -1,44 +1,55 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>개인정보처리방침 — 토스버거</title>
-  <link rel="stylesheet" href="/style.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>개인정보처리방침 — 토스버거</title>
+<meta name="description" content="토스버거 개인정보처리방침 — 수집 항목, 음성 데이터의 AI 채점 처리, 국외 이전, 보유·파기, 이용자 권리.">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#0db5e1" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0a1620" media="(prefers-color-scheme: dark)">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jua&family=Gothic+A1:wght@400;500;700;800&display=swap">
+<link rel="stylesheet" href="/style.css">
 </head>
 <body>
-<header class="site">
-  <div class="inner">
-    <a href="/">🍔 토스버거</a>
-    <nav>
-      <a href="/support/">고객지원</a>
-      <a href="/privacy/">개인정보처리방침</a>
-      <a href="/terms/">이용약관</a>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="/"><img src="/assets/logo.webp" width="34" height="34" alt="토스버거 로고">토스버거</a>
+    <nav class="nav-links" aria-label="주요">
+      <a class="hide-sm" href="/#method">학습 방법</a>
+      <a class="hide-sm" href="/support/">고객지원</a>
+      <a class="nav-cta" href="mailto:support@tosburger.com?subject=토스버거 출시 소식 받기">출시 소식 받기</a>
     </nav>
-    <div style="clear:both"></div>
   </div>
 </header>
-<main>
-  <h1>토스버거 개인정보처리방침</h1>
-  <p class="updated"><strong>시행일: <mark class="todo">〔YYYY년 MM월 DD일〕</mark></strong></p>
 
-  <p><mark class="todo">〔운영자/사업자명〕</mark>(이하 "회사")은(는) 「개인정보 보호법」 등 관련
-  법령을 준수하며, 이용자의 개인정보를 보호하기 위해 다음과 같은 개인정보처리방침을 둡니다.
-  본 방침은 모바일 애플리케이션 <strong>토스버거</strong>(이하 "서비스")에 적용됩니다.</p>
+<div class="doc-hero">
+  <div class="wrap">
+    <span class="eyebrow">법적 고지 · Privacy</span>
+    <h1>개인정보처리방침</h1>
+    <p class="sub"><mark class="todo">〔운영자/사업자명〕</mark>(이하 “회사”)은(는) 「개인정보 보호법」 등 관련 법령을 준수하며, 모바일 애플리케이션 <strong>토스버거</strong>(이하 “서비스”)에 다음 방침을 적용합니다.</p>
+    <p class="meta">🗓 시행일 <mark class="todo">〔YYYY년 MM월 DD일〕</mark></p>
+  </div>
+</div>
+
+<main id="main" class="doc">
 
   <h2>1. 수집하는 개인정보 항목 및 방법</h2>
-  <p>서비스는 아래 항목을 수집합니다. 학습 콘텐츠 이용은 회원가입 없이 가능하며,
-  <strong>AI 채점과 결제 기능을 이용할 때</strong> 계정 로그인이 필요합니다.</p>
-  <table>
-    <tr><th>구분</th><th>항목</th><th>수집 시점</th></tr>
+  <p>서비스는 아래 항목을 수집합니다. 학습 콘텐츠 이용은 회원가입 없이 가능하며, <strong>AI 채점과 결제 기능을 이용할 때</strong> 계정 로그인이 필요합니다.</p>
+  <div class="table"><table>
+    <thead><tr><th>구분</th><th>항목</th><th>수집 시점</th></tr></thead>
+    <tbody>
     <tr><td>계정정보</td><td>소셜 로그인(Apple·Kakao·Google) 공급자가 제공하는 <strong>식별자(공급자 사용자 ID), 이메일, 이름 또는 닉네임</strong> (공급자 및 이용자 동의 범위에 따름)</td><td>소셜 로그인 시</td></tr>
     <tr><td>음성 녹음</td><td>학습자가 말한 <strong>답변 음성</strong>. AI 채점을 위해 보안 연결(HTTPS/TLS)로 채점 서버에 전송되어 처리됩니다.</td><td>모의고사·문제풀이 답변 녹음 시</td></tr>
     <tr><td>채점·이용 데이터</td><td>채점 점수, 전사(transcript), 피드백, 무료 이용 여부, 이용 로그(쿼터·원가 관리)</td><td>채점 이용 시</td></tr>
     <tr><td>결제·권한 정보</td><td>인앱결제 내역 및 이용 권한(entitlement). <strong>결제 수단(카드 등) 정보는 Apple/Google 스토어가 처리하며 회사는 저장하지 않습니다.</strong></td><td>인앱결제 시</td></tr>
-  </table>
-  <ul>
-    <li>수집 방법: 이용자가 앱에서 직접 입력·허용(마이크 권한, 소셜 로그인 동의)하거나 서비스 이용 과정에서 자동 생성됩니다.</li>
-  </ul>
+    </tbody>
+  </table></div>
+  <ul><li>수집 방법: 이용자가 앱에서 직접 입력·허용(마이크 권한, 소셜 로그인 동의)하거나 서비스 이용 과정에서 자동 생성됩니다.</li></ul>
 
   <h2>2. 개인정보의 이용 목적</h2>
   <ul>
@@ -52,40 +63,44 @@
 
   <h2>3. 개인정보의 보유 및 이용기간</h2>
   <p>원칙적으로 개인정보의 수집·이용 목적이 달성되면 지체 없이 파기합니다.</p>
-  <table>
-    <tr><th>구분</th><th>보유기간</th></tr>
+  <div class="table"><table>
+    <thead><tr><th>구분</th><th>보유기간</th></tr></thead>
+    <tbody>
     <tr><td>계정정보</td><td><strong>회원 탈퇴 시까지.</strong> 탈퇴 시 지체 없이 파기(아래 법령상 보존 항목 제외)</td></tr>
     <tr><td>음성 녹음(답변)</td><td>채점 처리에만 일시적으로 사용되며 <strong>회사 서버에 별도 저장하지 않습니다.</strong> 기기 내 임시 파일은 연습 세션 종료 시 삭제됩니다.</td></tr>
     <tr><td>채점·이용 데이터</td><td>서비스 운영 목적 보유, 회원 탈퇴 시 파기(통계는 개인을 식별할 수 없는 형태로 보관 가능)</td></tr>
     <tr><td>결제·권한 정보</td><td>「전자상거래 등에서의 소비자보호에 관한 법률」 등 관련 법령이 정한 기간(예: 대금결제·재화공급 기록 5년) 범위 내 보존</td></tr>
-  </table>
+    </tbody>
+  </table></div>
 
   <h2>4. 개인정보 처리의 위탁</h2>
   <p>서비스 운영을 위해 아래와 같이 개인정보 처리를 위탁합니다.</p>
-  <table>
-    <tr><th>수탁자</th><th>위탁 업무</th></tr>
+  <div class="table"><table>
+    <thead><tr><th>수탁자</th><th>위탁 업무</th></tr></thead>
+    <tbody>
     <tr><td>Supabase, Inc.</td><td>회원 인증, 데이터베이스, 서버리스 함수, 호스팅</td></tr>
     <tr><td>Google LLC</td><td>Gemini API를 통한 음성 전사 및 AI 채점</td></tr>
     <tr><td>Apple Inc. / Google LLC / Kakao Corp.</td><td>소셜 로그인 인증(Apple·Google·Kakao), 인앱결제(Apple·Google)</td></tr>
-  </table>
+    </tbody>
+  </table></div>
   <p>회사는 위탁계약 시 개인정보가 안전하게 관리되도록 관련 사항을 규정하고 감독합니다.</p>
 
   <h2>5. 개인정보의 국외 이전</h2>
-  <p>서비스는 아래와 같이 개인정보를 국외로 이전(처리위탁·보관)합니다. 이용자는 이에 동의하지
-  않을 권리가 있으나, 동의하지 않을 경우 AI 채점 등 일부 기능 이용이 제한될 수 있습니다.</p>
-  <table>
-    <tr><th>이전받는 자</th><th>이전 국가</th><th>이전 항목</th><th>이전 목적</th><th>이전 방법</th><th>보유·이용기간</th></tr>
+  <p>서비스는 아래와 같이 개인정보를 국외로 이전(처리위탁·보관)합니다. 이용자는 이에 동의하지 않을 권리가 있으나, 동의하지 않을 경우 AI 채점 등 일부 기능 이용이 제한될 수 있습니다.</p>
+  <div class="table"><table>
+    <thead><tr><th>이전받는 자</th><th>이전 국가</th><th>이전 항목</th><th>이전 목적</th><th>이전 방법</th><th>보유·이용기간</th></tr></thead>
+    <tbody>
     <tr><td>Supabase, Inc.</td><td>서버 소재지 <strong>일본(도쿄 리전)</strong> (본사 미국)</td><td>계정정보, 채점·이용 데이터, 결제·권한 정보</td><td>인증·데이터 저장·서버 처리</td><td>서비스 이용 시 네트워크를 통한 전송</td><td>회원 탈퇴 또는 위탁계약 종료 시까지</td></tr>
     <tr><td>Google LLC</td><td><strong>미국</strong> 등</td><td>음성 녹음(답변), 채점 프롬프트</td><td>AI 채점(전사·평가)</td><td>채점 요청 시 네트워크를 통한 전송</td><td>처리 시점의 <strong>일시 처리</strong>(회사가 별도 저장하지 않음). Google의 API 데이터 처리정책에 따름</td></tr>
-  </table>
+    </tbody>
+  </table></div>
 
   <h2>6. 정보주체의 권리·의무 및 행사 방법</h2>
   <p>이용자는 언제든지 다음 권리를 행사할 수 있습니다.</p>
   <ul>
     <li>개인정보 <strong>열람·정정·삭제·처리정지</strong> 요구</li>
     <li><strong>동의 철회</strong> 및 <strong>회원 탈퇴</strong></li>
-    <li>행사 방법: 앱 내 계정 메뉴 또는 <a href="mailto:support@tosburger.com">support@tosburger.com</a>으로
-    요청 시 지체 없이 조치합니다. 소셜 로그인 연결 해제는 각 공급자(Apple·Kakao·Google) 설정에서도 가능합니다.</li>
+    <li>행사 방법: 앱 내 계정 메뉴 또는 <a href="mailto:support@tosburger.com">support@tosburger.com</a>으로 요청 시 지체 없이 조치합니다. 소셜 로그인 연결 해제는 각 공급자(Apple·Kakao·Google) 설정에서도 가능합니다.</li>
   </ul>
   <p>만 14세 미만 아동을 대상으로 하지 않으며, 만 14세 미만의 회원가입을 제한합니다.</p>
 
@@ -98,26 +113,33 @@
   </ul>
 
   <h2>8. 개인정보의 파기 절차 및 방법</h2>
-  <p>보유기간 경과 또는 처리 목적 달성 시, 전자적 파일은 복구 불가능한 방법으로 삭제하고,
-  출력물이 있는 경우 분쇄 또는 소각합니다.</p>
+  <p>보유기간 경과 또는 처리 목적 달성 시, 전자적 파일은 복구 불가능한 방법으로 삭제하고, 출력물이 있는 경우 분쇄 또는 소각합니다.</p>
 
   <h2>9. 개인정보 보호책임자 및 문의처</h2>
   <ul>
     <li>개인정보 보호책임자: <mark class="todo">〔이름 / 직책〕</mark></li>
     <li>문의(이메일): <a href="mailto:support@tosburger.com">support@tosburger.com</a></li>
   </ul>
-  <p>기타 개인정보 침해에 대한 신고·상담은 개인정보침해신고센터(privacy.kisa.or.kr, 국번없이
-  118), 대검찰청 사이버수사과, 경찰청 사이버수사국 등에 문의할 수 있습니다.</p>
+  <p>기타 개인정보 침해에 대한 신고·상담은 개인정보침해신고센터(privacy.kisa.or.kr, 국번없이 118), 대검찰청 사이버수사과, 경찰청 사이버수사국 등에 문의할 수 있습니다.</p>
 
   <h2>10. 고지의 의무</h2>
-  <p>본 방침의 내용 추가·삭제·수정이 있을 경우 시행 최소 7일 전(중대한 변경은 30일 전)부터
-  앱 공지 또는 본 페이지를 통해 고지합니다.</p>
+  <p>본 방침의 내용 추가·삭제·수정이 있을 경우 시행 최소 7일 전(중대한 변경은 30일 전)부터 앱 공지 또는 본 페이지를 통해 고지합니다.</p>
   <p class="updated">공고일자: <mark class="todo">〔YYYY-MM-DD〕</mark> · 시행일자: <mark class="todo">〔YYYY-MM-DD〕</mark></p>
+
 </main>
+
 <footer class="site">
-  <div class="inner">
-    <a href="/privacy/">개인정보처리방침</a><a href="/terms/">이용약관</a><a href="/support/">고객지원</a><br>
-    문의: <a href="mailto:support@tosburger.com">support@tosburger.com</a>
+  <div class="wrap">
+    <div class="foot-in">
+      <a class="brand" href="/"><img src="/assets/logo.webp" width="30" height="30" alt="">토스버거</a>
+      <nav class="foot-links" aria-label="바닥글">
+        <a href="/privacy/" aria-current="page">개인정보처리방침</a>
+        <a href="/terms/">이용약관</a>
+        <a href="/support/">고객지원</a>
+        <a href="mailto:support@tosburger.com">support@tosburger.com</a>
+      </nav>
+    </div>
+    <p class="foot-legal">© 2026 토스버거. TOEIC은 ETS의 등록상표이며, 본 서비스는 ETS와 무관하고 ETS의 후원·인증을 받지 않았습니다.</p>
   </div>
 </footer>
 </body>
