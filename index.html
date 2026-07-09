@@ -18,117 +18,595 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jua&family=Gothic+A1:wght@400;500;700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jua&family=Baloo+2:wght@500;700;800&family=Nanum+Pen+Script&display=swap">
 <link rel="stylesheet" href="/style.css">
 <style>
-  /* ---- landing-only styles (shared base lives in style.css) ---- */
-  section { padding-block: clamp(52px, 9vw, 104px); position: relative; }
-  .sec-head { text-align: center; max-width: 42ch; margin: 0 auto clamp(30px, 5vw, 54px); }
-  .sec-head h2 { font-size: clamp(1.85rem, 4.6vw, 2.9rem); margin: 12px 0 14px; }
-  .sec-head p { color: var(--ink-soft); font-size: 1.06rem; }
+  /* ---- Landing-Only Visual Enhancements (Extending style.css) ---- */
+  section { padding-block: clamp(64px, 10vw, 120px); position: relative; }
+  
+  /* Section Header Styling */
+  .sec-head { text-align: center; max-width: 48ch; margin: 0 auto clamp(36px, 6vw, 64px); }
+  .sec-head .eyebrow { margin-bottom: 8px; }
+  .sec-head h2 { font-size: clamp(2rem, 5vw, 3.1rem); margin: 12px 0 16px; color: var(--ink); }
+  .sec-head p { color: var(--ink-soft); font-size: 1.1rem; line-height: 1.6; }
 
-  /* ---- clay phone mockup ---- */
-  .device { position: relative; margin-inline: auto; width: min(300px, 76vw); padding: 12px; border-radius: 44px;
-            background: linear-gradient(155deg, #2b333a, #171d22); box-shadow: var(--card-shadow), inset 0 0 0 1.5px rgba(255,255,255,.05); }
-  .device::before { content: ""; position: absolute; top: 20px; left: 50%; translate: -50% 0; width: 30%; height: 7px; border-radius: 999px; background: #05080a; z-index: 2; opacity: .85; }
-  .device img { width: 100%; height: auto; border-radius: 33px; display: block; }
-  .device.float { animation: float 7s ease-in-out infinite; }
-  @media (prefers-reduced-motion: reduce) { .device.float { animation: none; } }
-  @keyframes float { 0%,100% { transform: translateY(0) rotate(-1.6deg); } 50% { transform: translateY(-14px) rotate(-1.6deg); } }
+  /* ---- Realistic Glass-Face Phone Mockup ---- */
+  .device { 
+    position: relative; 
+    margin-inline: auto; 
+    width: min(310px, 78vw); 
+    padding: 11px; 
+    border-radius: 46px;
+    background: linear-gradient(145deg, #37444c, #1f282c); 
+    box-shadow: 
+      0 25px 50px -12px rgba(78, 72, 61, 0.25),
+      0 4px 12px -3px rgba(78, 72, 61, 0.15),
+      inset 0 1px 1px rgba(255, 255, 255, 0.12),
+      inset 0 -1.5px 3px rgba(0, 0, 0, 0.4); 
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+  }
+  .device:hover {
+    transform: scale(1.025) translateY(-4px);
+  }
+  /* Physical Bezel Highlight & Dynamic Island */
+  .device::before { 
+    content: ""; 
+    position: absolute; 
+    top: 18px; 
+    left: 50%; 
+    translate: -50% 0; 
+    width: 85px; 
+    height: 16px; 
+    border-radius: 20px; 
+    background: #0f1418; 
+    z-index: 10; 
+    box-shadow: inset 0 -1px 2px rgba(255,255,255,0.05); 
+  }
+  /* Glare Sweep Overlay */
+  .device::after {
+    content: "";
+    position: absolute;
+    inset: 11px;
+    border-radius: 35px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.02) 40%, transparent 40.1%);
+    pointer-events: none;
+    z-index: 8;
+  }
+  .device img { 
+    width: 100%; 
+    height: auto; 
+    border-radius: 35px; 
+    display: block; 
+    background: var(--cream);
+    border: 1.5px solid rgba(0, 0, 0, 0.1);
+  }
+  .device.float { animation: float-device 7s ease-in-out infinite; }
+  
+  @media (prefers-reduced-motion: reduce) { 
+    .device.float, .chip-float, .pitch-dot, .wave-teacher, .wave-learner { animation: none !important; } 
+  }
+  
+  @keyframes float-device { 
+    0%, 100% { transform: translateY(0) rotate(-1.5deg); } 
+    50% { transform: translateY(-12px) rotate(-1.5deg); } 
+  }
 
-  /* ---- hero ---- */
-  .hero { padding-top: clamp(34px, 6vw, 76px); }
-  .hero-grid { display: grid; grid-template-columns: 1.06fr .94fr; gap: clamp(24px, 4vw, 52px); align-items: center; }
-  .hero h1 { font-size: clamp(2.35rem, 6.6vw, 4.1rem); margin: 16px 0 18px; }
-  .hero h1 .hl { color: var(--sage-ink); position: relative; white-space: nowrap; }
-  .hero h1 .hl::after { content: ""; position: absolute; left: -2%; right: -2%; bottom: .06em; height: .34em; background: color-mix(in srgb, var(--sage) 55%, transparent); border-radius: 6px; z-index: -1; }
-  .hero p.lead { font-size: clamp(1.06rem, 2.3vw, 1.3rem); color: var(--ink-soft); max-width: 35ch; }
-  .hero .cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
-  .hero .note { margin-top: 18px; }
+  /* ---- Hero Layout & Interactive Styling ---- */
+  .hero { padding-top: clamp(40px, 7vw, 92px); }
+  .hero-grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: clamp(24px, 5vw, 64px); align-items: center; }
+  .hero h1 { font-size: clamp(2.45rem, 6.8vw, 4.3rem); margin: 16px 0 20px; line-height: 1.12; color: var(--ink); }
+  
+  /* Dynamic Hand-molded Clay Highlighter */
+  .hero h1 .hl { 
+    color: #4b6139; 
+    position: relative; 
+    white-space: nowrap; 
+    z-index: 1;
+    display: inline-block;
+  }
+  .hero h1 .hl::after { 
+    content: ""; 
+    position: absolute; 
+    left: -4%; 
+    right: -4%; 
+    bottom: -2px; 
+    height: 16px; 
+    background: var(--sage-soft); 
+    border-radius: 50% 15% 45% 10% / 40% 60% 30% 70%; 
+    z-index: -1; 
+    transform: rotate(-1.2deg);
+    opacity: 0.9; 
+  }
+  
+  .hero p.lead { font-size: clamp(1.1rem, 2.4vw, 1.35rem); color: var(--ink-soft); max-width: 36ch; line-height: 1.6; }
+  .hero .cta { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 32px; }
+  .hero .note { margin-top: 24px; }
   .hero .fig { position: relative; }
-  .blob { position: absolute; z-index: -1; filter: blur(48px); border-radius: 50%; }
-  .blob.a { width: 320px; height: 320px; background: color-mix(in srgb, var(--sage) 60%, transparent); top: -40px; right: -30px; opacity: .55; }
-  .blob.b { width: 240px; height: 240px; background: color-mix(in srgb, var(--cheese) 70%, transparent); bottom: -30px; left: -50px; opacity: .5; }
-  .chip-float { position: absolute; font-weight: 800; font-size: .82rem; padding: 9px 15px; border-radius: 999px; background: var(--paper-hi); color: var(--ink); box-shadow: var(--clay-shadow); border: 1px solid var(--line-soft); display: inline-flex; align-items: center; gap: 7px; }
-  .chip-float .pz { color: var(--sage-ink); }
-  .chip-float.c1 { top: 6%; left: -6%; }
-  .chip-float.c2 { bottom: 12%; right: -7%; }
+  
+  /* Decorative Backdrop blur blobs */
+  .blob { position: absolute; z-index: -1; filter: blur(54px); border-radius: 50%; pointer-events: none; }
+  .blob.a { width: 340px; height: 340px; background: color-mix(in srgb, var(--sage) 55%, transparent); top: -40px; right: -20px; opacity: 0.5; }
+  .blob.b { width: 260px; height: 240px; background: color-mix(in srgb, var(--cheese) 65%, transparent); bottom: -30px; left: -40px; opacity: 0.45; }
+  
+  /* Volumetric 3D Floating Sticker Badges */
+  .chip-float { 
+    position: absolute; 
+    font-family: "Jua", sans-serif;
+    font-size: 0.95rem; 
+    padding: 11px 18px; 
+    border-radius: 20px; 
+    color: var(--ink);
+    box-shadow: var(--clay-shadow); 
+    border: 1px solid rgba(255, 255, 255, 0.4); 
+    display: inline-flex; 
+    align-items: center; 
+    gap: 8px; 
+    z-index: 5;
+    user-select: none;
+    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+  .chip-float:hover {
+    transform: scale(1.15) rotate(1.5deg);
+  }
+  .chip-float .pz { font-size: 1.15rem; }
+  .chip-float.c1 { 
+    background: linear-gradient(135deg, #FFF0D4 0%, var(--cheese) 100%); 
+    color: var(--cheese-dark); 
+    top: 8%; left: -8%; 
+    animation: float-sticker-1 5s ease-in-out infinite;
+  }
+  .chip-float.c2 { 
+    background: linear-gradient(135deg, #ECF5FC 0%, var(--tomato) 100%); 
+    color: var(--tomato-dark); 
+    bottom: 16%; right: -9%; 
+    animation: float-sticker-2 6s ease-in-out infinite;
+  }
+  
+  @keyframes float-sticker-1 { 
+    0%, 100% { transform: translateY(0) rotate(1.5deg); } 
+    50% { transform: translateY(-8px) rotate(-1.5deg); } 
+  }
+  @keyframes float-sticker-2 { 
+    0%, 100% { transform: translateY(0) rotate(-2.5deg); } 
+    50% { transform: translateY(-10px) rotate(1deg); } 
+  }
+
   @media (max-width: 820px) {
     .hero-grid { grid-template-columns: 1fr; text-align: center; }
     .hero p.lead { margin-inline: auto; }
     .hero .cta, .hero .note { justify-content: center; }
-    .hero .fig { margin-top: 26px; }
-    .chip-float.c1 { left: 2%; } .chip-float.c2 { right: 2%; }
+    .hero .fig { margin-top: 36px; }
+    .chip-float.c1 { left: 4%; } .chip-float.c2 { right: 4%; }
   }
 
-  /* ---- problem band ---- */
+  /* ---- Problem Band Stat Cards ---- */
   .band { background: var(--paper); border-block: 1px solid var(--line); }
-  .stat-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; text-align: center; }
-  .stat { background: var(--paper-hi); border: 1px solid var(--line); border-radius: var(--radius); padding: 28px 18px; box-shadow: var(--clay-shadow); }
-  .stat .n { font-family: "Jua", sans-serif; font-size: clamp(2.1rem, 5vw, 2.9rem); color: var(--sage-ink); font-variant-numeric: tabular-nums; }
-  .stat .l { color: var(--ink-soft); font-size: .95rem; margin-top: 6px; }
-  @media (max-width: 620px) { .stat-row { grid-template-columns: 1fr; } }
+  .stat-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; text-align: center; }
+  .stat { 
+    background: var(--card); 
+    border: 1px solid var(--line); 
+    border-radius: var(--radius); 
+    padding: 32px 20px; 
+    box-shadow: var(--card-shadow); 
+    background-image: linear-gradient(180deg, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0) 25%);
+    transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.2), box-shadow 0.25s ease;
+  }
+  .stat:hover {
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: 0 20px 40px -12px rgba(78, 72, 61, 0.22), inset 0 2px 3px rgba(255,255,255,0.8);
+  }
+  .stat .n { 
+    font-family: "Jua", sans-serif; 
+    font-size: clamp(2.3rem, 5.2vw, 3.2rem); 
+    font-variant-numeric: tabular-nums; 
+    line-height: 1;
+  }
+  /* Color differentiation based on app Metaphors */
+  .stat:nth-child(1) .n { color: var(--tomato-dark); }
+  .stat:nth-child(2) .n { color: var(--onion-dark); }
+  .stat:nth-child(3) .n { color: var(--lettuce); }
+  .stat .l { color: var(--ink-soft); font-size: 0.98rem; margin-top: 10px; line-height: 1.4; font-weight: 500; }
+  @media (max-width: 620px) { .stat-row { grid-template-columns: 1fr; gap: 14px; } }
 
-  /* ---- method steps ---- */
-  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; counter-reset: s; }
-  .step { position: relative; background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); padding: 30px 26px; box-shadow: var(--card-shadow); }
-  .step-ico { width: 96px; height: 96px; border-radius: 24px; background: var(--paper-hi); object-fit: cover; margin-bottom: 16px; box-shadow: var(--clay-shadow); }
-  .step-n { font-weight: 800; letter-spacing: .08em; font-size: .74rem; }
-  .step:nth-child(1) .step-n { color: var(--tomato); }
-  .step:nth-child(2) .step-n { color: var(--cheese); }
-  .step:nth-child(3) .step-n { color: var(--sage-ink); }
-  .step h3 { font-size: 1.4rem; margin: 4px 0 8px; }
-  .step p { color: var(--ink-soft); font-size: .99rem; }
-  .step .arrow { position: absolute; top: 50%; right: -22px; translate: 0 -50%; color: var(--line); z-index: 1; }
-  @media (max-width: 760px) { .steps { grid-template-columns: 1fr; } .step .arrow { display: none; } }
+  /* ---- Method Reverse-Training Steps ---- */
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .step { 
+    position: relative; 
+    background: var(--card); 
+    border: 1px solid var(--line); 
+    border-radius: var(--radius); 
+    padding: 34px 28px; 
+    box-shadow: var(--card-shadow); 
+    background-image: linear-gradient(180deg, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0) 20%);
+    transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.15), box-shadow 0.25s ease;
+  }
+  .step:hover {
+    transform: translateY(-8px) rotate(0.5deg);
+    box-shadow: 0 22px 44px -14px rgba(78, 72, 61, 0.25), inset 0 2px 3px rgba(255,255,255,0.8);
+  }
+  .step-ico { 
+    width: 96px; height: 96px; 
+    border-radius: 24px; 
+    background: var(--paper-hi); 
+    object-fit: cover; 
+    margin-bottom: 20px; 
+    box-shadow: var(--clay-shadow); 
+    border: 1.5px solid rgba(255,255,255,0.5);
+    transition: transform 0.3s ease;
+  }
+  .step:hover .step-ico {
+    transform: scale(1.08) rotate(-2deg);
+  }
+  .step-n { 
+    display: inline-block;
+    font-family: "Baloo 2", sans-serif;
+    font-weight: 800; 
+    letter-spacing: 0.08em; 
+    font-size: 0.8rem; 
+    padding: 3px 10px;
+    border-radius: 8px;
+    box-shadow: inset 0 1px 1px rgba(255,255,255,0.3);
+  }
+  .step:nth-child(1) .step-n { background: #FEE7E4; color: var(--alert); }
+  .step:nth-child(2) .step-n { background: #FFF3D6; color: var(--cheese-dark); }
+  .step:nth-child(3) .step-n { background: #E6F3EB; color: #43602f; }
+  
+  .step h3 { font-size: 1.45rem; margin: 10px 0 10px; color: var(--ink); }
+  .step p { color: var(--ink-soft); font-size: 1rem; line-height: 1.55; }
+  .step .arrow { position: absolute; top: 50%; right: -24px; translate: 0 -50%; color: var(--sage); z-index: 5; filter: drop-shadow(0 2px 4px rgba(78,72,61,0.1)); }
+  @media (max-width: 760px) { .steps { grid-template-columns: 1fr; gap: 16px; } .step .arrow { display: none; } }
 
-  /* ---- feature rows ---- */
-  .feature { display: grid; grid-template-columns: .92fr 1.08fr; gap: clamp(28px, 5vw, 64px); align-items: center; }
+  /* ---- Feature Structure & Modular Layouts ---- */
+  .feature { display: grid; grid-template-columns: .95fr 1.05fr; gap: clamp(32px, 6vw, 72px); align-items: center; }
   .feature.rev .fig { order: 2; }
-  .feature .tag { font-weight: 800; letter-spacing: .1em; text-transform: uppercase; font-size: .76rem; color: var(--sage-ink); }
-  .feature h2 { font-size: clamp(1.7rem, 4vw, 2.5rem); margin: 12px 0 16px; }
-  .feature p.lead { color: var(--ink-soft); font-size: 1.06rem; }
-  .feature ul { list-style: none; padding: 0; margin: 22px 0 0; display: grid; gap: 12px; }
-  .feature li { display: flex; gap: 11px; align-items: flex-start; font-size: 1rem; }
-  .feature li svg { flex: none; margin-top: 3px; }
+  .feature .tag { 
+    display: inline-block;
+    font-family: "Baloo 2", sans-serif;
+    font-weight: 800; 
+    letter-spacing: 0.08em; 
+    text-transform: uppercase; 
+    font-size: 0.82rem; 
+    color: var(--tomato-dark); 
+    background: rgba(127, 169, 192, 0.12);
+    padding: 4px 12px;
+    border-radius: 8px;
+    margin-bottom: 12px;
+  }
+  .feature h2 { font-size: clamp(1.8rem, 4.5vw, 2.7rem); margin: 12px 0 18px; color: var(--ink); }
+  .feature p.lead { color: var(--ink-soft); font-size: 1.1rem; line-height: 1.6; }
+  .feature ul { list-style: none; padding: 0; margin: 24px 0 0; display: grid; gap: 14px; }
+  .feature li { display: flex; gap: 12px; align-items: flex-start; font-size: 1.02rem; color: var(--ink-soft); }
+  .feature li svg { flex: none; margin-top: 3.5px; filter: drop-shadow(0 1.5px 2px rgba(147,185,138,0.25)); }
   @media (max-width: 820px) { .feature { grid-template-columns: 1fr; } .feature.rev .fig { order: 0; } }
 
-  /* assembly chip diagram */
-  .assemble { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 22px 0 4px; }
-  .assemble .blk { font-weight: 800; font-size: .84rem; padding: 8px 14px; border-radius: 12px; background: color-mix(in srgb, var(--sage) 20%, var(--paper)); color: var(--sage-ink); border: 1px solid color-mix(in srgb, var(--sage) 38%, transparent); }
-  .assemble .plus { color: var(--ink-soft); font-weight: 800; }
-  .assemble .eq { color: var(--ink-soft); font-weight: 800; margin: 0 2px; }
-  .assemble .ans { font-weight: 800; font-size: .84rem; padding: 8px 14px; border-radius: 12px; background: var(--sage); color: #33402c; }
+  /* ---- Modular Block Interlocking Puzzle Assembly ---- */
+  .assemble { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin: 26px 0 6px; }
+  .assemble .blk { 
+    font-family: "Jua", sans-serif; 
+    font-size: 0.95rem; 
+    padding: 12px 18px; 
+    border-radius: 16px; 
+    color: var(--ink); 
+    box-shadow: var(--clay-shadow); 
+    border: 1.5px solid rgba(255, 255, 255, 0.2); 
+    position: relative;
+    user-select: none;
+    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.2);
+  }
+  .assemble .blk:hover {
+    transform: translateY(-2px) scale(1.05);
+  }
+  /* Specific claymatic gradients mimicking physical clay */
+  .assemble .blk.bg-onion { background: linear-gradient(180deg, #D6C3E5 0%, var(--onion) 55%, #9F82B5 100%); color: #432E5D; }
+  .assemble .blk.bg-tomato { background: linear-gradient(180deg, #A7CBDD 0%, var(--tomato) 55%, #5D8CA2 100%); color: #1E3747; }
+  .assemble .blk.bg-cheese { background: linear-gradient(180deg, #F9DFBF 0%, var(--cheese) 55%, #D6AC80 100%); color: #583F15; }
+  
+  .assemble .plus, .assemble .eq { 
+    font-family: "Jua", sans-serif; 
+    font-size: 1.45rem; 
+    color: var(--ink-muted); 
+    user-select: none;
+  }
+  .assemble .ans { 
+    font-family: "Jua", sans-serif; 
+    font-size: 1.1rem; 
+    padding: 14px 22px; 
+    border-radius: 18px; 
+    background: linear-gradient(180deg, #A8D19B 0%, var(--lettuce) 55%, #6A8E5C 100%); 
+    color: #273A16; 
+    box-shadow: 0 8px 16px rgba(147, 185, 138, 0.3), var(--clay-shadow); 
+    border: 1.5px solid rgba(255,255,255,0.25);
+    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.3);
+  }
+  .assemble .ans:hover {
+    transform: translateY(-3px) rotate(2deg) scale(1.06);
+  }
 
-  /* ---- dark: 실전 & AI 진단 ---- */
-  .stage { position: relative; color: #eaf1f2; background: linear-gradient(168deg, var(--slate-deep) 0%, var(--slate-abyss) 62%, #1c333d 100%); overflow: hidden; }
-  .stage::before { content: ""; position: absolute; inset: 0; background: radial-gradient(70% 45% at 78% 6%, color-mix(in srgb, var(--sage) 30%, transparent), transparent 60%); pointer-events: none; }
+  /* ---- Interactive Real-Time Pitch Wave & Scribble Note ---- */
+  .pitch-container { 
+    position: relative; 
+    margin-top: 30px; 
+    width: 100%; 
+    max-width: 320px; 
+    margin-inline: auto; 
+    transform: rotate(-0.5deg);
+  }
+  .pitch-wave-card { 
+    background: var(--card); 
+    border-radius: var(--radius-sm); 
+    border: 1.5px solid var(--line); 
+    padding: 14px 18px; 
+    box-shadow: var(--card-shadow); 
+    background-image: linear-gradient(180deg, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0) 25%);
+  }
+  .pitch-header { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+  .pitch-dot { 
+    width: 9px; height: 9px; 
+    background: var(--alert); 
+    border-radius: 50%; 
+    box-shadow: 0 0 8px var(--alert);
+    animation: pulse-dot 1.5s infinite ease-in-out; 
+  }
+  .pitch-title { font-size: 0.84rem; font-weight: 800; color: var(--ink); font-family: "Baloo 2", sans-serif; letter-spacing: 0.02em; }
+  .pitch-svg { width: 100%; height: auto; overflow: visible; }
+  
+  /* Accent path draw animation */
+  .wave-teacher { 
+    stroke-dasharray: 400; 
+    stroke-dashoffset: 400; 
+    animation: draw-wave 4.5s ease-in-out infinite alternate; 
+  }
+  .wave-learner { 
+    stroke-dasharray: 1 5; 
+    animation: draw-learner 4.5s ease-in-out infinite alternate; 
+  }
+  @keyframes draw-wave { to { stroke-dashoffset: 0; } }
+  @keyframes draw-learner { 0% { opacity: 0; } 20% { opacity: 1; } 100% { opacity: 1; } }
+  
+  .pitch-tags { display: flex; justify-content: space-between; margin-top: 10px; font-size: 0.75rem; font-weight: 700; }
+  .tag-teacher { color: var(--tomato-dark); }
+  .tag-learner { color: var(--lettuce); }
+  
+  /* Beautiful Post-it Notepad with Handwriting Script */
+  .memo-note { 
+    position: absolute; 
+    top: -24px; right: -28px; 
+    background: #FEF4AC; 
+    box-shadow: 4px 8px 18px rgba(78, 72, 61, 0.16); 
+    border: 1px solid rgba(78, 72, 61, 0.08); 
+    padding: 11px 15px; 
+    border-radius: 3px 18px 4px 22px / 14px 4px 18px 4px; 
+    transform: rotate(6.5deg) scale(0.95); 
+    transform-origin: top left; 
+    z-index: 10; 
+    width: 116px; 
+    user-select: none;
+    transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.3);
+  }
+  .memo-note:hover { transform: rotate(3deg) scale(1.06); }
+  .memo-text { font-family: "Nanum Pen Script", cursive; font-size: 1.35rem; color: #433D14; line-height: 1.15; }
+  .memo-text span { color: var(--alert); font-weight: 700; }
+  .memo-sub { font-family: "Nanum Pen Script", cursive; font-size: 1rem; color: #736829; margin-top: 4px; line-height: 1; }
+
+  /* ---- Deep Midnight Stage ( 실전 & AI 진단 ) ---- */
+  .stage { 
+    position: relative; 
+    color: #eaf1f2; 
+    background: linear-gradient(168deg, var(--slate-deep) 0%, var(--slate-abyss) 62%, #1b2e3a 100%); 
+    overflow: hidden; 
+    border-top: 1px solid rgba(255,255,255,0.06);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  /* Luminous atmospheric glowing backdrop */
+  .stage::before { 
+    content: ""; 
+    position: absolute; 
+    inset: 0; 
+    background: radial-gradient(75% 50% at 75% 8%, color-mix(in srgb, var(--sage) 22%, transparent), transparent 60%); 
+    pointer-events: none; 
+  }
   .stage .wrap { position: relative; }
-  .stage .eyebrow { color: color-mix(in srgb, var(--sage) 78%, #fff); }
+  .stage .eyebrow { color: color-mix(in srgb, var(--sage) 85%, #fff); }
   .stage .sec-head h2 { color: #fff; }
-  .stage .sec-head p { color: #c3d2d6; }
-  .stage .tag { color: color-mix(in srgb, var(--sage) 78%, #fff); }
+  .stage .sec-head p { color: #c4d4d8; }
+  .stage .tag { color: #fff; background: rgba(255,255,255,0.08); }
   .stage h2, .stage h3 { color: #fff; }
-  .stage p.lead { color: #c8d5d9; }
-  .stage .feature { margin-bottom: clamp(40px, 7vw, 80px); }
-  .stage .device { background: linear-gradient(155deg, #1c242a, #0e1317); }
-  .stage .feature li { color: #dbe5e8; }
+  .stage p.lead { color: #cddade; }
+  .stage .feature { margin-bottom: clamp(48px, 8vw, 92px); }
+  .stage .device { 
+    background: linear-gradient(155deg, #1d262d, #0f1519); 
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.45);
+  }
+  .stage .feature li { color: #d6e2e5; }
+  .stage .feature li svg { filter: drop-shadow(0 1.5px 2px rgba(255,255,255,0.1)); }
 
-  .showcase { border-radius: var(--radius); overflow: hidden; border: 1px solid rgba(255,255,255,.1); box-shadow: 0 30px 60px -26px rgba(0,0,0,.6); background: #33505f; }
-  .showcase img { width: 100%; height: auto; }
-  .dims { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-top: 24px; }
-  .dims span { font-size: .86rem; font-weight: 800; padding: 7px 14px; border-radius: 999px; background: rgba(255,255,255,.08); color: #eaf1f2; border: 1px solid rgba(255,255,255,.16); }
-  .dims span.lv { background: color-mix(in srgb, var(--sage) 40%, transparent); border-color: color-mix(in srgb, var(--sage) 55%, transparent); color: #fff; }
+  /* Premium Tablet-Style Screenshot Showcase Container */
+  .showcase-device { 
+    border-radius: var(--radius); 
+    overflow: hidden; 
+    border: 1px solid rgba(255,255,255,0.12); 
+    box-shadow: 0 32px 64px -22px rgba(0,0,0,0.55); 
+    background: #2b3e4a; 
+    transition: transform 0.3s ease;
+  }
+  .showcase-device:hover {
+    transform: translateY(-2px);
+  }
+  .tablet-header { 
+    height: 38px; 
+    background: rgba(0, 0, 0, 0.2); 
+    border-bottom: 1px solid rgba(255,255,255,0.06); 
+    display: flex; 
+    align-items: center; 
+    padding-inline: 18px; 
+    gap: 14px;
+  }
+  .tablet-dots { display: flex; gap: 6px; }
+  .tablet-dots span { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.15); }
+  .tablet-address { 
+    font-family: "Baloo 2", sans-serif;
+    font-weight: 700;
+    font-size: 0.76rem; 
+    color: rgba(255,255,255,0.3); 
+    background: rgba(0, 0, 0, 0.15); 
+    padding: 3px 18px; 
+    border-radius: 6px; 
+    width: 240px; 
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .tablet-screen img { width: 100%; height: auto; display: block; border-top: 1px solid rgba(0,0,0,0.1); }
 
-  /* ---- final ---- */
-  .final { text-align: center; background: linear-gradient(158deg, #607f52 0%, #3d5732 100%); color: #fff; border-radius: clamp(26px, 4vw, 42px); padding: clamp(42px, 7vw, 76px) var(--pad); box-shadow: var(--card-shadow); }
-  .final h2 { color: #fff; font-size: clamp(1.95rem, 4.6vw, 2.9rem); }
-  .final p { color: #eaf1e4; margin: 14px auto 26px; max-width: 40ch; font-size: 1.1rem; }
-  .final .btn-primary { background: #fff; color: #43602f; }
-  .final .btn-primary:hover { background: var(--paper-hi); color: #43602f; }
-  .final .disc { margin-top: 24px; font-size: .82rem; color: #cfdcc5; }
+  /* Dual Grid for Results Section on Desktop */
+  .result-showcase-grid { 
+    display: grid; 
+    grid-template-columns: 1.15fr .85fr; 
+    gap: clamp(24px, 4vw, 48px); 
+    align-items: stretch; 
+    margin-top: clamp(32px, 5vw, 60px); 
+  }
+  @media (max-width: 900px) { .result-showcase-grid { grid-template-columns: 1fr; } }
 
-  .reveal { opacity: 0; transform: translateY(22px); transition: opacity .6s ease, transform .6s ease; }
+  /* ---- Spectacular Pentagonal Interactive AI Radar Card ---- */
+  .radar-card { 
+    background: rgba(255, 255, 255, 0.035) !important; 
+    border: 1.5px solid rgba(255, 255, 255, 0.08) !important; 
+    box-shadow: 0 24px 48px -18px rgba(0,0,0,0.45) !important;
+    background-image: linear-gradient(180deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0) 25%) !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 32px 24px !important;
+  }
+  .radar-header { text-align: center; margin-bottom: 22px; }
+  .radar-header h3 { font-size: 1.35rem; color: #fff; margin-bottom: 4px; }
+  .radar-subtitle { font-size: 0.8rem; color: #a4b9bf; font-weight: 600; margin: 0; }
+  
+  .radar-chart-container { 
+    position: relative; 
+    width: 100%; 
+    max-width: 240px; 
+    margin-inline: auto; 
+    aspect-ratio: 1; 
+    user-select: none;
+  }
+  .radar-svg { width: 100%; height: 100%; overflow: visible; }
+  
+  /* Radar Chart SVG Grid styling */
+  .grid-line { fill: none; stroke: rgba(255, 255, 255, 0.08); stroke-width: 1.5; }
+  .spoke { fill: none; stroke: rgba(255, 255, 255, 0.08); stroke-width: 1.5; stroke-dasharray: 2 4; }
+  
+  /* Glowing interactive polygons */
+  .poly-take1 { 
+    fill: rgba(172, 162, 146, 0.12); 
+    stroke: rgba(172, 162, 146, 0.35); 
+    stroke-width: 2; 
+    stroke-linecap: round; 
+    stroke-linejoin: round; 
+  }
+  .poly-take2 { 
+    fill: rgba(147, 185, 138, 0.22); 
+    stroke: var(--lettuce); 
+    stroke-width: 3.5; 
+    stroke-linecap: round; 
+    stroke-linejoin: round; 
+    filter: drop-shadow(0 0 6px rgba(147, 185, 138, 0.3));
+  }
+  .vertex { fill: #fff; stroke: var(--lettuce); stroke-width: 2.5; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3)); }
+  
+  /* Accurate coordinate-mapped HTML Labels over SVG */
+  .radar-label { position: absolute; display: flex; flex-direction: column; align-items: center; font-size: 0.74rem; font-weight: 700; line-height: 1.25; }
+  .radar-label .label-txt { color: #b4c9cd; font-family: "Pretendard", sans-serif; font-size: 0.72rem; }
+  .radar-label .label-val { font-family: "Baloo 2", sans-serif; font-size: 0.85rem; font-weight: 800; padding: 1px 7px; border-radius: 6px; box-shadow: inset 0 1px 0 rgba(255,255,255,0.1); }
+  
+  .val-lettuce { background: rgba(147, 185, 138, 0.18); color: var(--lettuce); border: 1px solid rgba(147, 185, 138, 0.25); }
+  .val-cheese { background: rgba(201, 138, 82, 0.18); color: var(--cheese-dark); border: 1px solid rgba(201, 138, 82, 0.25); }
+  
+  .label-top { top: -6%; left: 50%; transform: translateX(-50%); }
+  .label-right-top { top: 22%; right: -12%; align-items: flex-start; }
+  .label-right-bottom { bottom: 8%; right: -2%; align-items: flex-start; }
+  .label-left-bottom { bottom: 8%; left: -2%; align-items: flex-end; }
+  .label-left-top { top: 22%; left: -12%; align-items: flex-end; }
+
+  /* Radar legend panel details */
+  .radar-legend { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 18px; margin-top: 26px; border-top: 1px solid rgba(255,255,255,0.06); padding-top: 16px; }
+  .leg-item { display: inline-flex; align-items: center; gap: 7px; font-size: 0.8rem; font-weight: 600; color: #a4b9bf; }
+  .leg-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+  .take1 .leg-dot { background: rgba(172, 162, 146, 0.6); }
+  .take2 .leg-dot { background: var(--lettuce); box-shadow: 0 0 6px var(--lettuce); }
+  .badge-up { font-family: "Baloo 2", sans-serif; font-size: 0.74rem; font-weight: 800; background: var(--lettuce); color: #273a16; padding: 1px 6px; border-radius: 5px; margin-left: 2px; }
+
+  /* Glowing Translucent Dimension pills */
+  .dims { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 32px; }
+  .dims span { 
+    font-size: .88rem; 
+    font-weight: 700; 
+    padding: 8px 16px; 
+    border-radius: 999px; 
+    background: rgba(255, 255, 255, 0.04); 
+    color: #cbdce0; 
+    border: 1.5px solid rgba(255, 255, 255, 0.08); 
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15), inset 0 1px 2px rgba(255,255,255,0.05);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: all 0.2s ease;
+  }
+  .dims span:not(.lv):hover {
+    background: rgba(255, 255, 255, 0.08);
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.16);
+    transform: translateY(-1px);
+  }
+  .dims span.lv { 
+    background: linear-gradient(135deg, rgba(147, 185, 138, 0.3) 0%, rgba(147, 185, 138, 0.15) 100%); 
+    border-color: rgba(147, 185, 138, 0.35); 
+    color: #fff; 
+    font-weight: 800;
+    box-shadow: 0 0 12px rgba(147, 185, 138, 0.2);
+  }
+
+  /* ---- Final Call To Action Styling ---- */
+  .final { 
+    text-align: center; 
+    background: linear-gradient(145deg, #7FA26C 0%, #465E36 100%); 
+    color: #fff; 
+    border-radius: clamp(28px, 5vw, 44px); 
+    padding: clamp(48px, 8vw, 84px) var(--pad); 
+    box-shadow: 
+      0 30px 60px -20px rgba(78, 72, 61, 0.32),
+      0 4px 12px rgba(78, 72, 61, 0.12),
+      inset 0 1.5px 2px rgba(255,255,255,0.22); 
+    border: 1px solid rgba(255,255,255,0.08);
+    position: relative;
+    overflow: hidden;
+  }
+  .final::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 15% 15%, rgba(255,255,255,0.1) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .final h2 { color: #fff; font-size: clamp(2rem, 5.2vw, 3.2rem); line-height: 1.15; text-shadow: 0 2px 4px rgba(45, 60, 36, 0.15); }
+  .final p { color: #edf5ee; margin: 16px auto 30px; max-width: 44ch; font-size: 1.15rem; line-height: 1.6; }
+  .final .btn-primary { 
+    background: #fff; 
+    color: #3b5431; 
+    box-shadow: 0 14px 28px rgba(45, 60, 36, 0.25), inset 0 2.5px 3px rgba(255,255,255,1); 
+  }
+  .final .btn-primary:hover { 
+    background: var(--paper-hi); 
+    color: #273b1e; 
+    transform: translateY(-3px) scale(1.03); 
+    box-shadow: 0 18px 36px rgba(45, 60, 36, 0.3), inset 0 1px 0 #fff;
+  }
+  .final .disc { margin-top: 28px; font-size: .84rem; color: #d4e2da; font-weight: 500; }
+
+  /* Smooth Entrance Stagger Reveal */
+  .reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s cubic-bezier(0.215, 0.61, 0.355, 1), transform .7s cubic-bezier(0.215, 0.61, 0.355, 1); }
   .reveal.in { opacity: 1; transform: none; }
   @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } }
 </style>
@@ -235,17 +713,24 @@
         <span class="tag">Model Answer</span>
         <h2>모범답변은 ‘블록’을 조립해 완성돼요</h2>
         <p class="lead">도입·본문·마무리 — 검증된 표현 블록을 순서대로 붙이면 흔들림 없는 답변이 됩니다. 정확 버전으로 익히고, Tweak으로 내 답으로 살짝 바꿔요.</p>
-        <div class="assemble" aria-hidden="true">
-          <span class="blk">도입</span><span class="plus">+</span>
-          <span class="blk">사람·행동</span><span class="plus">+</span>
-          <span class="blk">사물·전경</span><span class="plus">+</span>
-          <span class="blk">마무리</span><span class="eq">=</span>
-          <span class="ans">🍔 완성 답변</span>
+        
+        <!-- Puzzle Piece Interlocking Assembly Grid Representation -->
+        <div class="assemble" aria-label="조립 다이어그램: 도입 더하기 사람 행동 더하기 사물 전경 더하기 마무리합치면 완성 답변">
+          <div class="blk bg-onion">🧩 도입</div>
+          <div class="plus">＋</div>
+          <div class="blk bg-tomato">👤 사람 · 행동</div>
+          <div class="plus">＋</div>
+          <div class="blk bg-cheese">📦 사물 · 전경</div>
+          <div class="plus">＋</div>
+          <div class="blk bg-onion">🧩 마무리</div>
+          <div class="eq">＝</div>
+          <div class="ans">🍔 완성 답변</div>
         </div>
+
         <ul>
-          <li><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10l4 4 8-9" fill="none" stroke="#8fb389" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>260개 넘는 만능문장 블록으로 답변을 조립</span></li>
-          <li><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10l4 4 8-9" fill="none" stroke="#8fb389" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>파트별 조립 템플릿(틀)로 순서를 잡아줘요</span></li>
-          <li><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10l4 4 8-9" fill="none" stroke="#8fb389" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>‘정확’으로 익히고 ‘Tweak’으로 나만의 답변까지</span></li>
+          <li><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10l4 4 8-9" fill="none" stroke="#93B98A" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>260개 넘는 만능문장 블록으로 답변을 조립</span></li>
+          <li><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10l4 4 8-9" fill="none" stroke="#93B98A" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>파트별 조립 템플릿(틀)로 순서를 잡아줘요</span></li>
+          <li><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10l4 4 8-9" fill="none" stroke="#93B98A" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>‘정확’으로 익히고 ‘Tweak’으로 나만의 답변까지</span></li>
         </ul>
       </div>
     </div>
@@ -258,15 +743,41 @@
           <img src="/assets/shot-shadowing.webp" width="640" height="1312" loading="lazy"
                alt="블록 섀도잉 드릴 화면 — 억양 곡선과 단어별 한글 발음 표기, 손글씨 메모 힌트가 함께 표시된다">
         </div>
+        
+        <!-- Live Pitch Accent Wave & Floating Notepad Shorthand Mockup -->
+        <div class="pitch-container" aria-hidden="true">
+          <!-- Handwritten yellow sticky note mockup -->
+          <div class="memo-note">
+            <p class="memo-text">여기서 <span>Pause!</span></p>
+            <p class="memo-sub">강세는 동사에 쾅! ⚡</p>
+          </div>
+          
+          <div class="pitch-wave-card">
+            <div class="pitch-header">
+              <span class="pitch-dot"></span>
+              <span class="pitch-title">실시간 억양(Pitch) 섀도잉</span>
+            </div>
+            <svg class="pitch-svg" viewBox="0 0 240 60">
+              <!-- Smooth native teacher wave -->
+              <path class="wave-teacher" d="M10,42 Q40,12 70,38 T130,22 T190,48 T230,16" fill="none" stroke="var(--tomato-dark)" stroke-width="3" stroke-linecap="round"/>
+              <!-- Dotted user voice waveform overlay -->
+              <path class="wave-learner" d="M10,45 Q42,14 68,39 T128,23 T193,45 T230,17" fill="none" stroke="var(--lettuce)" stroke-width="3" stroke-dasharray="1 5" stroke-linecap="round"/>
+            </svg>
+            <div class="pitch-tags">
+              <span class="tag-teacher">성우 피치 곡선</span>
+              <span class="tag-learner">내 억양 매칭</span>
+            </div>
+          </div>
+        </div>
       </div>
       <div>
         <span class="tag">Block Shadowing</span>
         <h2>소리로 손에 익히는 5단계 드릴</h2>
         <p class="lead">듣기 → 말하기 → 다시 듣기 → 말하기 → 내 녹음까지. 억양 곡선과 단어별 발음 표기를 따라, 시험장에서 바로 꺼낼 수 있을 때까지 반복해요.</p>
         <ul>
-          <li><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10l4 4 8-9" fill="none" stroke="#8fb389" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>원어민 성우 녹음 &amp; 실시간 억양(피치) 곡선</span></li>
-          <li><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10l4 4 8-9" fill="none" stroke="#8fb389" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>단어별 한글 발음 표기로 정확한 소리 교정</span></li>
-          <li><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10l4 4 8-9" fill="none" stroke="#8fb389" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>손글씨 메모 힌트로 청킹(chunking) 훈련</span></li>
+          <li><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10l4 4 8-9" fill="none" stroke="#93B98A" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>원어민 성우 녹음 &amp; 실시간 억양(피치) 곡선</span></li>
+          <li><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10l4 4 8-9" fill="none" stroke="#93B98A" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>단어별 한글 발음 표기로 정확한 소리 교정</span></li>
+          <li><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10l4 4 8-9" fill="none" stroke="#93B98A" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>손글씨 메모 힌트로 청킹(chunking) 훈련</span></li>
         </ul>
       </div>
     </div>
@@ -292,9 +803,9 @@
           <h2>ETS 포맷 그대로, 11문항 모의고사</h2>
           <p class="lead">GET READY 준비 시간과 답변 시간이 실제 시험과 동일하게 흐릅니다. 파트별로 문제를 풀고 마이크로 답하면 자동으로 다음 문제로 넘어가요.</p>
           <ul>
-            <li><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10l4 4 8-9" fill="none" stroke="#9dc095" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>5개 파트 · 11문항, 실제 시험 순서 그대로</span></li>
-            <li><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10l4 4 8-9" fill="none" stroke="#9dc095" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>준비(PREP)·답변(REC) 타이머로 실전 감각 훈련</span></li>
-            <li><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10l4 4 8-9" fill="none" stroke="#9dc095" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>안내 방송·클레이 그림까지 시험장을 그대로 재현</span></li>
+            <li><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10l4 4 8-9" fill="none" stroke="#9DC095" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>5개 파트 · 11문항, 실제 시험 순서 그대로</span></li>
+            <li><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10l4 4 8-9" fill="none" stroke="#9DC095" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>준비(PREP)·답변(REC) 타이머로 실전 감각 훈련</span></li>
+            <li><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10l4 4 8-9" fill="none" stroke="#9DC095" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>안내 방송·클레이 그림까지 시험장을 그대로 재현</span></li>
           </ul>
         </div>
       </div>
@@ -304,10 +815,74 @@
         <h2>내 약점을 영역별로 짚어줘요</h2>
         <p>답변을 AI가 전사·채점하고, ETS 4대 지표에 내용 구성까지 5개 영역을 레이더로 진단합니다.</p>
       </div>
-      <div class="showcase reveal">
-        <img src="/assets/shot-result.webp" width="1600" height="852" loading="lazy"
-             alt="AI 채점 결과 화면 — 200점 만점 점수와 등급, 발음·억양·문법·어휘·내용을 나타내는 레이더(스파이더) 차트, 다음 훈련 포인트가 표시된다">
+      
+      <!-- Showcase Dual Grid: Tablet Frame with Screenshot + Live SVG Radar Chart -->
+      <div class="result-showcase-grid">
+        <!-- High-fidelity Browser/Tablet Mockup -->
+        <div class="showcase-device reveal">
+          <div class="tablet-header" aria-hidden="true">
+            <div class="tablet-dots"><span></span><span></span><span></span></div>
+            <div class="tablet-address">tosburger.com/app/report/latest</div>
+          </div>
+          <div class="tablet-screen">
+            <img src="/assets/shot-result.webp" width="1600" height="852" loading="lazy"
+                 alt="AI 채점 결과 화면 — 200점 만점 점수와 등급, 발음·억양·문법·어휘·내용을 나타내는 레이더(스파이더) 차트, 다음 훈련 포인트가 표시된다">
+          </div>
+        </div>
+
+        <!-- Fully Scaled SVG Live Pentagonal AI Radar Spider Chart -->
+        <div class="radar-card clay-card reveal">
+          <div class="radar-header">
+            <h3>영역별 진단 레이더</h3>
+            <p class="radar-subtitle">ⓘ P1 (낭독) 추정치 포함 · 5개 영역 0-3 Scale</p>
+          </div>
+          
+          <div class="radar-chart-container">
+            <svg class="radar-svg" viewBox="0 0 300 300" aria-hidden="true">
+              <!-- Concentric Background Grid Pentagons -->
+              <!-- Scale 3 (Outer Frame Limit) -->
+              <polygon class="grid-line" points="150,40 255,116 215,239 85,239 45,116" />
+              <!-- Scale 2 (Intermediate) -->
+              <polygon class="grid-line" points="150,77 220,127 193,209 107,209 80,127" />
+              <!-- Scale 1 (Novice core) -->
+              <polygon class="grid-line" points="150,113 185,139 172,180 128,180 115,139" />
+              
+              <!-- 5-axis spokes -->
+              <line class="spoke" x1="150" y1="150" x2="150" y2="40" />
+              <line class="spoke" x1="150" y1="150" x2="255" y2="116" />
+              <line class="spoke" x1="150" y1="150" x2="215" y2="239" />
+              <line class="spoke" x1="150" y1="150" x2="85" y2="239" />
+              <line class="spoke" x1="150" y1="150" x2="45" y2="116" />
+              
+              <!-- Plotted Polygons (Drawn behind vertices) -->
+              <!-- Take 1 Diagnostic: Translucent Taupe Overlay -->
+              <polygon class="poly-take1" points="150,84 220,127 182,194 109,206 108,136" />
+              <!-- Take 2 Redo: Rich Glowing Lettuce Sage -->
+              <polygon class="poly-take2" points="150,43 244,119 202,221 90,233 77,126" />
+              
+              <!-- Vertex Beads (Highlight Dots) for Final redone results -->
+              <circle class="vertex" cx="150" cy="43" r="5" />
+              <circle class="vertex" cx="244" cy="119" r="5" />
+              <circle class="vertex" cx="202" cy="221" r="5" />
+              <circle class="vertex" cx="90" cy="233" r="5" />
+              <circle class="vertex" cx="77" cy="126" r="5" />
+            </svg>
+            
+            <!-- Exact Coordinate Floating Typography Labels -->
+            <div class="radar-label label-top"><span class="label-txt">발음</span><span class="label-val val-lettuce">3.0</span></div>
+            <div class="radar-label label-right-top"><span class="label-txt">억양·강세</span><span class="label-val val-lettuce">2.7</span></div>
+            <div class="radar-label label-right-bottom"><span class="label-txt">문법</span><span class="label-val val-cheese">2.4</span></div>
+            <div class="radar-label label-left-bottom"><span class="label-txt">어휘</span><span class="label-val val-lettuce">2.8</span></div>
+            <div class="radar-label label-left-top"><span class="label-txt">내용 구성</span><span class="label-val val-cheese">2.1</span></div>
+          </div>
+          
+          <div class="radar-legend">
+            <span class="leg-item take1"><span class="leg-dot"></span>1차 시도 (평균 1.6)</span>
+            <span class="leg-item take2"><span class="leg-dot"></span>2차 시도 (평균 2.6) <span class="badge-up">▲+1.0</span></span>
+          </div>
+        </div>
       </div>
+
       <div class="dims" aria-label="진단 영역과 목표 등급">
         <span>발음</span><span>억양·강세</span><span>문법</span><span>어휘</span><span>내용 구성</span>
         <span class="lv">AL → AM → AH</span>
@@ -321,7 +896,7 @@
         <h2>출시 소식을 가장 먼저 받아보세요</h2>
         <p>토스버거는 iOS와 Android 출시를 준비하고 있어요. 준비되면 바로 알려드릴게요.</p>
         <a class="btn btn-primary" href="mailto:support@tosburger.com?subject=토스버거 출시 소식 받기">출시 소식 받기</a>
-        <p class="disc">TOEIC은 ETS의 등록상표이며, 본 앱과 웹사이트는 ETS와 무관합니다.</p>
+        <p class="disc">TOEIC is a registered trademark of ETS. This application and website are not endorsed or approved by ETS.</p>
       </div>
     </div>
   </section>
