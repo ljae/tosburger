@@ -39,12 +39,12 @@
     border-radius: 46px;
     background: linear-gradient(145deg, #37444c, #1f282c); 
     box-shadow: 
-      0 25px 50px -12px rgba(78, 72, 61, 0.25),
-      0 4px 12px -3px rgba(78, 72, 61, 0.15),
+      0 25px 50px -12px rgba(110, 95, 69, 0.25),
+      0 4px 12px -3px rgba(110, 95, 69, 0.15),
       inset 0 1px 1px rgba(255, 255, 255, 0.12),
       inset 0 -1.5px 3px rgba(0, 0, 0, 0.4); 
     border: 1px solid rgba(0, 0, 0, 0.15);
-    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+    transition: transform 0.3s var(--ease-playful);
   }
   .device:hover {
     transform: scale(1.025) translateY(-4px);
@@ -135,7 +135,7 @@
     font-family: "Jua", sans-serif;
     font-size: 0.95rem; 
     padding: 11px 18px; 
-    border-radius: 20px; 
+    border-radius: var(--radius-md); 
     color: var(--ink);
     box-shadow: var(--clay-shadow); 
     border: 1px solid rgba(255, 255, 255, 0.4); 
@@ -144,7 +144,7 @@
     gap: 8px; 
     z-index: 5;
     user-select: none;
-    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: transform 0.2s var(--ease-playful);
   }
   .chip-float:hover {
     transform: scale(1.15) rotate(1.5deg);
@@ -190,11 +190,11 @@
     padding: 32px 20px; 
     box-shadow: var(--card-shadow); 
     background-image: linear-gradient(180deg, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0) 25%);
-    transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.2), box-shadow 0.25s ease;
+    transition: transform 0.25s var(--ease-playful), box-shadow 0.25s ease;
   }
   .stat:hover {
     transform: translateY(-6px) scale(1.02);
-    box-shadow: 0 20px 40px -12px rgba(78, 72, 61, 0.22), inset 0 2px 3px rgba(255,255,255,0.8);
+    box-shadow: 0 20px 40px -12px rgba(110, 95, 69, 0.22), inset 0 2px 3px rgba(255,255,255,0.8);
   }
   .stat .n { 
     font-family: "Jua", sans-serif; 
@@ -219,15 +219,15 @@
     padding: 34px 28px; 
     box-shadow: var(--card-shadow); 
     background-image: linear-gradient(180deg, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0) 20%);
-    transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.15), box-shadow 0.25s ease;
+    transition: transform 0.25s var(--ease-playful), box-shadow 0.25s ease;
   }
   .step:hover {
     transform: translateY(-8px) rotate(0.5deg);
-    box-shadow: 0 22px 44px -14px rgba(78, 72, 61, 0.25), inset 0 2px 3px rgba(255,255,255,0.8);
+    box-shadow: 0 22px 44px -14px rgba(110, 95, 69, 0.25), inset 0 2px 3px rgba(255,255,255,0.8);
   }
   .step-ico { 
     width: 96px; height: 96px; 
-    border-radius: 24px; 
+    border-radius: var(--radius-md); 
     background: var(--paper-hi); 
     object-fit: cover; 
     margin-bottom: 20px; 
@@ -286,21 +286,21 @@
     font-family: "Jua", sans-serif; 
     font-size: 0.95rem; 
     padding: 12px 18px; 
-    border-radius: 16px; 
+    border-radius: var(--radius-sm); 
     color: var(--ink); 
     box-shadow: var(--clay-shadow); 
     border: 1.5px solid rgba(255, 255, 255, 0.2); 
     position: relative;
     user-select: none;
-    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.2);
+    transition: transform 0.2s var(--ease-playful);
   }
   .assemble .blk:hover {
     transform: translateY(-2px) scale(1.05);
   }
   /* Specific claymatic gradients mimicking physical clay */
-  .assemble .blk.bg-onion { background: linear-gradient(180deg, #D6C3E5 0%, var(--onion) 55%, #9F82B5 100%); color: #432E5D; }
-  .assemble .blk.bg-tomato { background: linear-gradient(180deg, #A7CBDD 0%, var(--tomato) 55%, #5D8CA2 100%); color: #1E3747; }
-  .assemble .blk.bg-cheese { background: linear-gradient(180deg, #F9DFBF 0%, var(--cheese) 55%, #D6AC80 100%); color: #583F15; }
+  .assemble .blk.bg-onion { background-image: var(--clay-gloss), var(--clay-onion); color: #432E5D; }
+  .assemble .blk.bg-tomato { background-image: var(--clay-gloss), var(--clay-tomato); color: #1E3747; }
+  .assemble .blk.bg-cheese { background-image: var(--clay-gloss), var(--clay-cheese); color: #583F15; }
   
   .assemble .plus, .assemble .eq { 
     font-family: "Jua", sans-serif; 
@@ -312,12 +312,12 @@
     font-family: "Jua", sans-serif; 
     font-size: 1.1rem; 
     padding: 14px 22px; 
-    border-radius: 18px; 
-    background: linear-gradient(180deg, #A8D19B 0%, var(--lettuce) 55%, #6A8E5C 100%); 
+    border-radius: var(--radius-md); 
+    background-image: var(--clay-gloss), var(--clay-lettuce); 
     color: #273A16; 
     box-shadow: 0 8px 16px rgba(147, 185, 138, 0.3), var(--clay-shadow); 
     border: 1.5px solid rgba(255,255,255,0.25);
-    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.3);
+    transition: transform 0.2s var(--ease-playful);
   }
   .assemble .ans:hover {
     transform: translateY(-3px) rotate(2deg) scale(1.06);
@@ -373,8 +373,8 @@
     position: absolute; 
     top: -24px; right: -28px; 
     background: #FEF4AC; 
-    box-shadow: 4px 8px 18px rgba(78, 72, 61, 0.16); 
-    border: 1px solid rgba(78, 72, 61, 0.08); 
+    box-shadow: 4px 8px 18px rgba(110, 95, 69, 0.16); 
+    border: 1px solid rgba(110, 95, 69, 0.08); 
     padding: 11px 15px; 
     border-radius: 3px 18px 4px 22px / 14px 4px 18px 4px; 
     transform: rotate(6.5deg) scale(0.95); 
@@ -382,7 +382,7 @@
     z-index: 10; 
     width: 116px; 
     user-select: none;
-    transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.3);
+    transition: transform 0.25s var(--ease-playful);
   }
   .memo-note:hover { transform: rotate(3deg) scale(1.06); }
   .memo-text { font-family: "Nanum Pen Script", cursive; font-size: 1.35rem; color: #433D14; line-height: 1.15; }
@@ -576,8 +576,8 @@
     border-radius: clamp(28px, 5vw, 44px); 
     padding: clamp(48px, 8vw, 84px) var(--pad); 
     box-shadow: 
-      0 30px 60px -20px rgba(78, 72, 61, 0.32),
-      0 4px 12px rgba(78, 72, 61, 0.12),
+      0 30px 60px -20px rgba(110, 95, 69, 0.32),
+      0 4px 12px rgba(110, 95, 69, 0.12),
       inset 0 1.5px 2px rgba(255,255,255,0.22); 
     border: 1px solid rgba(255,255,255,0.08);
     position: relative;
@@ -606,7 +606,7 @@
   .final .disc { margin-top: 28px; font-size: .84rem; color: #d4e2da; font-weight: 500; }
 
   /* Smooth Entrance Stagger Reveal */
-  .reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s cubic-bezier(0.215, 0.61, 0.355, 1), transform .7s cubic-bezier(0.215, 0.61, 0.355, 1); }
+  .reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s var(--ease-settle), transform .7s var(--ease-settle); }
   .reveal.in { opacity: 1; transform: none; }
   @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } }
 </style>
