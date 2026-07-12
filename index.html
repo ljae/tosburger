@@ -703,6 +703,25 @@
   .coach-text b { color: var(--ink); font-weight: 700; }
   @media (max-width: 420px) { .qq { display: none; } }
 
+  /* ---- Single-attempt result screen + inline radar on a light clay plate ---- */
+  .result-single { max-width: 620px; margin-inline: auto; }
+  .report-caption b { color: var(--tomato-dark); font-weight: 700; }
+
+  .radar-inline { margin: 24px 0 4px; padding: 16px 20px 10px; background: color-mix(in srgb, var(--paper) 60%, var(--card)); border: 1px solid var(--line-soft); border-radius: var(--radius-sm); }
+  .radar-inline-title { text-align: center; font-family: "Jua", sans-serif; font-size: 1.02rem; color: var(--ink); margin: 0; }
+  .radar-inline-title span { display: block; font-family: "Pretendard", sans-serif; font-weight: 400; font-size: 0.74rem; color: var(--ink-muted); margin-top: 3px; }
+  .radar-inline .radar-chart-container { max-width: 238px; margin: 12px auto 0; }
+  .radar-inline .grid-line { stroke: rgba(78, 72, 61, 0.13); }
+  .radar-inline .spoke { stroke: rgba(78, 72, 61, 0.11); }
+  .radar-inline .poly-take2 { fill: rgba(147, 185, 138, 0.26); stroke: var(--lettuce); stroke-width: 3; filter: none; }
+  .radar-inline .vertex { fill: #fff; stroke: var(--lettuce); stroke-width: 2.5; filter: drop-shadow(0 1px 2px rgba(78, 72, 61, 0.22)); }
+  .radar-inline .radar-label .label-txt { color: var(--ink-soft); }
+  .radar-inline .radar-label .label-val { box-shadow: none; }
+  .radar-inline .val-lettuce { background: var(--sage-soft); color: #43602f; border: 1px solid rgba(147, 185, 138, 0.45); }
+  .radar-inline .val-cheese { background: #FBEAD6; color: var(--cheese-dark); border: 1px solid rgba(201, 138, 82, 0.4); }
+  .radar-inline-avg { text-align: center; margin: 12px 0 0; font-size: 0.9rem; color: var(--ink-soft); }
+  .radar-inline-avg b { font-family: "Jua", sans-serif; color: #43602f; font-size: 1.05rem; }
+
   /* Smooth Entrance Stagger Reveal */
   .reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s var(--ease-settle), transform .7s var(--ease-settle); }
   .reveal.in { opacity: 1; transform: none; }
@@ -926,8 +945,9 @@
         <p>답변을 AI가 전사·채점하고, ETS 4대 지표에 내용 구성까지 5개 영역을 레이더로 진단합니다.</p>
       </div>
       
-      <!-- Showcase Dual Grid: Tablet Frame with Screenshot + Live SVG Radar Chart -->
-      <div class="result-showcase-grid">
+      <!-- Real app result SCREEN — one attempt (the mock test has no retry),
+           the 영역별 진단 레이더 built into the result itself. -->
+      <div class="result-single">
         <!-- Native web report — rebuilt from a real result so every detail is
              readable and inspectable on the web (no squished screenshot). -->
         <div class="report-card reveal" role="group" aria-label="AI 채점 결과 리포트">
@@ -940,18 +960,35 @@
               <div class="report-mascot" aria-hidden="true">🍔</div>
               <p class="report-score"><b>180</b><span>/ 200</span></p>
               <span class="report-level">AM · Advanced Mid</span>
-              <p class="report-caption">2차 재도전 · ETS 4대 지표 + 내용 구성 5개 영역 진단</p>
+              <p class="report-caption">실전 모의고사 · <b>재시도 없이</b> 한 번의 응시로 채점해요</p>
             </div>
 
-            <div class="takes" aria-label="1차·2차 점수 비교">
-              <div class="take">
-                <div class="take-top"><span class="take-name">1차 · 직접 말하기</span><span class="take-score">120<i>/200</i></span></div>
-                <div class="take-bar"><span class="take-fill t1" style="width:60%"></span></div>
+            <div class="radar-inline">
+              <p class="radar-inline-title">영역별 진단 레이더 <span>ⓘ P1(낭독) 추정치 포함 · 5개 영역 0–3점</span></p>
+              <div class="radar-chart-container">
+                <svg class="radar-svg" viewBox="0 0 300 300" aria-hidden="true">
+                  <polygon class="grid-line" points="150,40 255,116 215,239 85,239 45,116" />
+                  <polygon class="grid-line" points="150,77 220,127 193,209 107,209 80,127" />
+                  <polygon class="grid-line" points="150,113 185,139 172,180 128,180 115,139" />
+                  <line class="spoke" x1="150" y1="150" x2="150" y2="40" />
+                  <line class="spoke" x1="150" y1="150" x2="255" y2="116" />
+                  <line class="spoke" x1="150" y1="150" x2="215" y2="239" />
+                  <line class="spoke" x1="150" y1="150" x2="85" y2="239" />
+                  <line class="spoke" x1="150" y1="150" x2="45" y2="116" />
+                  <polygon class="poly-take2" points="150,43 244,119 202,221 90,233 77,126" />
+                  <circle class="vertex" cx="150" cy="43" r="5" />
+                  <circle class="vertex" cx="244" cy="119" r="5" />
+                  <circle class="vertex" cx="202" cy="221" r="5" />
+                  <circle class="vertex" cx="90" cy="233" r="5" />
+                  <circle class="vertex" cx="77" cy="126" r="5" />
+                </svg>
+                <div class="radar-label label-top"><span class="label-txt">발음</span><span class="label-val val-lettuce">3.0</span></div>
+                <div class="radar-label label-right-top"><span class="label-txt">억양·강세</span><span class="label-val val-lettuce">2.7</span></div>
+                <div class="radar-label label-right-bottom"><span class="label-txt">문법</span><span class="label-val val-cheese">2.4</span></div>
+                <div class="radar-label label-left-bottom"><span class="label-txt">어휘</span><span class="label-val val-lettuce">2.8</span></div>
+                <div class="radar-label label-left-top"><span class="label-txt">내용 구성</span><span class="label-val val-cheese">2.1</span></div>
               </div>
-              <div class="take">
-                <div class="take-top"><span class="take-name">2차 · 블록 재조립</span><span class="take-score">180<i>/200</i> <em class="up">▲+60</em></span></div>
-                <div class="take-bar"><span class="take-fill t2" style="width:90%"></span></div>
-              </div>
+              <p class="radar-inline-avg">이번 응시 평균 <b>2.6</b> / 3.0</p>
             </div>
 
             <p class="report-sec-title">문항별 결과 <span>5개 파트 · 11문항</span></p>
@@ -971,61 +1008,9 @@
             </div>
           </div>
         </div>
-
-        <!-- Fully Scaled SVG Live Pentagonal AI Radar Spider Chart -->
-        <div class="radar-card clay-card reveal">
-          <div class="radar-header">
-            <h3>영역별 진단 레이더</h3>
-            <p class="radar-subtitle">ⓘ P1 (낭독) 추정치 포함 · 5개 영역 0-3 Scale</p>
-          </div>
-          
-          <div class="radar-chart-container">
-            <svg class="radar-svg" viewBox="0 0 300 300" aria-hidden="true">
-              <!-- Concentric Background Grid Pentagons -->
-              <!-- Scale 3 (Outer Frame Limit) -->
-              <polygon class="grid-line" points="150,40 255,116 215,239 85,239 45,116" />
-              <!-- Scale 2 (Intermediate) -->
-              <polygon class="grid-line" points="150,77 220,127 193,209 107,209 80,127" />
-              <!-- Scale 1 (Novice core) -->
-              <polygon class="grid-line" points="150,113 185,139 172,180 128,180 115,139" />
-              
-              <!-- 5-axis spokes -->
-              <line class="spoke" x1="150" y1="150" x2="150" y2="40" />
-              <line class="spoke" x1="150" y1="150" x2="255" y2="116" />
-              <line class="spoke" x1="150" y1="150" x2="215" y2="239" />
-              <line class="spoke" x1="150" y1="150" x2="85" y2="239" />
-              <line class="spoke" x1="150" y1="150" x2="45" y2="116" />
-              
-              <!-- Plotted Polygons (Drawn behind vertices) -->
-              <!-- Take 1 Diagnostic: Translucent Taupe Overlay -->
-              <polygon class="poly-take1" points="150,84 220,127 182,194 109,206 108,136" />
-              <!-- Take 2 Redo: Rich Glowing Lettuce Sage -->
-              <polygon class="poly-take2" points="150,43 244,119 202,221 90,233 77,126" />
-              
-              <!-- Vertex Beads (Highlight Dots) for Final redone results -->
-              <circle class="vertex" cx="150" cy="43" r="5" />
-              <circle class="vertex" cx="244" cy="119" r="5" />
-              <circle class="vertex" cx="202" cy="221" r="5" />
-              <circle class="vertex" cx="90" cy="233" r="5" />
-              <circle class="vertex" cx="77" cy="126" r="5" />
-            </svg>
-            
-            <!-- Exact Coordinate Floating Typography Labels -->
-            <div class="radar-label label-top"><span class="label-txt">발음</span><span class="label-val val-lettuce">3.0</span></div>
-            <div class="radar-label label-right-top"><span class="label-txt">억양·강세</span><span class="label-val val-lettuce">2.7</span></div>
-            <div class="radar-label label-right-bottom"><span class="label-txt">문법</span><span class="label-val val-cheese">2.4</span></div>
-            <div class="radar-label label-left-bottom"><span class="label-txt">어휘</span><span class="label-val val-lettuce">2.8</span></div>
-            <div class="radar-label label-left-top"><span class="label-txt">내용 구성</span><span class="label-val val-cheese">2.1</span></div>
-          </div>
-          
-          <div class="radar-legend">
-            <span class="leg-item take1"><span class="leg-dot"></span>1차 시도 (평균 1.6)</span>
-            <span class="leg-item take2"><span class="leg-dot"></span>2차 시도 (평균 2.6) <span class="badge-up">▲+1.0</span></span>
-          </div>
-        </div>
       </div>
 
-      <p class="read-guide reveal">📖 <strong>읽는 법</strong> — 5개 영역을 각각 0–3점으로 채점하고, 1차 시도에서 2차 재도전으로 얼마나 늘었는지 한눈에 보여줘요. 점수가 오를수록 <strong>AL → AM → AH</strong>로 등급이 올라갑니다.</p>
+      <p class="read-guide reveal">📖 <strong>읽는 법</strong> — 5개 영역을 각각 0–3점으로 채점해 강점과 약점을 한눈에 짚어줘요. 점수가 오를수록 <strong>AL → AM → AH</strong>로 등급이 올라갑니다.</p>
 
       <div class="dims" aria-label="진단 영역과 목표 등급">
         <span>발음</span><span>억양·강세</span><span>문법</span><span>어휘</span><span>내용 구성</span>
