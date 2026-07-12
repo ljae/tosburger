@@ -660,6 +660,49 @@
   }
   .read-guide strong { color: #fff; font-weight: 700; }
 
+  /* ---- Native web report card (rebuilt result, fully readable) ---- */
+  .report-card { background: var(--card); border-radius: var(--radius); overflow: hidden; box-shadow: 0 32px 64px -22px rgba(0, 0, 0, 0.55); border: 1px solid rgba(255, 255, 255, 0.08); }
+  .report-chrome { height: 44px; display: flex; align-items: center; gap: 14px; padding: 0 16px; background: var(--paper); border-bottom: 1px solid var(--line); }
+  .report-addr { font-family: "Baloo 2", sans-serif; font-weight: 700; font-size: 0.76rem; color: var(--ink-muted); background: var(--card); border: 1px solid var(--line); padding: 3px 16px; border-radius: var(--radius-pill); }
+  .report-body { padding: clamp(22px, 4vw, 34px); color: var(--ink); }
+  .report-hero { text-align: center; }
+  .report-mascot { font-size: 2.6rem; line-height: 1; }
+  .report-score { font-family: "Jua", sans-serif; margin: 6px 0 0; line-height: 1; }
+  .report-score b { font-size: clamp(3rem, 8vw, 4.2rem); color: var(--ink); font-weight: 400; }
+  .report-score span { font-size: 1.2rem; color: var(--ink-muted); margin-left: 8px; }
+  .report-level { display: inline-block; margin-top: 10px; font-family: "Baloo 2", sans-serif; font-weight: 800; font-size: 0.9rem; letter-spacing: 0.03em; color: #fff; background-image: var(--clay-gloss), var(--clay-lettuce); padding: 5px 16px; border-radius: var(--radius-pill); box-shadow: var(--shadow-sm); }
+  .report-caption { color: var(--ink-soft); font-size: 0.9rem; margin: 12px 0 0; line-height: 1.5; }
+
+  .takes { display: grid; gap: 15px; margin: 26px 0 6px; }
+  .take-top { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 7px; }
+  .take-name { font-weight: 700; color: var(--ink); font-size: 0.96rem; }
+  .take-score { font-family: "Jua", sans-serif; color: var(--ink); font-size: 1.1rem; }
+  .take-score i { font-style: normal; color: var(--ink-muted); font-size: 0.8rem; font-family: "Pretendard", sans-serif; }
+  .take-score .up { font-family: "Baloo 2", sans-serif; font-weight: 800; font-size: 0.76rem; color: #43602f; background: var(--sage-soft); padding: 1px 8px; border-radius: 6px; margin-left: 4px; }
+  .take-bar { height: 13px; border-radius: 999px; background: var(--paper); overflow: hidden; box-shadow: inset 0 1px 2px rgba(110, 95, 69, 0.14); }
+  .take-fill { display: block; height: 100%; border-radius: 999px; }
+  .take-fill.t1 { background: linear-gradient(90deg, var(--ink-muted), #c2b49f); }
+  .take-fill.t2 { background-image: var(--clay-gloss), var(--clay-lettuce); }
+
+  .report-sec-title { margin: 26px 0 12px; font-family: "Jua", sans-serif; font-size: 1.05rem; color: var(--ink); display: flex; align-items: baseline; gap: 10px; }
+  .report-sec-title span { font-family: "Pretendard", sans-serif; font-size: 0.8rem; color: var(--ink-muted); font-weight: 400; }
+  .qgrid { display: grid; gap: 8px; }
+  .qrow { display: grid; grid-template-columns: auto 1fr auto auto; align-items: center; gap: 10px; background: var(--paper); border: 1px solid var(--line-soft); border-radius: var(--radius-sm); padding: 11px 14px; }
+  .qpart { font-family: "Baloo 2", sans-serif; font-weight: 800; font-size: 0.76rem; color: #fff; background: var(--tomato); padding: 2px 8px; border-radius: 6px; }
+  .qname { font-weight: 700; color: var(--ink); font-size: 0.92rem; }
+  .qq { color: var(--ink-muted); font-size: 0.79rem; white-space: nowrap; }
+  .qlv { font-family: "Baloo 2", sans-serif; font-weight: 800; font-size: 0.76rem; padding: 2px 9px; border-radius: 6px; }
+  .lv-ah { background: #E6F3EB; color: #43602f; }
+  .lv-am { background: rgba(127, 169, 192, 0.16); color: var(--tomato-dark); }
+  .lv-al { background: #FFF3D6; color: var(--cheese-dark); }
+
+  .coach { display: flex; gap: 12px; margin-top: 22px; background: color-mix(in srgb, var(--cheese) 16%, var(--card)); border: 1px solid color-mix(in srgb, var(--cheese) 42%, transparent); border-radius: var(--radius-sm); padding: 16px 18px; }
+  .coach-ico { font-size: 1.5rem; line-height: 1; flex: none; }
+  .coach-title { font-weight: 800; color: var(--ink); margin: 0 0 3px; }
+  .coach-text { color: var(--ink-soft); font-size: 0.92rem; line-height: 1.55; margin: 0; }
+  .coach-text b { color: var(--ink); font-weight: 700; }
+  @media (max-width: 420px) { .qq { display: none; } }
+
   /* Smooth Entrance Stagger Reveal */
   .reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s var(--ease-settle), transform .7s var(--ease-settle); }
   .reveal.in { opacity: 1; transform: none; }
@@ -885,17 +928,48 @@
       
       <!-- Showcase Dual Grid: Tablet Frame with Screenshot + Live SVG Radar Chart -->
       <div class="result-showcase-grid">
-        <!-- High-fidelity Browser/Tablet Mockup -->
-        <div class="showcase-device reveal">
-          <div class="tablet-header" aria-hidden="true">
+        <!-- Native web report — rebuilt from a real result so every detail is
+             readable and inspectable on the web (no squished screenshot). -->
+        <div class="report-card reveal" role="group" aria-label="AI 채점 결과 리포트">
+          <div class="report-chrome" aria-hidden="true">
             <div class="tablet-dots"><span></span><span></span><span></span></div>
-            <div class="tablet-address">tosburger.com/app/report/latest</div>
+            <div class="report-addr">나의 성적표 · 실전 모의고사</div>
           </div>
-          <div class="tablet-screen" tabindex="0" role="group" aria-label="AI 채점 결과 리포트 — 스크롤하여 전체 보기">
-            <img src="/assets/shot-result.webp" width="1600" height="852" loading="lazy"
-                 alt="AI 채점 결과 화면 — 200점 만점 점수와 등급, 발음·억양·문법·어휘·내용을 나타내는 레이더(스파이더) 차트, 다음 훈련 포인트가 표시된다">
+          <div class="report-body">
+            <div class="report-hero">
+              <div class="report-mascot" aria-hidden="true">🍔</div>
+              <p class="report-score"><b>180</b><span>/ 200</span></p>
+              <span class="report-level">AM · Advanced Mid</span>
+              <p class="report-caption">2차 재도전 · ETS 4대 지표 + 내용 구성 5개 영역 진단</p>
+            </div>
+
+            <div class="takes" aria-label="1차·2차 점수 비교">
+              <div class="take">
+                <div class="take-top"><span class="take-name">1차 · 직접 말하기</span><span class="take-score">120<i>/200</i></span></div>
+                <div class="take-bar"><span class="take-fill t1" style="width:60%"></span></div>
+              </div>
+              <div class="take">
+                <div class="take-top"><span class="take-name">2차 · 블록 재조립</span><span class="take-score">180<i>/200</i> <em class="up">▲+60</em></span></div>
+                <div class="take-bar"><span class="take-fill t2" style="width:90%"></span></div>
+              </div>
+            </div>
+
+            <p class="report-sec-title">문항별 결과 <span>5개 파트 · 11문항</span></p>
+            <div class="qgrid">
+              <div class="qrow"><span class="qpart">P2</span><span class="qname">사진 묘사</span><span class="qq">Q3 · Q4</span><span class="qlv lv-am">AM</span></div>
+              <div class="qrow"><span class="qpart">P3</span><span class="qname">질문 답변</span><span class="qq">Q5 · Q6 · Q7</span><span class="qlv lv-am">AM</span></div>
+              <div class="qrow"><span class="qpart">P4</span><span class="qname">정보 활용</span><span class="qq">Q8 · Q9 · Q10</span><span class="qlv lv-ah">AH</span></div>
+              <div class="qrow"><span class="qpart">P5</span><span class="qname">의견 제시</span><span class="qq">Q11</span><span class="qlv lv-al">AL</span></div>
+            </div>
+
+            <div class="coach">
+              <div class="coach-ico" aria-hidden="true">🎯</div>
+              <div>
+                <p class="coach-title">다음 훈련 포인트</p>
+                <p class="coach-text"><b>내용 구성(2.1)</b>과 <b>문법(2.4)</b>이 약해요. Part 5 의견 제시에서 <b>도입 · 이유 · 예시 · 마무리</b> 블록을 다시 조립해 연습하세요.</p>
+              </div>
+            </div>
           </div>
-          <div class="scroll-hint" aria-hidden="true">↔ 옆으로 스크롤하여 전체 리포트 보기</div>
         </div>
 
         <!-- Fully Scaled SVG Live Pentagonal AI Radar Spider Chart -->
