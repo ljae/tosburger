@@ -641,13 +641,16 @@
   .pricing-note { text-align: center; color: var(--ink-muted); font-size: 0.86rem; margin-top: 24px; line-height: 1.6; }
   @media (max-width: 620px) { .pricing { grid-template-columns: 1fr; gap: 26px; } }
 
-  /* ---- Scrollable, readable result report ---- */
-  .tablet-screen { max-height: clamp(300px, 52vh, 520px); overflow: auto; scroll-behavior: smooth; -webkit-overflow-scrolling: touch; background: #223441; }
+  /* ---- Scrollable, readable result report ----
+     shot-result is a WIDE 1600x853 report → show it tall & readable and let
+     the user pan horizontally to read the whole thing. */
+  .tablet-screen { overflow: auto; scroll-behavior: smooth; -webkit-overflow-scrolling: touch; background: #223441; }
   .tablet-screen:focus-visible { outline: 3px solid var(--lettuce); outline-offset: -3px; }
-  .tablet-screen img { width: 100%; min-width: 560px; }
-  .tablet-screen::-webkit-scrollbar { width: 10px; height: 10px; }
-  .tablet-screen::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.2); border-radius: 999px; border: 2px solid transparent; background-clip: padding-box; }
-  .tablet-screen::-webkit-scrollbar-track { background: transparent; }
+  .tablet-screen img { height: clamp(440px, 64vh, 640px); width: auto; max-width: none; min-width: 0; display: block; }
+  .tablet-screen::-webkit-scrollbar { width: 11px; height: 11px; }
+  .tablet-screen::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.28); border-radius: 999px; border: 3px solid transparent; background-clip: padding-box; }
+  .tablet-screen::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.42); }
+  .tablet-screen::-webkit-scrollbar-track { background: rgba(0, 0, 0, 0.18); }
   .scroll-hint { text-align: center; font-size: 0.76rem; font-weight: 700; color: rgba(255, 255, 255, 0.55); padding: 9px; background: rgba(0, 0, 0, 0.18); font-family: "Baloo 2", sans-serif; letter-spacing: 0.02em; }
   .read-guide {
     max-width: 62ch; margin: clamp(28px, 5vw, 44px) auto 0; text-align: center;
@@ -892,7 +895,7 @@
             <img src="/assets/shot-result.webp" width="1600" height="852" loading="lazy"
                  alt="AI 채점 결과 화면 — 200점 만점 점수와 등급, 발음·억양·문법·어휘·내용을 나타내는 레이더(스파이더) 차트, 다음 훈련 포인트가 표시된다">
           </div>
-          <div class="scroll-hint" aria-hidden="true">↕ 스크롤하여 전체 리포트 보기</div>
+          <div class="scroll-hint" aria-hidden="true">↔ 옆으로 스크롤하여 전체 리포트 보기</div>
         </div>
 
         <!-- Fully Scaled SVG Live Pentagonal AI Radar Spider Chart -->
