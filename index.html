@@ -605,6 +605,58 @@
   }
   .final .disc { margin-top: 28px; font-size: .84rem; color: #d4e2da; font-weight: 500; }
 
+  /* ---- Philosophy Band ---- */
+  .philo { background: var(--paper); border-block: 1px solid var(--line); }
+  .philo-card { max-width: 62ch; margin-inline: auto; text-align: center; }
+  .philo-card h2 { font-size: clamp(2rem, 5.4vw, 3.2rem); margin: 12px 0 20px; color: var(--ink); }
+  .philo-lead { font-size: clamp(1.12rem, 2.4vw, 1.42rem); color: var(--ink-soft); line-height: 1.65; }
+  .philo-lead strong { color: var(--ink); font-weight: 700; }
+  .philo-kicker { margin-top: 22px; font-size: clamp(1.05rem, 2.2vw, 1.3rem); color: var(--ink-soft); line-height: 1.6; }
+  .philo-kicker .hl-in { color: #4b6139; font-weight: 700; position: relative; white-space: nowrap; z-index: 1; display: inline-block; }
+  .philo-kicker .hl-in::after { content: ""; position: absolute; left: -3%; right: -3%; bottom: 0; height: 13px; background: var(--sage-soft); border-radius: 50% 15% 45% 10% / 40% 60% 30% 70%; z-index: -1; transform: rotate(-1deg); opacity: 0.85; }
+
+  /* ---- Pricing ---- */
+  .pricing { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; max-width: 760px; margin-inline: auto; align-items: stretch; }
+  .plan {
+    position: relative; background: var(--card); border: 1px solid var(--line);
+    border-radius: var(--radius); padding: 34px 30px; box-shadow: var(--card-shadow);
+    background-image: var(--clay-gloss); display: flex; flex-direction: column;
+    transition: transform var(--dur-settle) var(--ease-playful), box-shadow var(--dur-settle) var(--ease-press);
+  }
+  .plan:hover { transform: translateY(-6px); box-shadow: 0 22px 44px -14px rgba(110, 95, 69, 0.22), inset 0 2px 3px rgba(255, 255, 255, 0.8); }
+  .plan-hero { border: 2px solid var(--sage-ink); }
+  .plan-badge {
+    position: absolute; top: -13px; left: 30px; font-family: "Baloo 2", sans-serif;
+    font-weight: 800; font-size: 0.76rem; letter-spacing: 0.05em; color: #fff;
+    background-image: var(--clay-gloss), var(--clay-lettuce); padding: 5px 15px;
+    border-radius: var(--radius-pill); box-shadow: var(--shadow-sm);
+  }
+  .plan-name { font-size: 1.5rem; color: var(--ink); }
+  .plan-price { font-family: "Jua", sans-serif; font-size: clamp(2.4rem, 5vw, 3rem); color: var(--ink); line-height: 1; margin: 10px 0 6px; }
+  .plan-price .per { font-size: 1rem; color: var(--ink-muted); font-family: "Pretendard", sans-serif; margin-left: 5px; }
+  .plan-sub { color: var(--ink-soft); font-size: 0.98rem; line-height: 1.5; }
+  .plan-feat { list-style: none; padding: 0; margin: 22px 0 0; display: grid; gap: 11px; }
+  .plan-feat li { position: relative; padding-left: 27px; color: var(--ink-soft); font-size: 0.98rem; line-height: 1.45; }
+  .plan-feat li::before { content: ""; position: absolute; left: 2px; top: 0.38em; width: 14px; height: 14px; border-radius: 50%; background: linear-gradient(135deg, var(--sage) 0%, var(--sage-ink) 100%); box-shadow: inset 0 1.5px 2px rgba(255, 255, 255, 0.6); }
+  .pricing-note { text-align: center; color: var(--ink-muted); font-size: 0.86rem; margin-top: 24px; line-height: 1.6; }
+  @media (max-width: 620px) { .pricing { grid-template-columns: 1fr; gap: 26px; } }
+
+  /* ---- Scrollable, readable result report ---- */
+  .tablet-screen { max-height: clamp(300px, 52vh, 520px); overflow: auto; scroll-behavior: smooth; -webkit-overflow-scrolling: touch; background: #223441; }
+  .tablet-screen:focus-visible { outline: 3px solid var(--lettuce); outline-offset: -3px; }
+  .tablet-screen img { width: 100%; min-width: 560px; }
+  .tablet-screen::-webkit-scrollbar { width: 10px; height: 10px; }
+  .tablet-screen::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.2); border-radius: 999px; border: 2px solid transparent; background-clip: padding-box; }
+  .tablet-screen::-webkit-scrollbar-track { background: transparent; }
+  .scroll-hint { text-align: center; font-size: 0.76rem; font-weight: 700; color: rgba(255, 255, 255, 0.55); padding: 9px; background: rgba(0, 0, 0, 0.18); font-family: "Baloo 2", sans-serif; letter-spacing: 0.02em; }
+  .read-guide {
+    max-width: 62ch; margin: clamp(28px, 5vw, 44px) auto 0; text-align: center;
+    color: #cddade; font-size: 1rem; line-height: 1.7;
+    background: rgba(255, 255, 255, 0.04); border: 1.5px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--radius-sm); padding: 18px 24px;
+  }
+  .read-guide strong { color: #fff; font-weight: 700; }
+
   /* Smooth Entrance Stagger Reveal */
   .reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s var(--ease-settle), transform .7s var(--ease-settle); }
   .reveal.in { opacity: 1; transform: none; }
@@ -622,6 +674,7 @@
       <a class="hide-sm" href="#method">학습 방법</a>
       <a class="hide-sm" href="#blocks">블록</a>
       <a class="hide-sm" href="#exam">실전·진단</a>
+      <a class="hide-sm" href="#pricing">요금</a>
       <a class="nav-cta" href="mailto:support@tosburger.com?subject=토스버거 출시 소식 받기">출시 소식 받기</a>
     </nav>
   </div>
@@ -645,7 +698,7 @@
         <span class="blob a" aria-hidden="true"></span>
         <span class="blob b" aria-hidden="true"></span>
         <span class="chip-float c1" aria-hidden="true"><span class="pz">🧩</span> 조각 암기</span>
-        <span class="chip-float c2" aria-hidden="true"><span class="pz">🍔</span> 조립 발화</span>
+        <span class="chip-float c2" aria-hidden="true"><span class="pz">🍔</span> 조립 완성</span>
         <div class="device float">
           <img src="/assets/shot-blocks.webp" width="640" height="1312" fetchpriority="high"
                alt="토스버거 앱의 블록 화면 — 파트별 탭과 만능문장 블록 카드, 퍼즐 조각으로 표현된 표현 인벤토리">
@@ -665,6 +718,17 @@
         <div class="stat reveal"><div class="n">4–7</div><div class="l">작동기억이 한 번에<br>다루는 덩어리 수</div></div>
         <div class="stat reveal"><div class="n">11</div><div class="l">토익스피킹 문항 수<br>(5개 파트)</div></div>
         <div class="stat reveal"><div class="n">AL+</div><div class="l">조각·조립 훈련이<br>겨냥하는 목표 등급</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="philo">
+    <div class="wrap">
+      <div class="philo-card reveal">
+        <span class="eyebrow">왜 조각·조립인가</span>
+        <h2>오래 끄는 시험이 아닙니다</h2>
+        <p class="philo-lead">시험 전략을 세우고 신박한 스크립트를 짤 시간은 없어요. <strong>노래처럼 입에 익히고, 한두 달 안에 졸업하세요.</strong></p>
+        <p class="philo-kicker">모두가 똑같은 답을 해도 — <span class="hl-in">입에 익은 듯 자연스러우면 만점</span>을 주는 시험이니까요.</p>
       </div>
     </div>
   </section>
@@ -694,7 +758,7 @@
         <div class="step reveal">
           <img class="step-ico" src="/assets/step-burger.webp" width="96" height="96" alt="" loading="lazy">
           <p class="step-n">STEP 3</p>
-          <h3>조립 발화</h3>
+          <h3>조립 완성</h3>
           <p>외운 조각을 상황에 맞게 조립해 내 답변을 완성해 말합니다. 막힘이 사라집니다.</p>
         </div>
       </div>
@@ -824,10 +888,11 @@
             <div class="tablet-dots"><span></span><span></span><span></span></div>
             <div class="tablet-address">tosburger.com/app/report/latest</div>
           </div>
-          <div class="tablet-screen">
+          <div class="tablet-screen" tabindex="0" role="group" aria-label="AI 채점 결과 리포트 — 스크롤하여 전체 보기">
             <img src="/assets/shot-result.webp" width="1600" height="852" loading="lazy"
                  alt="AI 채점 결과 화면 — 200점 만점 점수와 등급, 발음·억양·문법·어휘·내용을 나타내는 레이더(스파이더) 차트, 다음 훈련 포인트가 표시된다">
           </div>
+          <div class="scroll-hint" aria-hidden="true">↕ 스크롤하여 전체 리포트 보기</div>
         </div>
 
         <!-- Fully Scaled SVG Live Pentagonal AI Radar Spider Chart -->
@@ -883,10 +948,46 @@
         </div>
       </div>
 
+      <p class="read-guide reveal">📖 <strong>읽는 법</strong> — 5개 영역을 각각 0–3점으로 채점하고, 1차 시도에서 2차 재도전으로 얼마나 늘었는지 한눈에 보여줘요. 점수가 오를수록 <strong>AL → AM → AH</strong>로 등급이 올라갑니다.</p>
+
       <div class="dims" aria-label="진단 영역과 목표 등급">
         <span>발음</span><span>억양·강세</span><span>문법</span><span>어휘</span><span>내용 구성</span>
         <span class="lv">AL → AM → AH</span>
       </div>
+    </div>
+  </section>
+
+  <section id="pricing" class="band">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">요금제 · Pricing</span>
+        <h2>딱 두 가지, 군더더기 없이</h2>
+        <p>할인도 세일도 없어요. 필요한 만큼만 고르는 정직한 두 가지 요금제로 준비하세요.</p>
+      </div>
+      <div class="pricing">
+        <div class="plan plan-hero reveal">
+          <span class="plan-badge">추천</span>
+          <h3 class="plan-name">1개월</h3>
+          <p class="plan-price">$10<span class="per">/월</span></p>
+          <p class="plan-sub">매달 자동 갱신 · 오래 끌지 않고 바로 AL</p>
+          <ul class="plan-feat">
+            <li>전 파트 블록 전체 해제</li>
+            <li>무제한 조각 암기 · 블록 섀도잉</li>
+            <li>실전 모의고사 · AI 레이더 진단</li>
+          </ul>
+        </div>
+        <div class="plan reveal">
+          <h3 class="plan-name">3개월</h3>
+          <p class="plan-price">$20<span class="per">/3개월</span></p>
+          <p class="plan-sub">시험 일정이 넉넉할 때, 여유 있게</p>
+          <ul class="plan-feat">
+            <li>1개월과 완전히 동일한 모든 기능</li>
+            <li>3개월 내내 마음 편히 준비</li>
+            <li>그 이상 긴 기간권은 없어요</li>
+          </ul>
+        </div>
+      </div>
+      <p class="pricing-note">가격은 미국 달러(USD) 기준이며, 각 스토어에서 현지 통화로 자동 환산돼 청구돼요. · 앱 내 결제(IAP)</p>
     </div>
   </section>
 
