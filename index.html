@@ -119,6 +119,17 @@
     opacity: 0.9; 
   }
   
+  /* Brand slogan — the 버거움/토스 wordplay, sits between h1 and the lead */
+  .hero p.slogan {
+    font-family: "Jua", sans-serif;
+    font-size: clamp(1.12rem, 2.5vw, 1.45rem);
+    color: var(--ink);
+    line-height: 1.5;
+    margin: 0 0 14px;
+    max-width: 34ch;
+  }
+  .hero p.slogan .pun { color: var(--cheese-dark); }
+  .hero p.slogan .brand { color: var(--tomato-dark); }
   .hero p.lead { font-size: clamp(1.1rem, 2.4vw, 1.35rem); color: var(--ink-soft); max-width: 36ch; line-height: 1.6; }
   .hero .cta { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 32px; }
   .hero .note { margin-top: 24px; }
@@ -805,6 +816,7 @@
       <div>
         <span class="eyebrow">TOEIC Speaking · 토익스피킹</span>
         <h1>외워서 <span class="hl">조립</span>하면,<br>토스는 풀립니다</h1>
+        <p class="slogan">영어 말하기의 <span class="pun">버거</span>움, 이제 가볍게 <span class="pun">토스</span>하세요. <span class="brand">토스버거</span></p>
         <p class="lead">즉흥 영작은 그만. 시험에 실제로 나오는 정형 표현 ‘조각’을 외우고, 상황에 맞게 조립해 말하는 법을 훈련하세요.</p>
         <div class="cta">
           <a class="btn btn-primary" href="#method">학습 방법 보기</a>
