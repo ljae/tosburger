@@ -726,6 +726,58 @@
   .reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s var(--ease-settle), transform .7s var(--ease-settle); }
   .reveal.in { opacity: 1; transform: none; }
   @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } }
+  /* ---- Store badges (iOS live · Play coming soon) ---- */
+  .store-badges { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin-top: 22px; }
+  .badge-store {
+    display: inline-flex; align-items: center; gap: 11px;
+    padding: 11px 18px 11px 16px; border-radius: 16px;
+    background: linear-gradient(160deg, #4a443a, #322e28);
+    color: #FDF9F2; text-decoration: none; border: 1px solid rgba(0,0,0,.28);
+    box-shadow: 0 8px 18px -8px rgba(78,72,61,.55), inset 0 1px 1px rgba(255,255,255,.16);
+    transition: transform .22s var(--ease-playful), box-shadow .22s ease;
+  }
+  .badge-store:hover { transform: translateY(-2px) scale(1.02); box-shadow: 0 14px 26px -10px rgba(78,72,61,.6), inset 0 1px 1px rgba(255,255,255,.2); }
+  .badge-store:active { transform: translateY(1px) scale(.99); }
+  .badge-store svg { flex: none; }
+  .badge-store .bs-txt { display: flex; flex-direction: column; line-height: 1.12; text-align: left; }
+  .badge-store .bs-sm { font-size: .68rem; letter-spacing: .02em; opacity: .82; }
+  .badge-store .bs-lg { font-family: "Baloo 2", sans-serif; font-weight: 700; font-size: 1.06rem; }
+  /* Play: not launched yet — visibly inert, not a dead link */
+  .badge-store.soon {
+    background: var(--paper); color: var(--ink-soft);
+    border: 1px dashed rgba(78,72,61,.28); box-shadow: none; cursor: default;
+  }
+  .badge-store.soon:hover { transform: none; box-shadow: none; }
+  .badge-store.soon .bs-lg { color: var(--ink); }
+
+  /* ---- Proof: real score report ---- */
+  .proof-grid { display: grid; grid-template-columns: minmax(0, .92fr) minmax(0, 1fr); gap: clamp(28px, 5vw, 64px); align-items: center; }
+  @media (max-width: 860px) { .proof-grid { grid-template-columns: 1fr; } }
+  .proof-shot {
+    position: relative; background: var(--paper-hi); padding: 14px; border-radius: 20px;
+    border: 1px solid var(--line); rotate: -1.4deg;
+    box-shadow: 0 22px 44px -20px rgba(78,72,61,.42), inset 0 1px 1px rgba(255,255,255,.7);
+  }
+  .proof-shot img { display: block; width: 100%; height: auto; border-radius: 12px; }
+  .proof-shot::before {
+    content: "실제 성적표"; position: absolute; top: -14px; left: 50%; translate: -50% 0;
+    font-family: "Nanum Pen Script", cursive; font-size: 1.15rem; color: var(--ink);
+    background: var(--mark); padding: 2px 16px; border-radius: 6px; rotate: -1.5deg;
+    box-shadow: 0 4px 10px -5px rgba(78,72,61,.5);
+  }
+  .delta-row { display: flex; flex-wrap: wrap; gap: 12px; margin: 22px 0 6px; }
+  .delta {
+    flex: 1 1 128px; background: var(--card); border: 1px solid var(--line);
+    border-radius: var(--radius-sm); padding: 14px 16px;
+    box-shadow: 0 8px 18px -14px rgba(78,72,61,.5);
+  }
+  .delta .dn { font-family: "Baloo 2", sans-serif; font-weight: 800; font-size: 1.72rem; color: var(--onion-dark); line-height: 1.1; }
+  .delta .dl { font-size: .84rem; color: var(--ink-soft); margin-top: 3px; }
+  .grade-jump { display: inline-flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-top: 6px; }
+  .grade-chip { font-family: "Baloo 2", sans-serif; font-weight: 800; padding: 5px 13px; border-radius: 999px; font-size: .95rem; }
+  .grade-chip.from { background: var(--paper); color: var(--ink-soft); border: 1px solid var(--line); }
+  .grade-chip.to { background: var(--lettuce); color: #27351f; box-shadow: 0 6px 14px -8px rgba(147,185,138,.9); }
+  .proof-note { font-size: .82rem; color: var(--ink-muted); margin-top: 18px; line-height: 1.6; }
 </style>
 <noscript><style>.reveal { opacity: 1 !important; transform: none !important; }</style></noscript>
 </head>
@@ -736,11 +788,12 @@
   <div class="wrap nav-in">
     <a class="brand" href="/"><img src="/assets/logo.webp" width="36" height="36" alt="토스버거 로고" fetchpriority="high">토스버거</a>
     <nav class="nav-links" aria-label="주요">
+      <a class="hide-sm" href="#proof">실제 성적</a>
       <a class="hide-sm" href="#method">학습 방법</a>
       <a class="hide-sm" href="#blocks">블록</a>
       <a class="hide-sm" href="#exam">실전·진단</a>
       <a class="hide-sm" href="#pricing">요금</a>
-      <a class="nav-cta" href="mailto:support@tosburger.com?subject=토스버거 출시 소식 받기">출시 소식 받기</a>
+      <a class="nav-cta" href="https://apps.apple.com/kr/app/id6788353969">App Store에서 받기</a>
     </nav>
   </div>
 </header>
@@ -755,9 +808,20 @@
         <p class="lead">즉흥 영작은 그만. 시험에 실제로 나오는 정형 표현 ‘조각’을 외우고, 상황에 맞게 조립해 말하는 법을 훈련하세요.</p>
         <div class="cta">
           <a class="btn btn-primary" href="#method">학습 방법 보기</a>
-          <a class="btn btn-ghost" href="#exam">실전·AI 진단</a>
+          <a class="btn btn-ghost" href="#proof">실제 성적 보기</a>
         </div>
-        <p class="note"><span class="pill"><span class="dot"></span>iOS &amp; Android 출시 준비 중</span></p>
+        <div class="store-badges">
+          <a class="badge-store" href="https://apps.apple.com/kr/app/id6788353969"
+             aria-label="App Store에서 토스버거 다운로드">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.36 12.78c.02-2.2 1.8-3.26 1.88-3.31-1.02-1.5-2.61-1.7-3.18-1.72-1.35-.14-2.64.8-3.33.8-.69 0-1.75-.78-2.87-.76-1.48.02-2.84.86-3.6 2.18-1.53 2.66-.39 6.6 1.1 8.76.73 1.06 1.6 2.25 2.74 2.2 1.1-.04 1.52-.71 2.85-.71 1.33 0 1.7.71 2.87.69 1.18-.02 1.93-1.08 2.65-2.14.84-1.23 1.18-2.42 1.2-2.48-.03-.01-2.3-.88-2.32-3.5zM14.2 6.02c.6-.74 1.01-1.75.9-2.77-.87.04-1.94.59-2.57 1.31-.56.64-1.06 1.68-.93 2.67.97.08 1.98-.49 2.6-1.21z"/></svg>
+            <span class="bs-txt"><span class="bs-sm">지금 다운로드</span><span class="bs-lg">App Store</span></span>
+          </a>
+          <span class="badge-store soon" aria-label="Google Play 출시 준비 중">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3.6 2.3c-.24.25-.38.64-.38 1.15v17.1c0 .51.14.9.38 1.15l.06.06 9.58-9.58v-.23L3.66 2.24l-.06.06zm12.85 6.4L13.9 10.3v.01L4.32 1.96l.14-.08 11.99 6.82zM4.46 22.12l9.44-9.44 2.55 2.55-11.99 6.82-.14-.07zm12.9-6.34l-2.7-2.7 2.7-2.7 3.13 1.78c.9.51.9 1.33 0 1.84l-3.13 1.78z"/></svg>
+            <span class="bs-txt"><span class="bs-sm">Google Play</span><span class="bs-lg">출시 준비 중</span></span>
+          </span>
+        </div>
+        <p class="note"><span class="pill"><span class="dot"></span>iOS 출시 완료 · Android 곧 출시</span></p>
       </div>
       <div class="fig">
         <span class="blob a" aria-hidden="true"></span>
@@ -765,7 +829,7 @@
         <span class="chip-float c1" aria-hidden="true"><span class="pz">🧩</span> 조각 암기</span>
         <span class="chip-float c2" aria-hidden="true"><span class="pz">🍔</span> 조립 완성</span>
         <div class="device float">
-          <img src="/assets/shot-blocks.webp" width="640" height="1312" fetchpriority="high"
+          <img src="/assets/shot-blocks.webp" width="640" height="1392" fetchpriority="high"
                alt="토스버거 앱의 블록 화면 — 파트별 탭과 만능문장 블록 카드, 퍼즐 조각으로 표현된 표현 인벤토리">
         </div>
       </div>
@@ -794,6 +858,51 @@
         <h2>오래 끄는 시험이 아닙니다</h2>
         <p class="philo-lead">시험 전략을 세우고 신박한 스크립트를 짤 시간은 없어요. <strong>노래처럼 입에 익히고, 한두 달 안에 졸업하세요.</strong></p>
         <p class="philo-kicker">모두가 똑같은 답을 해도 — <span class="hl-in">입에 익은 듯 자연스러우면 만점</span>을 주는 시험이니까요.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="proof" class="band">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">결과로 증명합니다</span>
+        <h2>8일 만에 <span class="hl">IM3 → AL</span></h2>
+        <p>조각을 외우고 조립하는 훈련만으로, 재응시 한 번에 등급이 올라갔습니다.</p>
+      </div>
+
+      <div class="proof-grid">
+        <div class="proof-shot reveal">
+          <img src="/assets/proof-score.webp" width="900" height="586" loading="lazy"
+               alt="실제 토익스피킹 성적 조회 화면 — 2026년 6월 13일 Intermediate Mid 3(130점), 8일 뒤인 6월 21일 Advanced Low(160점). 수험번호는 가려져 있다.">
+        </div>
+
+        <div class="reveal">
+          <span class="tag">Real Score Report</span>
+          <h2 style="margin-top:10px;">130점에서 160점으로</h2>
+          <p class="lead">2026년 6월 13일 <strong>Intermediate Mid 3 (130점)</strong>.
+             그리고 8일 뒤인 6월 21일, 같은 응시자가 <strong>Advanced Low (160점)</strong>.
+             그 사이에 한 건 새 스크립트를 짠 게 아니라, <strong>이미 있는 조각을 입에 붙이고 조립한 것</strong>뿐이었어요.</p>
+
+          <div class="grade-jump">
+            <span class="grade-chip from">IM3 · 130</span>
+            <span aria-hidden="true" style="color:var(--ink-muted);font-weight:800;">→</span>
+            <span class="grade-chip to">AL · 160</span>
+          </div>
+
+          <div class="delta-row">
+            <div class="delta"><div class="dn">8일</div><div class="dl">두 시험 사이<br>실제 간격</div></div>
+            <div class="delta"><div class="dn">+30</div><div class="dl">Speaking Score<br>상승 폭</div></div>
+            <div class="delta"><div class="dn">1등급</div><div class="dl">IM3 → AL<br>등급 상승</div></div>
+          </div>
+
+          <!-- 실제 사용자 후기를 받으면 이 자리에 그대로 넣으세요.
+               지어낸 후기는 넣지 않았습니다 (아래 성적표만 실제 기록입니다). -->
+
+          <p class="proof-note">
+            위 이미지는 실제 성적 조회 화면을 그대로 캡처한 것이며, 개인정보 보호를 위해 수험번호만 가렸습니다.
+            학습 효과는 응시자의 기존 실력·학습량에 따라 다를 수 있으며, 특정 점수를 보장하지 않습니다.
+          </p>
+        </div>
       </div>
     </div>
   </section>
@@ -834,8 +943,8 @@
     <div class="wrap feature">
       <div class="fig">
         <div class="device">
-          <img src="/assets/shot-question.webp" width="640" height="1312" loading="lazy"
-               alt="사진 묘사 문제 화면 — 클레이 회의실 그림과 함께, 도입·사람·사물·마무리 블록으로 조립된 모범답변">
+          <img src="/assets/shot-question.webp" width="640" height="1392" loading="lazy"
+               alt="정기시험 복원 세트의 모범답안 화면 — 클레이 화원 그림 문제와 함께, 도입·인물·사물·마무리 블록으로 조립된 답변">
         </div>
       </div>
       <div>
@@ -869,7 +978,7 @@
     <div class="wrap feature rev">
       <div class="fig">
         <div class="device">
-          <img src="/assets/shot-shadowing.webp" width="640" height="1312" loading="lazy"
+          <img src="/assets/shot-shadowing.webp" width="640" height="1392" loading="lazy"
                alt="블록 섀도잉 드릴 화면 — 억양 곡선과 단어별 한글 발음 표기, 손글씨 메모 힌트가 함께 표시된다">
         </div>
         
@@ -923,7 +1032,7 @@
       <div class="feature">
         <div class="fig">
           <div class="device">
-            <img src="/assets/shot-exam.webp" width="640" height="1275" loading="lazy"
+            <img src="/assets/shot-exam.webp" width="640" height="1392" loading="lazy"
                  alt="실전 모의고사 화면 — 어두운 시험 모드에서 GET READY 준비 타이머와 클레이 그림 문제 카드가 보인다">
           </div>
         </div>
@@ -1056,9 +1165,20 @@
   <section>
     <div class="wrap">
       <div class="final reveal">
-        <h2>출시 소식을 가장 먼저 받아보세요</h2>
-        <p>토스버거는 iOS와 Android 출시를 준비하고 있어요. 준비되면 바로 알려드릴게요.</p>
-        <a class="btn btn-primary" href="mailto:support@tosburger.com?subject=토스버거 출시 소식 받기">출시 소식 받기</a>
+        <h2>지금 App Store에서 받으세요</h2>
+        <p>토스버거는 iOS에 출시됐어요. Android는 출시 준비 중이며, 준비되면 바로 알려드릴게요.</p>
+        <div class="store-badges" style="justify-content:center;">
+          <a class="badge-store" href="https://apps.apple.com/kr/app/id6788353969"
+             aria-label="App Store에서 토스버거 다운로드">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.36 12.78c.02-2.2 1.8-3.26 1.88-3.31-1.02-1.5-2.61-1.7-3.18-1.72-1.35-.14-2.64.8-3.33.8-.69 0-1.75-.78-2.87-.76-1.48.02-2.84.86-3.6 2.18-1.53 2.66-.39 6.6 1.1 8.76.73 1.06 1.6 2.25 2.74 2.2 1.1-.04 1.52-.71 2.85-.71 1.33 0 1.7.71 2.87.69 1.18-.02 1.93-1.08 2.65-2.14.84-1.23 1.18-2.42 1.2-2.48-.03-.01-2.3-.88-2.32-3.5zM14.2 6.02c.6-.74 1.01-1.75.9-2.77-.87.04-1.94.59-2.57 1.31-.56.64-1.06 1.68-.93 2.67.97.08 1.98-.49 2.6-1.21z"/></svg>
+            <span class="bs-txt"><span class="bs-sm">지금 다운로드</span><span class="bs-lg">App Store</span></span>
+          </a>
+          <a class="badge-store soon" href="mailto:support@tosburger.com?subject=토스버거 Android 출시 소식 받기"
+             aria-label="Android 출시 소식 받기">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3.6 2.3c-.24.25-.38.64-.38 1.15v17.1c0 .51.14.9.38 1.15l.06.06 9.58-9.58v-.23L3.66 2.24l-.06.06zm12.85 6.4L13.9 10.3v.01L4.32 1.96l.14-.08 11.99 6.82zM4.46 22.12l9.44-9.44 2.55 2.55-11.99 6.82-.14-.07zm12.9-6.34l-2.7-2.7 2.7-2.7 3.13 1.78c.9.51.9 1.33 0 1.84l-3.13 1.78z"/></svg>
+            <span class="bs-txt"><span class="bs-sm">Android</span><span class="bs-lg">출시 알림 받기</span></span>
+          </a>
+        </div>
         <p class="disc">TOEIC is a registered trademark of ETS. This application and website are not endorsed or approved by ETS.</p>
       </div>
     </div>
