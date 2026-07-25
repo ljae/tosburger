@@ -30,20 +30,21 @@
   .sec-head h2 { font-size: clamp(2rem, 5vw, 3.1rem); margin: 12px 0 16px; color: var(--ink); }
   .sec-head p { color: var(--ink-soft); font-size: 1.1rem; line-height: 1.6; }
 
-  /* ---- Realistic Glass-Face Phone Mockup ---- */
+  /* ---- Clay Device Mockup ---- */
   .device { 
     position: relative; 
     margin-inline: auto; 
     width: min(310px, 78vw); 
     padding: 11px; 
     border-radius: 46px;
-    background: linear-gradient(145deg, #37444c, #1f282c); 
+    background: var(--paper-hi); 
+    background-image: var(--clay-gloss);
     box-shadow: 
       0 25px 50px -12px rgba(110, 95, 69, 0.25),
-      0 4px 12px -3px rgba(110, 95, 69, 0.15),
-      inset 0 1px 1px rgba(255, 255, 255, 0.12),
-      inset 0 -1.5px 3px rgba(0, 0, 0, 0.4); 
-    border: 1px solid rgba(0, 0, 0, 0.15);
+      0 8px 24px -4px rgba(110, 95, 69, 0.15),
+      inset 0 2px 3px rgba(255, 255, 255, 0.8),
+      inset 0 -3px 4px rgba(110, 95, 69, 0.08); 
+    border: 1px solid rgba(110, 95, 69, 0.1);
     transition: transform 0.3s var(--ease-playful);
   }
   .device:hover {
@@ -59,9 +60,9 @@
     width: 85px; 
     height: 16px; 
     border-radius: 20px; 
-    background: #0f1418; 
+    background: var(--ink-soft); 
     z-index: 10; 
-    box-shadow: inset 0 -1px 2px rgba(255,255,255,0.05); 
+    box-shadow: inset 0 2px 3px rgba(0,0,0,0.1), 0 1px 1px rgba(255,255,255,0.5); 
   }
   /* Glare Sweep Overlay */
   .device::after {
@@ -69,7 +70,7 @@
     position: absolute;
     inset: 11px;
     border-radius: 35px;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.02) 40%, transparent 40.1%);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0) 40%, transparent 40.1%);
     pointer-events: none;
     z-index: 8;
   }
@@ -79,7 +80,7 @@
     border-radius: 35px; 
     display: block; 
     background: var(--cream);
-    border: 1.5px solid rgba(0, 0, 0, 0.1);
+    border: 1.5px solid rgba(110, 95, 69, 0.1);
   }
   .device.float { animation: float-device 7s ease-in-out infinite; }
   
@@ -404,7 +405,8 @@
   .stage { 
     position: relative; 
     color: #eaf1f2; 
-    background: linear-gradient(168deg, var(--slate-deep) 0%, var(--slate-abyss) 62%, #1b2e3a 100%); 
+    background: var(--slate-deep);
+    background-image: var(--clay-gloss), linear-gradient(168deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 60%);
     overflow: hidden; 
     border-top: 1px solid rgba(255,255,255,0.06);
     border-bottom: 1px solid rgba(255,255,255,0.06);
@@ -426,8 +428,21 @@
   .stage p.lead { color: #cddade; }
   .stage .feature { margin-bottom: clamp(48px, 8vw, 92px); }
   .stage .device { 
-    background: linear-gradient(155deg, #1d262d, #0f1519); 
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.45);
+    background: var(--paper-hi); 
+    background-image: var(--clay-gloss);
+    box-shadow: 
+      0 25px 50px -12px rgba(0, 0, 0, 0.45),
+      0 8px 24px -4px rgba(0, 0, 0, 0.25),
+      inset 0 2px 3px rgba(255, 255, 255, 0.15),
+      inset 0 -3px 4px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  .stage .device::before {
+    background: var(--card);
+    box-shadow: inset 0 2px 3px rgba(0,0,0,0.3), 0 1px 1px rgba(255,255,255,0.1);
+  }
+  .stage .device::after {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0) 40%, transparent 40.1%);
   }
   .stage .feature li { color: #d6e2e5; }
   .stage .feature li svg { filter: drop-shadow(0 1.5px 2px rgba(255,255,255,0.1)); }
@@ -563,7 +578,7 @@
     box-shadow: 0 4px 12px rgba(0,0,0,0.15), inset 0 1px 2px rgba(255,255,255,0.05);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    transition: all 0.2s ease;
+    transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
   }
   .dims span:not(.lv):hover {
     background: rgba(255, 255, 255, 0.08);
@@ -582,14 +597,16 @@
   /* ---- Final Call To Action Styling ---- */
   .final { 
     text-align: center; 
-    background: linear-gradient(145deg, #7FA26C 0%, #465E36 100%); 
+    background: #5A7B4C; 
+    background-image: var(--clay-gloss), linear-gradient(145deg, rgba(255,255,255,0.1) 0%, rgba(0,0,0,0.1) 100%);
     color: #fff; 
     border-radius: clamp(28px, 5vw, 44px); 
     padding: clamp(48px, 8vw, 84px) var(--pad); 
     box-shadow: 
       0 30px 60px -20px rgba(110, 95, 69, 0.32),
       0 4px 12px rgba(110, 95, 69, 0.12),
-      inset 0 1.5px 2px rgba(255,255,255,0.22); 
+      inset 0 1.5px 2px rgba(255,255,255,0.22),
+      inset 0 -3px 4px rgba(0,0,0,0.15); 
     border: 1px solid rgba(255,255,255,0.08);
     position: relative;
     overflow: hidden;
