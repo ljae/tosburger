@@ -1,42 +1,25 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="zh-Hant">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<script>
-/* Language routing — static Pages has no server-side geo, so we route by the
-   browser's language (the standard static-site proxy for visitor location).
-   A stored preference (set by the nav switcher) always wins; crawlers with
-   en/ko locales are never redirected, so the ko canonical stays indexable. */
-(function () {
-  try {
-    var p = localStorage.getItem('tb-lang');
-    if (p === 'ja') { location.replace('/ja/'); return; }
-    if (p === 'zh') { location.replace('/zh-hant/'); return; }
-    if (p !== null) return; // 'ko' — explicit choice, stay
-    var l = ((navigator.languages && navigator.languages[0]) || navigator.language || '').toLowerCase();
-    if (l.indexOf('ja') === 0) location.replace('/ja/');
-    else if (l.indexOf('zh') === 0) location.replace('/zh-hant/');
-  } catch (e) {}
-})();
-</script>
-<title>토스버거 — 토익스피킹, 외워서 조립하면 됩니다</title>
-<meta name="description" content="토스버거는 시험에 나오는 정형 표현 ‘조각’을 외우고 조립해 말하는 TOEIC Speaking 훈련 앱입니다. 블록 섀도잉, 실전 모의고사, ETS 기준 AI 레이더 진단까지.">
+<title>TOSS BURGER — 用積木記憶與組裝,完成多益口說</title>
+<meta name="description" content="TOSS BURGER 是把考試常見定型句「積木」記起來、再組裝開口的 TOEIC 口說訓練 App。積木跟讀、實戰模擬測驗、ETS 標準 AI 雷達診斷,一次到位。">
 <meta name="color-scheme" content="light dark">
 <meta name="theme-color" content="#e9e0cf" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#1b2b33" media="(prefers-color-scheme: dark)">
-<meta property="og:title" content="토스버거 — 토익스피킹 조각·조립 훈련">
-<meta property="og:description" content="즉흥 영작은 그만. 정형 표현을 외우고 조립해 말하세요. 블록 섀도잉 · 실전 모의고사 · AI 레이더 진단.">
+<meta property="og:title" content="TOSS BURGER — 多益口說「記憶×組裝」訓練">
+<meta property="og:description" content="別再臨場造句。把定型句記起來、組裝著說。積木跟讀 · 模擬測驗 · AI 雷達診斷。">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://tosburger.com/">
+<meta property="og:url" content="https://tosburger.com/zh-hant/">
 <meta property="og:image" content="https://tosburger.com/assets/og.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:locale" content="ko_KR">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:locale:alternate" content="ko_KR">
 <meta property="og:locale:alternate" content="ja_JP">
-<meta property="og:locale:alternate" content="zh_TW">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="canonical" href="https://tosburger.com/">
+<link rel="canonical" href="https://tosburger.com/zh-hant/">
 <link rel="alternate" hreflang="ko" href="https://tosburger.com/">
 <link rel="alternate" hreflang="ja" href="https://tosburger.com/ja/">
 <link rel="alternate" hreflang="zh-Hant" href="https://tosburger.com/zh-hant/">
@@ -58,60 +41,60 @@
       "@type": "WebSite",
       "@id": "https://tosburger.com/#website",
       "url": "https://tosburger.com/",
-      "name": "토스버거",
-      "inLanguage": "ko",
+      "name": "TOSS BURGER",
+      "inLanguage": "zh-Hant",
       "publisher": { "@id": "https://tosburger.com/#org" }
     },
     {
       "@type": "MobileApplication",
       "@id": "https://tosburger.com/#app",
-      "name": "토스버거 — 토익스피킹 템플릿 훈련",
+      "name": "TOSS BURGER — 多益口說範本訓練",
       "alternateName": "TOSS BURGER",
       "operatingSystem": "iOS",
       "applicationCategory": "EducationApplication",
-      "description": "시험에 반복 출제되는 정형 표현 ‘블록’을 외우고 조립해 말하는 TOEIC Speaking 훈련 앱. 낭독 → 조각 암기 → 조립 발화 3단계, 실전 모의고사와 AI 채점 제공.",
-      "installUrl": "https://apps.apple.com/kr/app/id6788353969",
+      "description": "把考試中一再出現的定型句「積木」記起來、組裝開口的 TOEIC 口說訓練 App。朗讀 → 積木記憶 → 組裝開口三步驟,附實戰模擬測驗與 AI 評分。",
+      "installUrl": "https://apps.apple.com/app/id6788353969",
       "inLanguage": ["ko", "ja", "zh-Hant"],
       "publisher": { "@id": "https://tosburger.com/#org" },
       "offers": [
-        { "@type": "Offer", "name": "토스버거 Pro 1개월 (자동 갱신)", "price": "10", "priceCurrency": "USD" },
-        { "@type": "Offer", "name": "토스버거 Pro 3개월 (자동 갱신)", "price": "20", "priceCurrency": "USD" }
+        { "@type": "Offer", "name": "TOSS BURGER Pro 1 個月(自動續訂)", "price": "10", "priceCurrency": "USD" },
+        { "@type": "Offer", "name": "TOSS BURGER Pro 3 個月(自動續訂)", "price": "20", "priceCurrency": "USD" }
       ]
     },
     {
       "@type": "FAQPage",
       "@id": "https://tosburger.com/#faq",
-      "inLanguage": "ko",
+      "inLanguage": "zh-Hant",
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "토스버거는 어떤 앱인가요?",
-          "acceptedAnswer": { "@type": "Answer", "text": "토스버거는 TOEIC Speaking(토익스피킹) 훈련 앱입니다. 시험에 반복 출제되는 정형 표현 ‘블록’을 외우고 상황에 맞게 조립해 말하는 방식으로, 낭독 → 조각 암기 → 조립 발화 3단계로 연습합니다." }
+          "name": "TOSS BURGER 是什麼樣的 App?",
+          "acceptedAnswer": { "@type": "Answer", "text": "TOSS BURGER 是 TOEIC 口說訓練 App。把考試中一再出現的定型句「積木」記起來、依情境組裝開口,以朗讀 → 積木記憶 → 組裝開口三步驟練習。" }
         },
         {
           "@type": "Question",
-          "name": "왜 즉흥 영작 대신 암기·조립인가요?",
-          "acceptedAnswer": { "@type": "Answer", "text": "사람의 작동기억은 한 번에 4–7개의 덩어리만 다룰 수 있어, 시험장에서 문장을 새로 만들면 막히기 쉽습니다. 미리 외운 표현 블록을 꺼내 조립하면 막힘 없이 답할 수 있습니다." }
+          "name": "為什麼是記憶×組裝,而不是臨場造句?",
+          "acceptedAnswer": { "@type": "Answer", "text": "人的工作記憶一次只能處理 4〜7 個組塊,在考場上臨時造句很容易卡住。取出事先記好的句型積木來組裝,就能流暢作答。" }
         },
         {
           "@type": "Question",
-          "name": "무료로 사용할 수 있나요?",
-          "acceptedAnswer": { "@type": "Answer", "text": "무료로 학습을 시작할 수 있고, AI 채점은 로그인 후 이용할 수 있습니다. 전체 블록 해제와 무제한 연습, AI 채점은 Pro 구독(1개월 US$10 / 3개월 US$20, 앱 내 결제)으로 제공됩니다." }
+          "name": "可以免費使用嗎?",
+          "acceptedAnswer": { "@type": "Answer", "text": "可以免費開始學習,AI 評分需登入後使用。解鎖全部積木、無限次練習與 AI 評分由 Pro 訂閱提供(1 個月 US$10 / 3 個月 US$20,App 內購買)。" }
         },
         {
           "@type": "Question",
-          "name": "AI 채점은 어떻게 이루어지나요?",
-          "acceptedAnswer": { "@type": "Answer", "text": "실전 모의고사에서 답변을 녹음하면 AI가 전사·채점하고, ETS 4대 지표(발음·억양과 강세·문법·어휘)에 내용 구성을 더한 5개 영역을 0–3점 레이더로 진단해 약점을 짚어줍니다." }
+          "name": "AI 評分是如何進行的?",
+          "acceptedAnswer": { "@type": "Answer", "text": "在實戰模擬測驗錄下回答後,AI 會逐字轉寫並評分,以 ETS 四大指標(發音・語調與重音・文法・字彙)加上內容結構共 5 個領域,用 0–3 分雷達圖診斷並指出弱點。" }
         },
         {
           "@type": "Question",
-          "name": "얼마나 빨리 점수를 올릴 수 있나요?",
-          "acceptedAnswer": { "@type": "Answer", "text": "실제 사례로, 한 응시자가 앱 사용 8일 만에 IM3(130점)에서 AL(160점)로 올랐습니다. 다만 학습 효과는 기존 실력과 학습량에 따라 다르며, 특정 점수를 보장하지는 않습니다." }
+          "name": "多快能提升分數?",
+          "acceptedAnswer": { "@type": "Answer", "text": "實例:一位考生使用 App 僅 8 天,就從 IM3(130 分)升到 AL(160 分)。但學習效果因原有實力與學習量而異,不保證特定分數。" }
         },
         {
           "@type": "Question",
-          "name": "어떤 기기에서 쓸 수 있나요?",
-          "acceptedAnswer": { "@type": "Answer", "text": "iOS(App Store)에 출시되어 있습니다. Android는 출시 준비 중이며, 이메일로 출시 알림을 신청할 수 있습니다." }
+          "name": "可以在哪些裝置上使用?",
+          "acceptedAnswer": { "@type": "Answer", "text": "已於 iOS(App Store)上架。Android 版準備中,可透過電子郵件訂閱上架通知。" }
         }
       ]
     }
@@ -927,7 +910,7 @@
   }
   .proof-shot img { display: block; width: 100%; height: auto; border-radius: 12px; }
   .proof-shot::before {
-    content: "실제 성적표"; position: absolute; top: -14px; left: 50%; translate: -50% 0;
+    content: "實際成績單"; position: absolute; top: -14px; left: 50%; translate: -50% 0;
     font-family: "Nanum Pen Script", cursive; font-size: 1.15rem; color: var(--ink);
     background: var(--mark); padding: 2px 16px; border-radius: 6px; rotate: -1.5deg;
     box-shadow: 0 4px 10px -5px rgba(78,72,61,.5);
@@ -949,23 +932,23 @@
 <noscript><style>.reveal { opacity: 1 !important; transform: none !important; }</style></noscript>
 </head>
 <body>
-<a class="skip" href="#main">본문으로 건너뛰기</a>
+<a class="skip" href="#main">跳至主要內容</a>
 
 <header class="nav">
   <div class="wrap nav-in">
-    <a class="brand" href="/"><img src="/assets/logo.webp" width="36" height="36" alt="토스버거 로고" fetchpriority="high">토스버거</a>
-    <nav class="nav-links" aria-label="주요">
-      <a class="hide-sm" href="#proof">실제 성적</a>
-      <a class="hide-sm" href="#method">학습 방법</a>
-      <a class="hide-sm" href="#blocks">블록</a>
-      <a class="hide-sm" href="#exam">실전·진단</a>
-      <a class="hide-sm" href="#pricing">요금</a>
-      <span class="lang-switch" aria-label="언어 선택" style="display:inline-flex;gap:8px;align-items:center;font-size:.85rem;">
+    <a class="brand" href="/zh-hant/"><img src="/assets/logo.webp" width="36" height="36" alt="TOSS BURGER 標誌" fetchpriority="high">TOSS BURGER</a>
+    <nav class="nav-links" aria-label="主要">
+      <a class="hide-sm" href="#proof">實際成績</a>
+      <a class="hide-sm" href="#method">學習方法</a>
+      <a class="hide-sm" href="#blocks">積木</a>
+      <a class="hide-sm" href="#exam">實戰·診斷</a>
+      <a class="hide-sm" href="#pricing">價格</a>
+      <span class="lang-switch" aria-label="選擇語言" style="display:inline-flex;gap:8px;align-items:center;font-size:.85rem;">
         <span aria-current="true" style="font-weight:700;">KO</span>
         <a href="/ja/" hreflang="ja" lang="ja" onclick="try{localStorage.setItem('tb-lang','ja')}catch(e){}">日本語</a>
         <a href="/zh-hant/" hreflang="zh-Hant" lang="zh-Hant" onclick="try{localStorage.setItem('tb-lang','zh')}catch(e){}">繁中</a>
       </span>
-      <a class="nav-cta" href="https://apps.apple.com/kr/app/id6788353969">App Store에서 받기</a>
+      <a class="nav-cta" href="https://apps.apple.com/app/id6788353969">在 App Store 下載</a>
     </nav>
   </div>
 </header>
@@ -975,35 +958,35 @@
   <section class="hero">
     <div class="wrap hero-grid">
       <div>
-        <span class="eyebrow">TOEIC Speaking · 토익스피킹</span>
-        <h1>영어 말하기의<br class="br-web"> <span class="hl-burger">버거</span>움,<br>가볍게 <span class="hl-toss">토스</span>하세요.<br class="br-web"><span class="hl-brand">토스버거</span> <img src="/assets/logo.webp" alt="토스버거" class="hero-logo" style="display: inline-block; width: 0.95em; height: 0.95em; vertical-align: middle; margin-top: -0.12em; filter: drop-shadow(0 4px 8px rgba(110, 95, 69, 0.15)); animation: logo-gently-bob 6s ease-in-out infinite;"></h1>
-        <p class="slogan">외워서 <span class="pun">조립</span>하면, 토스는 <span class="pun">풀립니다</span></p>
-        <p class="lead">즉흥 영작은 그만. 시험에 실제로 나오는 정형 표현 ‘조각’을 외우고, 상황에 맞게 조립해 말하는 법을 훈련하세요.</p>
+        <span class="eyebrow">TOEIC Speaking · 多益口說</span>
+        <h1>英語口說的<br class="br-web"> <span class="hl-burger">沉重負擔</span>,<br>輕輕<span class="hl-toss">拋開</span>吧。<br class="br-web"><span class="hl-brand">TOSS BURGER</span></h1>
+        <p class="slogan">用積木<span class="pun">記憶</span>與<span class="pun">組裝</span>,完成多益口說</p>
+        <p class="lead">別再臨場造句。把考試中真正會出現的定型句「積木」記起來,練習依情境組裝、開口說出答案。</p>
         <div class="cta">
-          <a class="btn btn-primary" href="#method">학습 방법 보기</a>
-          <a class="btn btn-ghost" href="#proof">실제 성적 보기</a>
+          <a class="btn btn-primary" href="#method">查看學習方法</a>
+          <a class="btn btn-ghost" href="#proof">查看實際成績</a>
         </div>
         <div class="store-badges">
-          <a class="badge-store" href="https://apps.apple.com/kr/app/id6788353969"
-             aria-label="App Store에서 토스버거 다운로드">
+          <a class="badge-store" href="https://apps.apple.com/app/id6788353969"
+             aria-label="在 App Store 下載 TOSS BURGER">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.36 12.78c.02-2.2 1.8-3.26 1.88-3.31-1.02-1.5-2.61-1.7-3.18-1.72-1.35-.14-2.64.8-3.33.8-.69 0-1.75-.78-2.87-.76-1.48.02-2.84.86-3.6 2.18-1.53 2.66-.39 6.6 1.1 8.76.73 1.06 1.6 2.25 2.74 2.2 1.1-.04 1.52-.71 2.85-.71 1.33 0 1.7.71 2.87.69 1.18-.02 1.93-1.08 2.65-2.14.84-1.23 1.18-2.42 1.2-2.48-.03-.01-2.3-.88-2.32-3.5zM14.2 6.02c.6-.74 1.01-1.75.9-2.77-.87.04-1.94.59-2.57 1.31-.56.64-1.06 1.68-.93 2.67.97.08 1.98-.49 2.6-1.21z"/></svg>
-            <span class="bs-txt"><span class="bs-sm">지금 다운로드</span><span class="bs-lg">App Store</span></span>
+            <span class="bs-txt"><span class="bs-sm">立即下載</span><span class="bs-lg">App Store</span></span>
           </a>
-          <span class="badge-store soon" aria-label="Google Play 출시 준비 중">
+          <span class="badge-store soon" aria-label="Google Play 準備中">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3.6 2.3c-.24.25-.38.64-.38 1.15v17.1c0 .51.14.9.38 1.15l.06.06 9.58-9.58v-.23L3.66 2.24l-.06.06zm12.85 6.4L13.9 10.3v.01L4.32 1.96l.14-.08 11.99 6.82zM4.46 22.12l9.44-9.44 2.55 2.55-11.99 6.82-.14-.07zm12.9-6.34l-2.7-2.7 2.7-2.7 3.13 1.78c.9.51.9 1.33 0 1.84l-3.13 1.78z"/></svg>
-            <span class="bs-txt"><span class="bs-sm">Google Play</span><span class="bs-lg">출시 준비 중</span></span>
+            <span class="bs-txt"><span class="bs-sm">Google Play</span><span class="bs-lg">上架準備中</span></span>
           </span>
         </div>
-        <p class="note"><span class="pill"><span class="dot"></span>iOS 출시 완료 · Android 곧 출시</span></p>
+        <p class="note"><span class="pill"><span class="dot"></span>iOS 已上架 · Android 即將推出</span></p>
       </div>
       <div class="fig">
         <span class="blob a" aria-hidden="true"></span>
         <span class="blob b" aria-hidden="true"></span>
-        <span class="chip-float c1" aria-hidden="true"><span class="pz">🧩</span> 조각 암기</span>
-        <span class="chip-float c2" aria-hidden="true"><span class="pz">🍔</span> 조립 완성</span>
+        <span class="chip-float c1" aria-hidden="true"><span class="pz">🧩</span> 積木記憶</span>
+        <span class="chip-float c2" aria-hidden="true"><span class="pz">🍔</span> 組裝開口</span>
         <div class="device float">
           <img src="/assets/shot-blocks.webp" width="640" height="1392" fetchpriority="high"
-               alt="토스버거 앱의 블록 화면 — 파트별 탭과 만능문장 블록 카드, 퍼즐 조각으로 표현된 표현 인벤토리">
+               alt="TOSS BURGER App 的積木畫面 — 各 Part 分頁與萬用句積木卡片,以拼圖呈現的句型庫">
         </div>
       </div>
     </div>
@@ -1012,14 +995,14 @@
   <section class="band">
     <div class="wrap">
       <div class="sec-head">
-        <span class="eyebrow">왜 즉흥 영작이 안 될까</span>
-        <h2>말하기는 기억력 싸움입니다</h2>
-        <p>사람의 작동기억은 한 번에 4–7개의 덩어리만 다룹니다. 시험장에서 문장을 새로 짜려니 막히는 거예요.</p>
+        <span class="eyebrow">為什麼臨場造句行不通</span>
+        <h2>口說是記憶力的較量</h2>
+        <p>人的工作記憶一次只能處理 4〜7 個組塊。在考場上臨時造句,當然會卡住。</p>
       </div>
       <div class="stat-row">
-        <div class="stat reveal"><div class="n">4–7</div><div class="l">작동기억이 한 번에<br>다루는 덩어리 수</div></div>
-        <div class="stat reveal"><div class="n">11</div><div class="l">토익스피킹 문항 수<br>(5개 파트)</div></div>
-        <div class="stat reveal"><div class="n">AL+</div><div class="l">조각·조립 훈련이<br>겨냥하는 목표 등급</div></div>
+        <div class="stat reveal"><div class="n">4–7</div><div class="l">工作記憶一次<br>能處理的組塊數</div></div>
+        <div class="stat reveal"><div class="n">11</div><div class="l">多益口說題數<br>(5 個 Part)</div></div>
+        <div class="stat reveal"><div class="n">AL+</div><div class="l">記憶×組裝訓練<br>瞄準的目標等級</div></div>
       </div>
     </div>
   </section>
@@ -1027,10 +1010,10 @@
   <section class="philo">
     <div class="wrap">
       <div class="philo-card reveal">
-        <span class="eyebrow">왜 조각·조립인가</span>
-        <h2>오래 끄는 시험이 아닙니다</h2>
-        <p class="philo-lead">시험 전략을 세우고 신박한 스크립트를 짤 시간은 없어요. <strong>노래처럼 입에 익히고, 한두 달 안에 졸업하세요.</strong></p>
-        <p class="philo-kicker">모두가 똑같은 답을 해도 — <span class="hl-in">입에 익은 듯 자연스러우면 만점</span>을 주는 시험이니까요.</p>
+        <span class="eyebrow">為什麼要記憶×組裝</span>
+        <h2>這不是一場持久戰</h2>
+        <p class="philo-lead">沒有時間擬定策略、寫出新穎的講稿。<strong>像唱歌一樣讓句子順口,一兩個月內畢業吧。</strong></p>
+        <p class="philo-kicker">就算所有人答案相同——<span class="hl-in">說得自然流利就給滿分</span>,這就是這場考試。</p>
       </div>
     </div>
   </section>
@@ -1038,23 +1021,21 @@
   <section id="proof" class="band">
     <div class="wrap">
       <div class="sec-head">
-        <span class="eyebrow">결과로 증명합니다</span>
-        <h2>8일 만에 <span class="hl">IM3 → AL</span></h2>
-        <p>조각을 외우고 조립하는 훈련만으로, 재응시 한 번에 등급이 올라갔습니다.</p>
+        <span class="eyebrow">用結果證明</span>
+        <h2>8 天內 <span class="hl">IM3 → AL</span></h2>
+        <p>只靠記憶與組裝積木的訓練,重考一次等級就上升了。</p>
       </div>
 
       <div class="proof-grid">
         <div class="proof-shot reveal">
           <img src="/assets/proof-score.webp" width="900" height="586" loading="lazy"
-               alt="실제 토익스피킹 성적 조회 화면 — 2026년 6월 13일 Intermediate Mid 3(130점), 8일 뒤인 6월 21일 Advanced Low(160점). 수험번호는 가려져 있다.">
+               alt="實際多益口說成績查詢畫面 — 2026 年 6 月 13 日 Intermediate Mid 3(130 分),8 天後的 6 月 21 日 Advanced Low(160 分)。准考證號碼已遮蓋。">
         </div>
 
         <div class="reveal">
           <span class="tag">Real Score Report</span>
-          <h2 style="margin-top:10px;">130점에서 160점으로</h2>
-          <p class="lead">2026년 6월 13일 <strong>Intermediate Mid 3 (130점)</strong>.
-             그리고 8일 뒤인 6월 21일, 같은 응시자가 <strong>Advanced Low (160점)</strong>.
-             그 사이에 한 건 새 스크립트를 짠 게 아니라, <strong>이미 있는 조각을 입에 붙이고 조립한 것</strong>뿐이었어요.</p>
+          <h2 style="margin-top:10px;">從 130 分到 160 分</h2>
+          <p class="lead">2026 年 6 月 13 日 <strong>Intermediate Mid 3(130 分)</strong>。8 天後的 6 月 21 日,同一位考生拿到 <strong>Advanced Low(160 分)</strong>。這期間做的不是寫新講稿,而只是<strong>把現成的積木練順口、組裝起來</strong>而已。</p>
 
           <div class="grade-jump">
             <span class="grade-chip from">IM3 · 130</span>
@@ -1063,17 +1044,16 @@
           </div>
 
           <div class="delta-row">
-            <div class="delta"><div class="dn">8일</div><div class="dl">두 시험 사이<br>실제 간격</div></div>
-            <div class="delta"><div class="dn">+30</div><div class="dl">Speaking Score<br>상승 폭</div></div>
-            <div class="delta"><div class="dn">1등급</div><div class="dl">IM3 → AL<br>등급 상승</div></div>
+            <div class="delta"><div class="dn">8 天</div><div class="dl">兩次考試之間<br>實際間隔</div></div>
+            <div class="delta"><div class="dn">+30</div><div class="dl">Speaking Score<br>上升幅度</div></div>
+            <div class="delta"><div class="dn">1 個等級</div><div class="dl">IM3 → AL<br>等級上升</div></div>
           </div>
 
           <!-- 실제 사용자 후기를 받으면 이 자리에 그대로 넣으세요.
                지어낸 후기는 넣지 않았습니다 (아래 성적표만 실제 기록입니다). -->
 
           <p class="proof-note">
-            위 이미지는 실제 성적 조회 화면을 그대로 캡처한 것이며, 개인정보 보호를 위해 수험번호만 가렸습니다.
-            학습 효과는 응시자의 기존 실력·학습량에 따라 다를 수 있으며, 특정 점수를 보장하지 않습니다.
+            上圖為實際成績查詢畫面的截圖,為保護個資僅遮蓋准考證號碼。學習效果因考生原有實力與學習量而異,不保證特定分數。
           </p>
         </div>
       </div>
@@ -1083,30 +1063,30 @@
   <section id="method">
     <div class="wrap">
       <div class="sec-head">
-        <span class="eyebrow">역순 훈련 · Reverse Training</span>
-        <h2>새로 짜지 말고, 꺼내서 붙이세요</h2>
-        <p>낭독으로 리듬을 익히고, 표현 조각을 손에 익힌 뒤, 상황에 맞게 조립해 말합니다. 3단계면 충분합니다.</p>
+        <span class="eyebrow">逆向訓練 · Reverse Training</span>
+        <h2>別從頭造句,取出來拼上去</h2>
+        <p>先用朗讀抓節奏,再把句型積木練到直覺,最後依情境組裝開口。三步驟就夠了。</p>
       </div>
       <div class="steps">
         <div class="step reveal">
           <img class="step-ico" src="/assets/step-book.webp" width="96" height="96" alt="" loading="lazy">
           <p class="step-n">STEP 1</p>
-          <h3>낭독</h3>
-          <p>모범답변을 소리 내어 읽으며 억양과 강세, 문장의 리듬을 몸에 새깁니다.</p>
+          <h3>朗讀</h3>
+          <p>大聲朗讀範例答案,把語調、重音與句子節奏刻進身體。</p>
           <svg class="arrow" width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15m0 0l-6-6m6 6l-6 6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
         <div class="step reveal">
           <img class="step-ico" src="/assets/step-puzzle.webp" width="96" height="96" alt="" loading="lazy">
           <p class="step-n">STEP 2</p>
-          <h3>조각 암기</h3>
-          <p>시험에 반복되는 정형 표현 블록을 퍼즐처럼 반복해 완전히 손에 익힙니다.</p>
+          <h3>積木記憶</h3>
+          <p>像拼圖一樣反覆練習考試中一再出現的定型句積木,直到完全順手。</p>
           <svg class="arrow" width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15m0 0l-6-6m6 6l-6 6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
         <div class="step reveal">
           <img class="step-ico" src="/assets/step-burger.webp" width="96" height="96" alt="" loading="lazy">
           <p class="step-n">STEP 3</p>
-          <h3>조립 완성</h3>
-          <p>외운 조각을 상황에 맞게 조립해 내 답변을 완성해 말합니다. 막힘이 사라집니다.</p>
+          <h3>組裝開口</h3>
+          <p>把記好的積木依情境組裝成自己的答案,完整說出來。卡頓就此消失。</p>
         </div>
       </div>
     </div>
@@ -1117,31 +1097,31 @@
       <div class="fig">
         <div class="device">
           <img src="/assets/shot-question.webp" width="640" height="1392" loading="lazy"
-               alt="정기시험 복원 세트의 모범답안 화면 — 클레이 화원 그림 문제와 함께, 도입·인물·사물·마무리 블록으로 조립된 답변">
+               alt="定期考題還原組的範例答案畫面 — 黏土花店圖片題,以及由開頭・人物・事物・收尾積木組裝的答案">
         </div>
       </div>
       <div>
         <span class="tag">Model Answer</span>
-        <h2>모범답변은 ‘블록’을 조립해 완성돼요</h2>
-        <p class="lead">도입·본문·마무리 — 검증된 표현 블록을 순서대로 붙이면 흔들림 없는 답변이 됩니다. 정확 버전으로 익히고, Tweak으로 내 답으로 살짝 바꿔요.</p>
+        <h2>範例答案由「積木」組裝而成</h2>
+        <p class="lead">開頭・本文・收尾——把驗證過的句型積木依序拼上,答案就穩了。先照原樣記熟,再用 Tweak 微調成自己的答案。</p>
         
         <!-- Puzzle Piece Interlocking Assembly Grid Representation -->
-        <div class="assemble" aria-label="조립 다이어그램: 도입 더하기 사람 행동 더하기 사물 전경 더하기 마무리합치면 완성 답변">
-          <div class="blk bg-onion">🧩 도입</div>
+        <div class="assemble" aria-label="組裝圖:開頭 + 人物動作 + 事物前景 + 收尾 = 完整答案">
+          <div class="blk bg-onion">🧩 開頭</div>
           <div class="plus">＋</div>
-          <div class="blk bg-tomato">👤 사람 · 행동</div>
+          <div class="blk bg-tomato">👤 人物 · 動作</div>
           <div class="plus">＋</div>
-          <div class="blk bg-cheese">📦 사물 · 전경</div>
+          <div class="blk bg-cheese">📦 事物 · 前景</div>
           <div class="plus">＋</div>
-          <div class="blk bg-onion">🧩 마무리</div>
+          <div class="blk bg-onion">🧩 收尾</div>
           <div class="eq">＝</div>
-          <div class="ans">🍔 완성 답변</div>
+          <div class="ans">🍔 完整答案</div>
         </div>
 
         <ul>
-          <li><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10l4 4 8-9" fill="none" stroke="#93B98A" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>260개 넘는 만능문장 블록으로 답변을 조립</span></li>
-          <li><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10l4 4 8-9" fill="none" stroke="#93B98A" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>파트별 조립 템플릿(틀)로 순서를 잡아줘요</span></li>
-          <li><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10l4 4 8-9" fill="none" stroke="#93B98A" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>‘정확’으로 익히고 ‘Tweak’으로 나만의 답변까지</span></li>
+          <li><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10l4 4 8-9" fill="none" stroke="#93B98A" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>用超過 260 個萬用句積木組裝答案</span></li>
+          <li><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10l4 4 8-9" fill="none" stroke="#93B98A" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>各 Part 的組裝範本幫你排好順序</span></li>
+          <li><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10l4 4 8-9" fill="none" stroke="#93B98A" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>先照「原樣」記熟,再用「Tweak」變成自己的答案</span></li>
         </ul>
       </div>
     </div>
@@ -1152,21 +1132,21 @@
       <div class="fig">
         <div class="device">
           <img src="/assets/shot-shadowing.webp" width="640" height="1392" loading="lazy"
-               alt="블록 섀도잉 드릴 화면 — 억양 곡선과 단어별 한글 발음 표기, 손글씨 메모 힌트가 함께 표시된다">
+               alt="積木跟讀畫面 — 顯示語調曲線、逐字發音標記與手寫筆記提示">
         </div>
         
         <!-- Live Pitch Accent Wave & Floating Notepad Shorthand Mockup -->
         <div class="pitch-container" aria-hidden="true">
           <!-- Handwritten yellow sticky note mockup -->
           <div class="memo-note">
-            <p class="memo-text">여기서 <span>Pause!</span></p>
-            <p class="memo-sub">강세는 동사에 쾅! ⚡</p>
+            <p class="memo-text">在這裡 <span>Pause!</span></p>
+            <p class="memo-sub">重音在動詞上敲下去!⚡</p>
           </div>
           
           <div class="pitch-wave-card">
             <div class="pitch-header">
               <span class="pitch-dot"></span>
-              <span class="pitch-title">실시간 억양(Pitch) 섀도잉</span>
+              <span class="pitch-title">即時語調(Pitch)跟讀</span>
             </div>
             <svg class="pitch-svg" viewBox="0 0 240 60">
               <!-- Smooth native teacher wave -->
@@ -1175,20 +1155,20 @@
               <path class="wave-learner" d="M10,45 Q42,14 68,39 T128,23 T193,45 T230,17" fill="none" stroke="var(--lettuce)" stroke-width="3" stroke-dasharray="1 5" stroke-linecap="round"/>
             </svg>
             <div class="pitch-tags">
-              <span class="tag-teacher">성우 피치 곡선</span>
-              <span class="tag-learner">내 억양 매칭</span>
+              <span class="tag-teacher">配音員音高曲線</span>
+              <span class="tag-learner">我的語調比對</span>
             </div>
           </div>
         </div>
       </div>
       <div>
         <span class="tag">Block Shadowing</span>
-        <h2>소리로 손에 익히는 5단계 드릴</h2>
-        <p class="lead">듣기 → 말하기 → 다시 듣기 → 말하기 → 내 녹음까지. 억양 곡선과 단어별 발음 표기를 따라, 시험장에서 바로 꺼낼 수 있을 때까지 반복해요.</p>
+        <h2>用聲音練到直覺的五階段訓練</h2>
+        <p class="lead">聽 → 說 → 再聽 → 再說 → 錄下自己的聲音。跟著語調曲線與逐字發音標記反覆練習,直到考場上隨取隨用。</p>
         <ul>
-          <li><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10l4 4 8-9" fill="none" stroke="#93B98A" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>원어민 성우 녹음 &amp; 실시간 억양(피치) 곡선</span></li>
-          <li><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10l4 4 8-9" fill="none" stroke="#93B98A" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>단어별 한글 발음 표기로 정확한 소리 교정</span></li>
-          <li><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10l4 4 8-9" fill="none" stroke="#93B98A" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>손글씨 메모 힌트로 청킹(chunking) 훈련</span></li>
+          <li><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10l4 4 8-9" fill="none" stroke="#93B98A" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>母語配音員錄音 &amp; 即時音高曲線</span></li>
+          <li><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10l4 4 8-9" fill="none" stroke="#93B98A" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>逐字發音標記,精準矯正發音</span></li>
+          <li><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10l4 4 8-9" fill="none" stroke="#93B98A" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>手寫筆記提示,練習組塊化(chunking)</span></li>
         </ul>
       </div>
     </div>
@@ -1197,56 +1177,56 @@
   <section id="exam" class="stage">
     <div class="wrap">
       <div class="sec-head">
-        <span class="eyebrow">실전 모드 · Mock Exam</span>
-        <h2>실전처럼 치고, 채점까지</h2>
-        <p>준비·답변 시간을 실제 시험과 똑같이. 모의고사를 마치면 AI가 답변을 채점해 약점을 짚어줘요.</p>
+        <span class="eyebrow">實戰模式 · Mock Exam</span>
+        <h2>像實戰一樣應考,直到評分</h2>
+        <p>準備與作答時間和真正的考試一模一樣。模擬測驗結束後,AI 會評分並指出弱點。</p>
       </div>
 
       <div class="feature">
         <div class="fig">
           <div class="device">
             <img src="/assets/shot-exam.webp" width="640" height="1392" loading="lazy"
-                 alt="실전 모의고사 화면 — 어두운 시험 모드에서 GET READY 준비 타이머와 클레이 그림 문제 카드가 보인다">
+                 alt="實戰模擬測驗畫面 — 深色考試模式中可見 GET READY 準備計時器與黏土圖片題卡">
           </div>
         </div>
         <div>
           <span class="tag">Timed Test</span>
-          <h2>ETS 포맷 그대로, 11문항 모의고사</h2>
-          <p class="lead">GET READY 준비 시간과 답변 시간이 실제 시험과 동일하게 흐릅니다. 파트별로 문제를 풀고 마이크로 답하면 자동으로 다음 문제로 넘어가요.</p>
+          <h2>完全比照 ETS 題型的 11 題模擬測驗</h2>
+          <p class="lead">GET READY 的準備與作答時間和實際考試同步流動。逐 Part 作答、對著麥克風回答,就會自動進入下一題。</p>
           <ul>
-            <li><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10l4 4 8-9" fill="none" stroke="#9DC095" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>5개 파트 · 11문항, 실제 시험 순서 그대로</span></li>
-            <li><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10l4 4 8-9" fill="none" stroke="#9DC095" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>준비(PREP)·답변(REC) 타이머로 실전 감각 훈련</span></li>
-            <li><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10l4 4 8-9" fill="none" stroke="#9DC095" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>안내 방송·클레이 그림까지 시험장을 그대로 재현</span></li>
+            <li><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10l4 4 8-9" fill="none" stroke="#9DC095" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>5 個 Part · 11 題,完全依照實際考試順序</span></li>
+            <li><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10l4 4 8-9" fill="none" stroke="#9DC095" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>以準備(PREP)・作答(REC)計時器訓練實戰手感</span></li>
+            <li><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10l4 4 8-9" fill="none" stroke="#9DC095" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>廣播指示、黏土圖片,完整重現考場</span></li>
           </ul>
         </div>
       </div>
 
       <div class="sec-head" style="margin-top:0;">
-        <span class="eyebrow">AI 진단 · ETS 기준</span>
-        <h2>내 약점을 영역별로 짚어줘요</h2>
-        <p>답변을 AI가 전사·채점하고, ETS 4대 지표에 내용 구성까지 5개 영역을 레이더로 진단합니다.</p>
+        <span class="eyebrow">AI 診斷 · ETS 標準</span>
+        <h2>逐項指出你的弱點</h2>
+        <p>AI 會為回答逐字轉寫並評分,以 ETS 四大指標加上內容結構,共 5 個領域的雷達圖診斷。</p>
       </div>
       
       <!-- Real app result SCREEN — one attempt (the mock test has no retry),
-           the 영역별 진단 레이더 built into the result itself. -->
+           the 分領域診斷雷達 built into the result itself. -->
       <div class="result-single">
         <!-- Native web report — rebuilt from a real result so every detail is
              readable and inspectable on the web (no squished screenshot). -->
-        <div class="report-card reveal" role="group" aria-label="AI 채점 결과 리포트">
+        <div class="report-card reveal" role="group" aria-label="AI 評分結果報告">
           <div class="report-chrome" aria-hidden="true">
             <div class="tablet-dots"><span></span><span></span><span></span></div>
-            <div class="report-addr">나의 성적표 · 실전 모의고사</div>
+            <div class="report-addr">我的成績單 · 實戰模擬測驗</div>
           </div>
           <div class="report-body">
             <div class="report-hero">
               <div class="report-mascot" aria-hidden="true">🍔</div>
               <p class="report-score"><b>180</b><span>/ 200</span></p>
               <span class="report-level">AM · Advanced Mid</span>
-              <p class="report-caption">실전 모의고사 · <b>재시도 없이</b> 한 번의 응시로 채점해요</p>
+              <p class="report-caption">實戰模擬測驗 · <b>不可重來</b>,一次作答完成評分</p>
             </div>
 
             <div class="radar-inline">
-              <p class="radar-inline-title">영역별 진단 레이더 <span>ⓘ P1(낭독) 추정치 포함 · 5개 영역 0–3점</span></p>
+              <p class="radar-inline-title">分領域診斷雷達 <span>ⓘ 含 P1(朗讀)推估值 · 5 領域 0–3 分</span></p>
               <div class="radar-chart-container">
                 <svg class="radar-svg" viewBox="0 0 300 300" aria-hidden="true">
                   <polygon class="grid-line" points="150,40 255,116 215,239 85,239 45,116" />
@@ -1264,38 +1244,38 @@
                   <circle class="vertex" cx="90" cy="233" r="5" />
                   <circle class="vertex" cx="77" cy="126" r="5" />
                 </svg>
-                <div class="radar-label label-top"><span class="label-txt">발음</span><span class="label-val val-lettuce">3.0</span></div>
-                <div class="radar-label label-right-top"><span class="label-txt">억양·강세</span><span class="label-val val-lettuce">2.7</span></div>
-                <div class="radar-label label-right-bottom"><span class="label-txt">문법</span><span class="label-val val-cheese">2.4</span></div>
-                <div class="radar-label label-left-bottom"><span class="label-txt">어휘</span><span class="label-val val-lettuce">2.8</span></div>
-                <div class="radar-label label-left-top"><span class="label-txt">내용 구성</span><span class="label-val val-cheese">2.1</span></div>
+                <div class="radar-label label-top"><span class="label-txt">發音</span><span class="label-val val-lettuce">3.0</span></div>
+                <div class="radar-label label-right-top"><span class="label-txt">語調·重音</span><span class="label-val val-lettuce">2.7</span></div>
+                <div class="radar-label label-right-bottom"><span class="label-txt">文法</span><span class="label-val val-cheese">2.4</span></div>
+                <div class="radar-label label-left-bottom"><span class="label-txt">字彙</span><span class="label-val val-lettuce">2.8</span></div>
+                <div class="radar-label label-left-top"><span class="label-txt">內容結構</span><span class="label-val val-cheese">2.1</span></div>
               </div>
-              <p class="radar-inline-avg">이번 응시 평균 <b>2.6</b> / 3.0</p>
+              <p class="radar-inline-avg">本次作答平均 <b>2.6</b> / 3.0</p>
             </div>
 
-            <p class="report-sec-title">문항별 결과 <span>5개 파트 · 11문항</span></p>
+            <p class="report-sec-title">逐題結果 <span>5 個 Part · 11 題</span></p>
             <div class="qgrid">
-              <div class="qrow"><span class="qpart">P2</span><span class="qname">사진 묘사</span><span class="qq">Q3 · Q4</span><span class="qlv lv-am">AM</span></div>
-              <div class="qrow"><span class="qpart">P3</span><span class="qname">질문 답변</span><span class="qq">Q5 · Q6 · Q7</span><span class="qlv lv-am">AM</span></div>
-              <div class="qrow"><span class="qpart">P4</span><span class="qname">정보 활용</span><span class="qq">Q8 · Q9 · Q10</span><span class="qlv lv-ah">AH</span></div>
-              <div class="qrow"><span class="qpart">P5</span><span class="qname">의견 제시</span><span class="qq">Q11</span><span class="qlv lv-al">AL</span></div>
+              <div class="qrow"><span class="qpart">P2</span><span class="qname">描述照片</span><span class="qq">Q3 · Q4</span><span class="qlv lv-am">AM</span></div>
+              <div class="qrow"><span class="qpart">P3</span><span class="qname">回答問題</span><span class="qq">Q5 · Q6 · Q7</span><span class="qlv lv-am">AM</span></div>
+              <div class="qrow"><span class="qpart">P4</span><span class="qname">依據資料回答</span><span class="qq">Q8 · Q9 · Q10</span><span class="qlv lv-ah">AH</span></div>
+              <div class="qrow"><span class="qpart">P5</span><span class="qname">表達意見</span><span class="qq">Q11</span><span class="qlv lv-al">AL</span></div>
             </div>
 
             <div class="coach">
               <div class="coach-ico" aria-hidden="true">🎯</div>
               <div>
-                <p class="coach-title">다음 훈련 포인트</p>
-                <p class="coach-text"><b>내용 구성(2.1)</b>과 <b>문법(2.4)</b>이 약해요. Part 5 의견 제시에서 <b>도입 · 이유 · 예시 · 마무리</b> 블록을 다시 조립해 연습하세요.</p>
+                <p class="coach-title">下一個訓練重點</p>
+                <p class="coach-text"><b>內容結構(2.1)</b>與<b>文法(2.4)</b>偏弱。請在 Part 5 表達意見時,重新組裝<b>開頭 · 理由 · 例子 · 收尾</b>積木來練習。</p>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      <p class="read-guide reveal">📖 <strong>읽는 법</strong> — 5개 영역을 각각 0–3점으로 채점해 강점과 약점을 한눈에 짚어줘요. 점수가 오를수록 <strong>AL → AM → AH</strong>로 등급이 올라갑니다.</p>
+      <p class="read-guide reveal">📖 <strong>判讀方式</strong> — 5 個領域各以 0–3 分評分,一眼看出強項與弱項。分數越高,等級依 <strong>AL → AM → AH</strong> 上升。</p>
 
-      <div class="dims" aria-label="진단 영역과 목표 등급">
-        <span>발음</span><span>억양·강세</span><span>문법</span><span>어휘</span><span>내용 구성</span>
+      <div class="dims" aria-label="診斷領域與目標等級">
+        <span>發音</span><span>語調·重音</span><span>文法</span><span>字彙</span><span>內容結構</span>
         <span class="lv">AL → AM → AH</span>
       </div>
     </div>
@@ -1304,34 +1284,34 @@
   <section id="pricing" class="band">
     <div class="wrap">
       <div class="sec-head">
-        <span class="eyebrow">요금제 · Pricing</span>
-        <h2>딱 두 가지, 군더더기 없이</h2>
-        <p>할인도 세일도 없어요. 필요한 만큼만 고르는 정직한 두 가지 요금제로 준비하세요.</p>
+        <span class="eyebrow">方案 · Pricing</span>
+        <h2>只有兩種方案,乾淨俐落</h2>
+        <p>沒有折扣也沒有特賣。用兩種誠實的方案,選你需要的準備方式。</p>
       </div>
       <div class="pricing">
         <div class="plan plan-hero reveal">
-          <span class="plan-badge">추천</span>
-          <h3 class="plan-name">1개월</h3>
-          <p class="plan-price">$10<span class="per">/월</span></p>
-          <p class="plan-sub">매달 자동 갱신 · 오래 끌지 않고 바로 AL</p>
+          <span class="plan-badge">推薦</span>
+          <h3 class="plan-name">1 個月</h3>
+          <p class="plan-price">$10<span class="per">/月</span></p>
+          <p class="plan-sub">每月自動續訂 · 不拖延,直取 AL</p>
           <ul class="plan-feat">
-            <li>전 파트 블록 전체 해제</li>
-            <li>무제한 조각 암기 · 블록 섀도잉</li>
-            <li>실전 모의고사 · AI 레이더 진단</li>
+            <li>解鎖全部 Part 的積木</li>
+            <li>無限次積木記憶 · 跟讀</li>
+            <li>實戰模擬測驗 · AI 雷達診斷</li>
           </ul>
         </div>
         <div class="plan reveal">
-          <h3 class="plan-name">3개월</h3>
-          <p class="plan-price">$20<span class="per">/3개월</span></p>
-          <p class="plan-sub">시험 일정이 넉넉할 때, 여유 있게</p>
+          <h3 class="plan-name">3 個月</h3>
+          <p class="plan-price">$20<span class="per">/3 個月</span></p>
+          <p class="plan-sub">考程還充裕時,從容準備</p>
           <ul class="plan-feat">
-            <li>1개월과 완전히 동일한 모든 기능</li>
-            <li>3개월 내내 마음 편히 준비</li>
-            <li>그 이상 긴 기간권은 없어요</li>
+            <li>與 1 個月方案完全相同的所有功能</li>
+            <li>3 個月安心準備到底</li>
+            <li>沒有更長的方案了</li>
           </ul>
         </div>
       </div>
-      <p class="pricing-note">가격은 미국 달러(USD) 기준이며, 각 스토어에서 현지 통화로 자동 환산돼 청구돼요. · 앱 내 결제(IAP)</p>
+      <p class="pricing-note">價格以美元(USD)計,各商店將自動換算為當地貨幣收費。 · App 內購買(IAP)</p>
     </div>
   </section>
 
@@ -1348,32 +1328,32 @@
     <div class="wrap">
       <div class="sec-head reveal">
         <p class="eyebrow">FAQ</p>
-        <h2>자주 묻는 질문</h2>
+        <h2>常見問題</h2>
       </div>
       <div class="faq-list reveal">
         <details>
-          <summary>토스버거는 어떤 앱인가요?</summary>
-          <p>토스버거는 TOEIC Speaking(토익스피킹) 훈련 앱입니다. 시험에 반복 출제되는 정형 표현 ‘블록’을 외우고 상황에 맞게 조립해 말하는 방식으로, 낭독 → 조각 암기 → 조립 발화 3단계로 연습합니다.</p>
+          <summary>TOSS BURGER 是什麼樣的 App?</summary>
+          <p>TOSS BURGER 是 TOEIC 口說訓練 App。把考試中一再出現的定型句「積木」記起來、依情境組裝開口,以朗讀 → 積木記憶 → 組裝開口三步驟練習。</p>
         </details>
         <details>
-          <summary>왜 즉흥 영작 대신 암기·조립인가요?</summary>
-          <p>사람의 작동기억은 한 번에 4–7개의 덩어리만 다룰 수 있어, 시험장에서 문장을 새로 만들면 막히기 쉽습니다. 미리 외운 표현 블록을 꺼내 조립하면 막힘 없이 답할 수 있습니다.</p>
+          <summary>為什麼是記憶×組裝,而不是臨場造句?</summary>
+          <p>人的工作記憶一次只能處理 4〜7 個組塊,在考場上臨時造句很容易卡住。取出事先記好的句型積木來組裝,就能流暢作答。</p>
         </details>
         <details>
-          <summary>무료로 사용할 수 있나요?</summary>
-          <p>무료로 학습을 시작할 수 있고, AI 채점은 로그인 후 이용할 수 있습니다. 전체 블록 해제와 무제한 연습, AI 채점은 Pro 구독(1개월 US$10 / 3개월 US$20, 앱 내 결제)으로 제공됩니다.</p>
+          <summary>可以免費使用嗎?</summary>
+          <p>可以免費開始學習,AI 評分需登入後使用。解鎖全部積木、無限次練習與 AI 評分由 Pro 訂閱提供(1 個月 US$10 / 3 個月 US$20,App 內購買)。</p>
         </details>
         <details>
-          <summary>AI 채점은 어떻게 이루어지나요?</summary>
-          <p>실전 모의고사에서 답변을 녹음하면 AI가 전사·채점하고, ETS 4대 지표(발음·억양과 강세·문법·어휘)에 내용 구성을 더한 5개 영역을 0–3점 레이더로 진단해 약점을 짚어줍니다.</p>
+          <summary>AI 評分是如何進行的?</summary>
+          <p>在實戰模擬測驗錄下回答後,AI 會逐字轉寫並評分,以 ETS 四大指標(發音・語調與重音・文法・字彙)加上內容結構共 5 個領域,用 0–3 分雷達圖診斷並指出弱點。</p>
         </details>
         <details>
-          <summary>얼마나 빨리 점수를 올릴 수 있나요?</summary>
-          <p>실제 사례로, 한 응시자가 앱 사용 8일 만에 IM3(130점)에서 AL(160점)로 올랐습니다. 다만 학습 효과는 기존 실력과 학습량에 따라 다르며, 특정 점수를 보장하지는 않습니다.</p>
+          <summary>多快能提升分數?</summary>
+          <p>實例:一位考生使用 App 僅 8 天,就從 IM3(130 分)升到 AL(160 分)。但學習效果因原有實力與學習量而異,不保證特定分數。</p>
         </details>
         <details>
-          <summary>어떤 기기에서 쓸 수 있나요?</summary>
-          <p>iOS(App Store)에 출시되어 있습니다. Android는 출시 준비 중이며, 이메일로 출시 알림을 신청할 수 있습니다.</p>
+          <summary>可以在哪些裝置上使用?</summary>
+          <p>已於 iOS(App Store)上架。Android 版準備中,可透過電子郵件訂閱上架通知。</p>
         </details>
       </div>
     </div>
@@ -1382,18 +1362,18 @@
   <section>
     <div class="wrap">
       <div class="final reveal">
-        <h2>지금 App Store에서 받으세요</h2>
-        <p>토스버거는 iOS에 출시됐어요. Android는 출시 준비 중이며, 준비되면 바로 알려드릴게요.</p>
+        <h2>現在就到 App Store 下載</h2>
+        <p>TOSS BURGER 已於 iOS 上架。Android 版準備中,一準備好就立刻通知你。</p>
         <div class="store-badges" style="justify-content:center;">
-          <a class="badge-store" href="https://apps.apple.com/kr/app/id6788353969"
-             aria-label="App Store에서 토스버거 다운로드">
+          <a class="badge-store" href="https://apps.apple.com/app/id6788353969"
+             aria-label="在 App Store 下載 TOSS BURGER">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.36 12.78c.02-2.2 1.8-3.26 1.88-3.31-1.02-1.5-2.61-1.7-3.18-1.72-1.35-.14-2.64.8-3.33.8-.69 0-1.75-.78-2.87-.76-1.48.02-2.84.86-3.6 2.18-1.53 2.66-.39 6.6 1.1 8.76.73 1.06 1.6 2.25 2.74 2.2 1.1-.04 1.52-.71 2.85-.71 1.33 0 1.7.71 2.87.69 1.18-.02 1.93-1.08 2.65-2.14.84-1.23 1.18-2.42 1.2-2.48-.03-.01-2.3-.88-2.32-3.5zM14.2 6.02c.6-.74 1.01-1.75.9-2.77-.87.04-1.94.59-2.57 1.31-.56.64-1.06 1.68-.93 2.67.97.08 1.98-.49 2.6-1.21z"/></svg>
-            <span class="bs-txt"><span class="bs-sm">지금 다운로드</span><span class="bs-lg">App Store</span></span>
+            <span class="bs-txt"><span class="bs-sm">立即下載</span><span class="bs-lg">App Store</span></span>
           </a>
-          <a class="badge-store soon" href="mailto:tosburger.dev@gmail.com?subject=토스버거 Android 출시 소식 받기"
-             aria-label="Android 출시 소식 받기">
+          <a class="badge-store soon" href="mailto:tosburger.dev@gmail.com?subject=接收 TOSS BURGER Android 上架通知"
+             aria-label="接收 Android 上架通知">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3.6 2.3c-.24.25-.38.64-.38 1.15v17.1c0 .51.14.9.38 1.15l.06.06 9.58-9.58v-.23L3.66 2.24l-.06.06zm12.85 6.4L13.9 10.3v.01L4.32 1.96l.14-.08 11.99 6.82zM4.46 22.12l9.44-9.44 2.55 2.55-11.99 6.82-.14-.07zm12.9-6.34l-2.7-2.7 2.7-2.7 3.13 1.78c.9.51.9 1.33 0 1.84l-3.13 1.78z"/></svg>
-            <span class="bs-txt"><span class="bs-sm">Android</span><span class="bs-lg">출시 알림 받기</span></span>
+            <span class="bs-txt"><span class="bs-sm">Android</span><span class="bs-lg">訂閱上架通知</span></span>
           </a>
         </div>
         <p class="disc">TOEIC is a registered trademark of ETS. This application and website are not endorsed or approved by ETS.</p>
@@ -1406,19 +1386,19 @@
 <footer class="site">
   <div class="wrap">
     <div class="foot-in">
-      <a class="brand" href="/"><img src="/assets/logo.webp" width="30" height="30" alt="">토스버거</a>
-      <nav class="foot-links" aria-label="바닥글">
-        <a href="/privacy/">개인정보처리방침</a>
-        <a href="/terms/">이용약관</a>
-        <a href="/support/">고객지원</a>
-        <a href="mailto:tosburger.dev@gmail.com">이메일 문의</a>
+      <a class="brand" href="/zh-hant/"><img src="/assets/logo.webp" width="30" height="30" alt="">TOSS BURGER</a>
+      <nav class="foot-links" aria-label="頁尾">
+        <a href="/privacy/">隱私權政策</a>
+        <a href="/terms/">使用條款</a>
+        <a href="/support/">客戶支援</a>
+        <a href="mailto:tosburger.dev@gmail.com">電子郵件諮詢</a>
       </nav>
     </div>
     <p class="foot-legal">
-      Open Edu | 사업자등록번호: 130-38-15883<br>
-      위치: 서울시 서초구 태봉로2길 60<br>
+      Open Edu | 營業人統一編號: 130-38-15883<br>
+      地址:首爾市瑞草區泰峰路2街60<br>
       COPYRIGHT(C) 2014 OPEN EDUCATION. ALL RIGHTS RESERVED.<br>
-      TOEIC은 ETS의 등록상표이며, 본 서비스는 ETS와 무관하고 ETS의 후원·인증을 받지 않았습니다.
+      TOEIC 為 ETS 的註冊商標。本服務與 ETS 無關,未獲 ETS 贊助或認可。
     </p>
   </div>
 </footer>
