@@ -50,10 +50,10 @@
       "@id": "https://tosburger.com/#app",
       "name": "TOSS BURGER — 多益口說範本訓練",
       "alternateName": "TOSS BURGER",
-      "operatingSystem": "iOS",
+      "operatingSystem": "iOS, Android",
       "applicationCategory": "EducationApplication",
       "description": "把考試中一再出現的定型句「積木」記起來、組裝開口的 TOEIC 口說訓練 App。朗讀 → 積木記憶 → 組裝開口三步驟,附實戰模擬測驗與 AI 評分。",
-      "installUrl": "https://apps.apple.com/app/id6788353969",
+      "installUrl": ["https://apps.apple.com/app/id6788353969", "https://play.google.com/store/apps/details?id=com.tosscombo.toss_combo"],
       "inLanguage": ["ko", "ja", "zh-Hant"],
       "publisher": { "@id": "https://tosburger.com/#org" },
       "offers": [
@@ -94,7 +94,7 @@
         {
           "@type": "Question",
           "name": "可以在哪些裝置上使用?",
-          "acceptedAnswer": { "@type": "Answer", "text": "已於 iOS(App Store)上架。Android 版準備中,可透過電子郵件訂閱上架通知。" }
+          "acceptedAnswer": { "@type": "Answer", "text": "iOS(App Store)與 Android(Google Play)皆已上架。iPhone・iPad 請至 App Store,Android 手機請至 Google Play 下載。" }
         }
       ]
     }
@@ -876,10 +876,10 @@
   .reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s var(--ease-settle), transform .7s var(--ease-settle); }
   .reveal.in { opacity: 1; transform: none; }
   @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } }
-  /* ---- Store badges (iOS live · Play coming soon) ---- */
+  /* ---- Store badges (iOS · Google Play live) ---- */
   .store-badges { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin-top: 22px; }
   .badge-store {
-    display: inline-flex; align-items: center; gap: 11px;
+    position: relative; display: inline-flex; align-items: center; gap: 11px;
     padding: 11px 18px 11px 16px; border-radius: 16px;
     background: linear-gradient(160deg, #4a443a, #322e28);
     color: #FDF9F2; text-decoration: none; border: 1px solid rgba(0,0,0,.28);
@@ -892,13 +892,15 @@
   .badge-store .bs-txt { display: flex; flex-direction: column; line-height: 1.12; text-align: left; }
   .badge-store .bs-sm { font-size: .68rem; letter-spacing: .02em; opacity: .82; }
   .badge-store .bs-lg { font-family: "Baloo 2", sans-serif; font-weight: 700; font-size: 1.06rem; }
-  /* Play: not launched yet — visibly inert, not a dead link */
-  .badge-store.soon {
-    background: var(--paper); color: var(--ink-soft);
-    border: 1px dashed rgba(78,72,61,.28); box-shadow: none; cursor: default;
+  /* "NEW" tag on the Google Play badge — Android launched on Play (2026-09) */
+  .bs-new {
+    position: absolute; top: -9px; right: -7px;
+    font-family: "Baloo 2", sans-serif; font-weight: 800; font-size: .6rem; letter-spacing: .08em;
+    padding: 2px 8px; border-radius: 999px;
+    background: var(--tomato); color: #FDF9F2; border: 2px solid var(--paper-hi);
+    box-shadow: 0 4px 10px -4px rgba(78,72,61,.6);
+    transform: rotate(6deg);
   }
-  .badge-store.soon:hover { transform: none; box-shadow: none; }
-  .badge-store.soon .bs-lg { color: var(--ink); }
 
   /* ---- Proof: real score report ---- */
   .proof-grid { display: grid; grid-template-columns: minmax(0, .92fr) minmax(0, 1fr); gap: clamp(28px, 5vw, 64px); align-items: center; }
@@ -948,7 +950,7 @@
         <a href="/ja/" hreflang="ja" lang="ja" onclick="try{localStorage.setItem('tb-lang','ja')}catch(e){}">日本語</a>
         <a href="/zh-hant/" hreflang="zh-Hant" lang="zh-Hant" onclick="try{localStorage.setItem('tb-lang','zh')}catch(e){}">繁中</a>
       </span>
-      <a class="nav-cta" href="https://apps.apple.com/app/id6788353969">在 App Store 下載</a>
+      <a class="nav-cta" href="#download">下載 App</a>
     </nav>
   </div>
 </header>
@@ -972,12 +974,14 @@
             <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.36 12.78c.02-2.2 1.8-3.26 1.88-3.31-1.02-1.5-2.61-1.7-3.18-1.72-1.35-.14-2.64.8-3.33.8-.69 0-1.75-.78-2.87-.76-1.48.02-2.84.86-3.6 2.18-1.53 2.66-.39 6.6 1.1 8.76.73 1.06 1.6 2.25 2.74 2.2 1.1-.04 1.52-.71 2.85-.71 1.33 0 1.7.71 2.87.69 1.18-.02 1.93-1.08 2.65-2.14.84-1.23 1.18-2.42 1.2-2.48-.03-.01-2.3-.88-2.32-3.5zM14.2 6.02c.6-.74 1.01-1.75.9-2.77-.87.04-1.94.59-2.57 1.31-.56.64-1.06 1.68-.93 2.67.97.08 1.98-.49 2.6-1.21z"/></svg>
             <span class="bs-txt"><span class="bs-sm">立即下載</span><span class="bs-lg">App Store</span></span>
           </a>
-          <span class="badge-store soon" aria-label="Google Play 準備中">
+          <a class="badge-store" href="https://play.google.com/store/apps/details?id=com.tosscombo.toss_combo"
+             aria-label="在 Google Play 下載 TOSS BURGER">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3.6 2.3c-.24.25-.38.64-.38 1.15v17.1c0 .51.14.9.38 1.15l.06.06 9.58-9.58v-.23L3.66 2.24l-.06.06zm12.85 6.4L13.9 10.3v.01L4.32 1.96l.14-.08 11.99 6.82zM4.46 22.12l9.44-9.44 2.55 2.55-11.99 6.82-.14-.07zm12.9-6.34l-2.7-2.7 2.7-2.7 3.13 1.78c.9.51.9 1.33 0 1.84l-3.13 1.78z"/></svg>
-            <span class="bs-txt"><span class="bs-sm">Google Play</span><span class="bs-lg">上架準備中</span></span>
-          </span>
+            <span class="bs-txt"><span class="bs-sm">立即下載</span><span class="bs-lg">Google Play</span></span>
+            <span class="bs-new">NEW</span>
+          </a>
         </div>
-        <p class="note"><span class="pill"><span class="dot"></span>iOS 已上架 · Android 即將推出</span></p>
+        <p class="note"><span class="pill"><span class="dot"></span>iOS · Android 皆已上架</span></p>
       </div>
       <div class="fig">
         <span class="blob a" aria-hidden="true"></span>
@@ -1353,27 +1357,28 @@
         </details>
         <details>
           <summary>可以在哪些裝置上使用?</summary>
-          <p>已於 iOS(App Store)上架。Android 版準備中,可透過電子郵件訂閱上架通知。</p>
+          <p>iOS(App Store)與 Android(Google Play)皆已上架。iPhone・iPad 請至 App Store,Android 手機請至 Google Play 下載。</p>
         </details>
       </div>
     </div>
   </section>
 
-  <section>
+  <section id="download">
     <div class="wrap">
       <div class="final reveal">
-        <h2>現在就到 App Store 下載</h2>
-        <p>TOSS BURGER 已於 iOS 上架。Android 版準備中,一準備好就立刻通知你。</p>
+        <h2>現在就到 App Store · Google Play 下載</h2>
+        <p>TOSS BURGER 也在 Android 上架了。iPhone・iPad 請至 App Store,Android 請至 Google Play 下載。</p>
         <div class="store-badges" style="justify-content:center;">
           <a class="badge-store" href="https://apps.apple.com/app/id6788353969"
              aria-label="在 App Store 下載 TOSS BURGER">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.36 12.78c.02-2.2 1.8-3.26 1.88-3.31-1.02-1.5-2.61-1.7-3.18-1.72-1.35-.14-2.64.8-3.33.8-.69 0-1.75-.78-2.87-.76-1.48.02-2.84.86-3.6 2.18-1.53 2.66-.39 6.6 1.1 8.76.73 1.06 1.6 2.25 2.74 2.2 1.1-.04 1.52-.71 2.85-.71 1.33 0 1.7.71 2.87.69 1.18-.02 1.93-1.08 2.65-2.14.84-1.23 1.18-2.42 1.2-2.48-.03-.01-2.3-.88-2.32-3.5zM14.2 6.02c.6-.74 1.01-1.75.9-2.77-.87.04-1.94.59-2.57 1.31-.56.64-1.06 1.68-.93 2.67.97.08 1.98-.49 2.6-1.21z"/></svg>
             <span class="bs-txt"><span class="bs-sm">立即下載</span><span class="bs-lg">App Store</span></span>
           </a>
-          <a class="badge-store soon" href="mailto:tosburger.dev@gmail.com?subject=接收 TOSS BURGER Android 上架通知"
-             aria-label="接收 Android 上架通知">
+          <a class="badge-store" href="https://play.google.com/store/apps/details?id=com.tosscombo.toss_combo"
+             aria-label="在 Google Play 下載 TOSS BURGER">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3.6 2.3c-.24.25-.38.64-.38 1.15v17.1c0 .51.14.9.38 1.15l.06.06 9.58-9.58v-.23L3.66 2.24l-.06.06zm12.85 6.4L13.9 10.3v.01L4.32 1.96l.14-.08 11.99 6.82zM4.46 22.12l9.44-9.44 2.55 2.55-11.99 6.82-.14-.07zm12.9-6.34l-2.7-2.7 2.7-2.7 3.13 1.78c.9.51.9 1.33 0 1.84l-3.13 1.78z"/></svg>
-            <span class="bs-txt"><span class="bs-sm">Android</span><span class="bs-lg">訂閱上架通知</span></span>
+            <span class="bs-txt"><span class="bs-sm">立即下載</span><span class="bs-lg">Google Play</span></span>
+            <span class="bs-new">NEW</span>
           </a>
         </div>
         <p class="disc">TOEIC is a registered trademark of ETS. This application and website are not endorsed or approved by ETS.</p>
